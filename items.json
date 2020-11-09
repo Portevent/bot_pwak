@@ -1,0 +1,50 @@
+{
+  "flocon_magique": {
+    "name" : "Flocon de Neige Magique",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png"
+  },
+  "kamas_bronze": {
+    "name" : "Kamas de Bronze",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774284078809098/148002.png"
+  },
+  "kamas_argent": {
+    "name" : "Kamas Argenté",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774286486732810/148003.png"
+  },
+  "kamas_or": {
+    "name" : "Kamas en Or",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774288714170428/148004.png"
+  },
+  "boule_violette": {
+    "name" : "Boule de Nowel",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png"
+  },
+  "boule_bleue": {
+    "name" : "Boule de Nowel",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946194724093953/boule_bleue.png"
+  },
+  "boule_jaune": {
+    "name" : "Boule de Nowel",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946196862402580/boule_jaune.png"
+  },
+  "boule_rouge": {
+    "name" : "Boule de Nowel",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946200712773642/boule_rouge.png"
+  },
+  "boule_verte": {
+    "name" : "Boule de Nowel",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946204265349140/boule_verte.png"
+  },
+  "glutin_chapeau": {
+    "name" : "Chapeau de glutin",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770773836303695912/16346.png"
+  },
+  "glutin_epee": {
+    "name" : "Épée de glutin",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770773825649508383/6069.png"
+  },
+  "boule_multi": {
+    "name" : "Boule de Nowel scintillante",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946198456500224/boule_multi.png"
+  }
+}

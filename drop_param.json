@@ -1,0 +1,35 @@
+{
+  "gift": 1,
+  "gift_big": 0.1,
+  "common": 0.8,
+  "uncommon": 0.19,
+  "rare": 0.01,
+  "common_color": 16777214,
+  "uncommon_color": 8645763,
+  "rare_color": 16637698,
+  "common_drops":{
+    "kamas_bronze": 4,
+    "kamas_argent": 1,
+    "boule_violette": 5,
+    "boule_bleue": 5,
+    "boule_jaune": 5,
+    "boule_rouge": 5,
+    "boule_verte": 5
+  },
+  "uncommon_drops": {
+    "flocon_magique": 1,
+    "kamas_bronze": 8,
+    "kamas_argent": 3,
+    "kamas_or": 1,
+    "boule_violette": 15,
+    "boule_bleue": 15,
+    "boule_jaune": 15,
+    "boule_rouge": 15,
+    "boule_verte": 15
+  },
+  "rare_drops": {
+    "glutin_chapeau": -1,
+    "glutin_epee": -1,
+    "boule_multi": -1
+  }
+}

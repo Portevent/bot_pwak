@@ -1,0 +1,181 @@
+{
+  "empty": {
+    "content": "",
+    "username": "",
+    "avatar_url": ""
+  },
+  "empty_with_embed": {
+    "content": "** **",
+    "embeds": [
+      {
+        "color": 16777215,
+        "title": "",
+        "description": "",
+        "thumbnail": {
+          "url": "",
+          "height": 60,
+          "width": 60
+        },
+        "author": {
+          "name": "",
+          "icon_url": ""
+        },
+        "footer": {
+          "text": "*Bravo à Blabla, Blabla, Blabla, et Blibli*"
+        }
+      }
+    ],
+    "username": "",
+    "avatar_url": ""
+  },
+  "welcome_gift": {
+    "content": "Bienvenue Portevent ! Ta venue a attiré un cadeau, assez grand pour toi et 3 autres personnes.\n:gift: ouvre le pour voir ce que tu as reçu !",
+    "username": "Un Cadeau Apparait !",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787920-cadobivalen-cameleon-article_2_d-1.png"
+  },
+  "small_gift" : {
+    "content": "Il suffit de deux personnes pour l'ouvrir, mais il possède assez de surprises pour 4 personnes ",
+    "username": "Un Cadeau Apparait !",
+    "avatar_url": "https://media.discordapp.net/attachments/770768439773888532/770773665401929738/89005.png",
+    "file": "https://cdn.discordapp.com/attachments/770768439773888532/770773754086686750/89052.png",
+    "min_participant": 2,
+    "max_participant": 4
+  },
+  "big_gift" : {
+    "content": "**4** personnes sont nécessaires pour l'ouvrir, et il est assez grand pour satisfaire jusqu'à **8** personnes !",
+    "username": "Un Gros Cadeau Apparait !",
+    "avatar_url": "https://media.discordapp.net/attachments/770768439773888532/770773666873999372/89006.png",
+    "min_participant": 4,
+    "max_participant": 8
+  },
+  "open_gift" : {
+    "content": " ",
+    "embeds": [
+      {
+        "title": "1x Boule de Nowel",
+        "description": ":gift: Bravo à Portevent, Clem",
+        "color": 16777214,
+        "thumbnail": {
+          "url": "https://www.dofusroom.com/img/assets/items/16507.png"
+        }
+      }
+    ],
+    "username": "Le cadeau a été ouvert",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787932-cadobl-article_2_d-1.png"
+  },
+  "snowmen": {
+    "content": "Profitez tous de cette **minute** de neige pour réaliser **le plus grand bonhomme de neige** possible.",
+    "username": "Il neige !",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787935-storf-article_2_d-1.png",
+    "auto_open": true
+  },
+  "small_snowmen": {
+    "content": "",
+    "embeds": [
+      {
+        "title": "🎁 4x Boules de Nowel",
+        "color": 16777214,
+        "fields": [
+          {
+            "name": "❄️ 5x Flocons de Nowel",
+            "value": " ** **",
+            "inline": true
+          },
+          {
+            "name": "🌟  Flocon Dorée de Nowel",
+            "value": " ** **"
+          }
+        ],
+        "footer": {
+          "text": "Bravo à Portevent, Clem, Rondoudou, Coysha"
+        },
+        "thumbnail": {
+          "url": "https://www.dofusroom.com/img/assets/items/16507.png"
+        }
+      }
+    ],
+    "username": "Un grand bonhomme de neige",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787935-storf-article_2_d-1.png"
+  },
+  "big_snowmen": {
+    "content": "",
+    "embeds": [
+      {
+        "title": "🎁 Chapeau de Nowel",
+        "color": 5099068,
+        "fields": [
+          {
+            "name": "❄️ 6 Flocons de Nowel",
+            "value": "+6 Flocons de Nowel bonus !"
+          },
+          {
+            "name": "🌟 2 Flocons Doré de Nowel",
+            "value": "+2 Flocons Doré de Nowel bonus !"
+          }
+        ],
+        "footer": {
+          "text": "Bravo à Portevent, Clem, Rondoudou, Coysha, Koro, Liui"
+        },
+        "thumbnail": {
+          "url": "https://www.dofusroom.com/img/assets/items/16155.png"
+        }
+      }
+    ],
+    "username": "Un énorme bonhomme de neige",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787935-storf-article_2_d-1.png"
+  },
+  "giant_snowmen": {
+    "content": "",
+    "embeds": [
+      {
+        "title": "🎁 Chapeau de Nowel",
+        "color": 5837272,
+        "fields": [
+          {
+            "name": "❄️ 6 Flocons de Nowel",
+            "value": "+6 Flocons de Nowel bonus !\n+6 Flocons de Nowel bonus !"
+          },
+          {
+            "name": "🌟 2 Flocons Doré de Nowel",
+            "value": "+2 Flocons Doré de Nowel bonus !\n+2 Flocons Doré de Nowel bonus !"
+          }
+        ],
+        "footer": {
+          "text": "Bravo à Portevent, Clem, Rondoudou, Coysha, Koro, Liui, Personne A, Personne B, Blabla"
+        },
+        "thumbnail": {
+          "url": "https://www.dofusroom.com/img/assets/items/17119.png"
+        }
+      }
+    ],
+    "username": "Un GIGANTESQUE bonhomme de neige",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787935-storf-article_2_d-1.png"
+  },
+  "pikpik": {
+    "content": "Vous risquez d'en retrouver accrochés à vos prochain messages.\nIl suffit de les cueillir, et ne vous inquietez pas, il y en a pour tout le monde.",
+    "username": "Un PikPik a fait tombé ses ❄️",
+    "avatar_url": "https://static1-fr.millenium.gg/articles/6/31/83/36/@/787914-pikip-article_2_d-1.png"
+  },
+  "test": {
+    "content": "** **",
+    "embeds": [
+      {
+        "author": {
+          "name": "**5x Boule de Nowel** - Bravo à Blabla, Blabla, Blabla, et Blibli ",
+          "icon_url": "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png"
+        },
+        "footer": {
+          "text": "*Bravo à Blabla, Blabla, Blabla, et Blibli*"
+        },
+        "thumbnail": {
+          "url": "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png"
+        }
+      }
+    ],
+    "username": "Un Cadeau Apparait !",
+    "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/770773754086686750/89052.png"
+  }
+
+
+
+}
