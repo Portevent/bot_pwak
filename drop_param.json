@@ -8,6 +8,7 @@
   "uncommon_color": 8645763,
   "rare_color": 16637698,
   "common_drops":{
+    "flocon": 1,
     "kamas_bronze": 4,
     "kamas_argent": 1,
     "boule_violette": 5,
@@ -17,6 +18,7 @@
     "boule_verte": 5
   },
   "uncommon_drops": {
+    "flocon": 3,
     "flocon_magique": 1,
     "kamas_bronze": 8,
     "kamas_argent": 3,

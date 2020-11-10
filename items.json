@@ -1,6 +1,10 @@
 {
-  "flocon_magique": {
+  "flocon": {
     "name" : "Flocon de Neige",
+    "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png"
+  },
+  "flocon_magique": {
+    "name" : "Flocon de Neige Magique",
     "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png"
   },
   "kamas_bronze": {
