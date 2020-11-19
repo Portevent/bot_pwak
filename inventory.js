@@ -1,13 +1,16 @@
 class Inventory {
 
-    inventory = new Map();
 
-    userExist(userId) {
-        return this.inventory.contains(userId)
+    constructor() {
+        this.inventory = new Map();
+    }
+
+    userExists(userId) {
+        return this.inventory.has(userId)
     }
 
     hasItem(userId, itemId){
-        return this.inventory.get(userId).contains(itemId);
+        return this.inventory.get(userId).has(itemId);
     }
 
     resetUser(userId) {
@@ -25,14 +28,19 @@ class Inventory {
     ///////////////////////////////////
     // Safe zone :
 
-    createUser(userId) {
-        if(!this.userExist(userId)){
-            this.resetUser(userId)
-        }
+    userHasItems(userId) {
+        return this.userExists(userId)
     }
 
     userHasItem(userId, itemId) {
-        return this.userExist(userId) && this.hasItem(userId, itemId);
+        return this.userExists(userId) && this.hasItem(userId, itemId);
+    }
+
+
+    createUser(userId) {
+        if(!this.userExists(userId)){
+            this.resetUser(userId)
+        }
     }
 
     getItemOfUser(userId, itemId){
@@ -41,15 +49,15 @@ class Inventory {
 
     addItemToUser(userId, itemId, quantity = 1){
         if (this.userHasItem(userId, itemId)){
-            this.setItem(userId, itemId, quantity + this.getItemOfUser(userId, itemId));
+            quantity += this.getItemOfUser(userId, itemId);
         }
 
-        else {
-            if(!this.userExist(userId)) this.createUser(userId);
+        this.createUser(userId);
 
-            this.setItem(userId, itemId, quantity);
-        }
+        this.setItem(userId, itemId, quantity);
     }
 
 
 }
+
+module.exports = Inventory

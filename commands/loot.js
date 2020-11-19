@@ -14,6 +14,7 @@ module.exports = {
 
         let users = await messageReaction.users.fetch();
         users.delete(messageReaction.message.client.user.id);
+        console.log(users);
 
         const bonus = 1 + users.size/4; // 25% de bonus par joueur participants
 
@@ -40,12 +41,12 @@ module.exports = {
         }
 
 
-        const keys = Object.keys(drops)
-        const key = keys[Math.floor(Math.random() * keys.length)]
+        const items_ids = Object.keys(drops)
+        const item_id = items_ids[Math.floor(Math.random() * items_ids.length)]
         // Random drop picked
-        let drop_rate = drops[key];
-        console.log('Drop de ' + key);
-        const item = messageReaction.message.client.items[key];
+        let drop_rate = drops[item_id];
+        console.log('Drop de ' + item_id);
+        const item = messageReaction.message.client.items[item_id];
 
         const webhook = webhooks.empty_with_embed;
 
@@ -67,21 +68,11 @@ module.exports = {
         messageReaction.message.client.editWebhook(messageReaction.message.channel, webhook, messageReaction.message.id);
         messageReaction.message.reactions.removeAll();
 
+        const inventory = messageReaction.message.client.inventory;
+
         for(data of users){
-            let user = data[1];
-            console.log(user);
-            if (!messageReaction.message.client.inventory.has(user.id)) {
-                messageReaction.message.client.inventory.set(user.id, new Map());
-            }
-            const inventory = messageReaction.message.client.inventory.get(user.id);
 
-            if (!inventory.has(key)) {
-                inventory.set(key, 0);
-            }
-
-            const prev_quantity = inventory.get(key);
-
-            inventory.set(key, prev_quantity + quantity);
+            inventory.addItemToUser(data[1].id, item_id, quantity);
         }
     },
 };

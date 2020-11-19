@@ -6,11 +6,12 @@ const fetch = require('node-fetch');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const autoTalkerCommandFiles = fs.readdirSync('./autoTalkerCommand').filter(file => file.endsWith('.js'));
 const webhooks_templates = require('./webhook_template.json');
+const Inventory = require('./inventory.js');
 
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.webhooks = new Discord.Collection();
-client.inventory = new Discord.Collection();
+client.inventory = new Inventory();
 client.drop_params = require('./drop_param.json');
 client.items = require('./items.json');
 client.onGoingLoot = new Discord.Collection();

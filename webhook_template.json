@@ -175,7 +175,7 @@
     "username": "Un Cadeau Apparait !",
     "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/770773754086686750/89052.png"
   },
-  "inventory": {
+  "inventory_empty": {
     "username": "Inventaire",
     "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/775420082285183036/icon__0027_Inventaire.png",
     "embeds": [
@@ -192,6 +192,22 @@
             "inline": true
           }
         ],
+        "author": {
+          "name": "",
+          "icon_url": ""
+        },
+        "footer": {
+          "text": "Niveau 10"
+        }
+      }
+    ]
+  },
+  "inventory": {
+    "username": "Inventaire",
+    "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/775420082285183036/icon__0027_Inventaire.png",
+    "embeds": [
+      {
+        "description": "",
         "author": {
           "name": "",
           "icon_url": ""
