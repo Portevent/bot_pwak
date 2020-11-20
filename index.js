@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const {token, prefix, tokensAutoTalker} = require('./config.json');
+const {token, prefix, tokensAutoTalker} = require('./config_files/config.json');
 const fetch = require('node-fetch');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const autoTalkerCommandFiles = fs.readdirSync('./autoTalkerCommand').filter(file => file.endsWith('.js'));
