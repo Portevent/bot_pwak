@@ -1,6 +1,9 @@
 {
-  "token": "",
-  "prefix": "",
-  "tokensAutoTalker": [
+  "bots": [
+    {
+      "token": "",
+      "type": "",
+      "prefix": ""
+    }
   ]
 }

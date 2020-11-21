@@ -1,36 +1,32 @@
-const { prefix } = require('../config_files/config.json');
-
 module.exports = {
-    name: 'help_admin',
-    description: 'Liste des commandes admin',
-    aliases: ['true_help', 'admin_help', 'helpadmin', 'helpsecret'],
+    name: 'help',
+    description: 'Liste des commandes',
+    aliases: ['commands', 'aide', 'ls', 'list', 'liste'],
     usage: '[command name]',
     cooldown: 5,
+    deleteCommand: True,
+    deleteAfter: 5000,
     execute(message, args) {
         const data = [];
-        const { commands } = message.client;
+        const commands = message.client.commands;
 
         if (!args.length) {
-            data.push('Here\'s a list of all my commands:');
+            data.push('Liste des commandes');
             commands.map(command => {
-                if(command.secret) {
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description + '  - **Commande secrète**');
-                }else if(command.adminOnly ){
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description + ' - **Commande admin**');
-                }else{
-                    //data.push('**' + command.name + '** : ' + command.description);
+                if(!command.secret && !command.adminOnly ){
+                    data.push('**' + command.name + '** : ' + command.description);
                 }
             })
-            data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+            data.push(`\nPour avoir plus de détails sur une commande : \`${prefix}help [commande]\` `);
 
             return message.author.send(data, { split: true })
                 .then(() => {
                     if (message.channel.type === 'dm') return;
-                    message.reply('I\'ve sent you a DM with all my commands!');
+                    message.reply('Je t\'ai envoyé toutes les commandes en message privé !').then(message => message.delete(10000));
                 })
                 .catch(error => {
                     console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-                    message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
+                    message.reply('Est ce que je peux t\'envoyer la liste des commandes en message privé ? Il faut que tu les ouvres pour moi :flushed:').then(message => message.delete(10000));
                 });
         }
 
@@ -38,7 +34,7 @@ module.exports = {
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply('that\'s not a valid command!');
+            return message.reply('Cette commande n\'existe pas...');
         }
 
         data.push(`**Name:** ${command.name}`);
