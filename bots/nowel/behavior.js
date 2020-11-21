@@ -1,6 +1,7 @@
 const Inventory = require("../../inventory/inventory.js");
 const Drop = require("../../inventory/drop.js");
 const webhook_template = require("../../webhook_template.json");
+const cron = require('node-cron');
 
 // noinspection JSUnusedLocalSymbols
 module.exports = {
@@ -11,6 +12,16 @@ module.exports = {
         client.onGoingLoot = new Map();
 
         client.messageSinceLastDrop = 0;
+
+
+        cron.schedule('*/5 * * * * *', function() {
+            //Nowalmanax every 5 secondes
+            client.nowalmanax(client);
+        });
+    },
+
+    nowalmanax(client){
+        console.log('nowalmanax !');
     },
 
     onReaction(reaction, user){
