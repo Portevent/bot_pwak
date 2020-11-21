@@ -1,5 +1,4 @@
-const Item = require('../../../inventory/item.js');
-
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'inventory',
     aliases: ['inventaire', 'i'],
@@ -38,7 +37,7 @@ module.exports = {
                     text += item.emoji + " : " + item.quantity + "\n";
             }
 
-            if(text != ""){
+            if(text !== ""){
                 webhook.embeds[0].fields.push({
                     "name": inventory[category].name,
                     "inline": true,

@@ -1,5 +1,6 @@
 // noinspection JSUnusedLocalSymbols
 const Drop = require("../../inventory/drop.js");
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     setup(client) {
         client.stop = false;

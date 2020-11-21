@@ -1,4 +1,3 @@
-const webhooks = require('../../../webhook_template.json');
 const Drop = require('../../../inventory/drop.js');
 
 module.exports = {

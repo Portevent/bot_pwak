@@ -1,4 +1,3 @@
-const webhooks = require('../../../webhook_template.json');
 const Loot = require('../../../inventory/loot.js');
 module.exports = {
     name: 'loot',

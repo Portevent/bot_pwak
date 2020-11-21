@@ -1,3 +1,4 @@
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'beep',
     aliases: ['bep', 'bip'],

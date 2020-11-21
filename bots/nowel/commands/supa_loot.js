@@ -1,3 +1,4 @@
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'supa_loot',
     aliases: ['sl', 'sloot'],

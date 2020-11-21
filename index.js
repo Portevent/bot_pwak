@@ -23,8 +23,6 @@ for(const bot of bots){
         client.commands.set(command.name.toLowerCase(), command);
     }
 
-    console.log(client.commands);
-
     // Setting up the basic behaviors
     const basic_behaviors = require('./bots/_base/behavior.js')
     for(let behavior in basic_behaviors) {

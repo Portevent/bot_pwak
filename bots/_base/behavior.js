@@ -27,7 +27,7 @@ module.exports = {
         
         message.channel.send('Erreur lors de l\'éxécution de ' + command.name + '\n' + error);
         
-        console.log("##### ERREUR #### \n" +
+        console.error("##### ERREUR #### \n" +
             "## Message : " + message +
             "\n ## Erreur : " + error);
     },

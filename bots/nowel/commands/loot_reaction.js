@@ -1,5 +1,4 @@
-const webhooks = require('../../../webhook_template.json');
-const Loot = require('../../../inventory/loot.js');
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'loot_reaction',
     description: 'Loot un message (non inutilisable manuellement)',

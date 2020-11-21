@@ -2,6 +2,7 @@ const Inventory = require("../../inventory/inventory.js");
 const Drop = require("../../inventory/drop.js");
 const webhook_template = require("../../webhook_template.json");
 
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     setup(client) {
         client.inventory = new Inventory();
