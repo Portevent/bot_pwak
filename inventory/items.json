@@ -49,6 +49,12 @@
         "emoji" : "<:BouledeNowelRouge:779651342188150804>"
       },
       {
+        "id" : "boule_orange",
+        "name" : "Boule de Nowel orange",
+        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/779767760158195712/boule_orange.png",
+        "emoji" : "<:Boule_De_Nowel_Orange:779762430351114251>"
+      },
+      {
         "id" : "boule_jaune",
         "name" : "Boule de Nowel jaune",
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946196862402580/boule_jaune.png",
