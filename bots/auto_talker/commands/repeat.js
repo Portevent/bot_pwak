@@ -4,6 +4,6 @@ module.exports = {
     description: 'Force l\'envoi d\' un message',
     guildOnly: true,
     execute(message, args) {
-        message.channel.send(args);
+        message.channel.send(" . " + args);
     },
 };
