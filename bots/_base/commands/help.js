@@ -4,7 +4,7 @@ module.exports = {
     aliases: ['commands', 'aide', 'ls', 'list', 'liste'],
     usage: '[command name]',
     cooldown: 5,
-    deleteCommand: True,
+    deleteCommand: true,
     deleteAfter: 5000,
     execute(message, args) {
         const data = [];

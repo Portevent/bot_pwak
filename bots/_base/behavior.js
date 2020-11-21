@@ -4,7 +4,7 @@ module.exports = {
 
     prefixOptionalInDm: true,
 
-    onOwnMessage(){
+    onOwnMessage(message){
 
     },
 
@@ -43,16 +43,16 @@ module.exports = {
         message.reply('Merci d\'attendre `' + timeLeft + '` secondes avant de réutiliser `' + command.name + '`');
     },
 
-    onReaction(){
+    onReaction(reaction, user){
 
     },
-    onUserMessage(){
+    onUserMessage(message){
 
     },
-    onBotMessage(){
+    onBotMessage(message){
 
     },
-    onWebhook(){
+    onWebhook(message){
 
     },
 
@@ -72,7 +72,7 @@ module.exports = {
             if(message.content.startsWith(client.prefix)){
                 args = args.slice(client.prefix.length);
             }else{
-                args = args.slice(args.indexOf('>'));
+                args = args.slice(args.indexOf('>') + 1);
             }
 
             args = args.trim().split(/ +/);

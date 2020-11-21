@@ -7,7 +7,7 @@ for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
     const client = new Discord.Client();
-
+    client.prefix = bot.prefix
     client.commands = new Discord.Collection();
     client.cooldowns = new Discord.Collection();
     client.webhooks = new Discord.Collection();
