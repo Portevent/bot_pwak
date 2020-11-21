@@ -3,42 +3,38 @@ const Loot = require('../../../inventory/loot.js');
 module.exports = {
     name: 'loot',
     aliases: ['loot'],
-    description: 'Loot un message (non inutilisable manuellement)',
+    description: 'Génère un loot',
     adminOnly: true,
     secret: true,
     guildOnly: true,
     cooldown: 0.1,
-    async execute(messageReaction, args) {
+    async execute(message, args) {
+        let bonus = 1
+        let users = new Map();
+        users.set(message.author.id, message.author);
 
-        let users = await messageReaction.users.fetch();
-        users.delete(messageReaction.message.client.user.id);
+        if(args && args.length && args.length > 0){
+            bonus = args[0]
+        }
+        if(args && args.length && args.length > 1){
+            users = args[1];
+        }
 
-        const bonus = 1 + users.size/4; // 25% de bonus par joueur participants
+        let loot = Loot.getLoot(bonus);
 
-        const loot = Loot.getLoot(bonus);
-
-        let quantity = loot.quantity;
-        let quantity_text = '';
-        if(quantity != -1){
-            quantity *= 1 + Math.random()/2;
-            quantity *= bonus;
-            quantity = Math.ceil(quantity);
-            quantity_text = quantity + 'x '
+        if(loot.quantity !== -1){
+            loot.quantity *= 1 + Math.random()/2;
+            loot.quantity *= bonus;
+            loot.quantity = Math.ceil(loot.quantity);
         }else{
-            quantity = 1;
+            loot.quantity = 1;
         }
 
-        messageReaction.message.client.editWebhook(messageReaction.message.channel, {
-            "content": loot.meta_loot.name + " **" + quantity_text + loot.item.emoji + loot.item.name + "**! Bravo à " + users.map(user => user.username),
-            "username": "", //TODO : A retirer si possible
-            "avatar_url": "",
-        }, messageReaction.message.id);
-        await messageReaction.message.reactions.removeAll();
-
-        const inventory = messageReaction.message.client.inventory;
-
-        for(data of users){
-            inventory.addItemToUser(data[1].id, loot.item.id, quantity);
+        for(let user of users.values()){
+            message.client.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
         }
+
+        return loot;
+
     },
 };

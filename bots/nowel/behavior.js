@@ -25,7 +25,7 @@ module.exports = {
                         // noinspection JSIgnoredPromiseFromCall
                         reaction.message.react('🥁');
                         let timer = setTimeout(() => {
-                            reaction.message.client.execute('loot', reaction);
+                            reaction.message.client.execute('loot_reaction', reaction);
                         }, 5*1000);
                         reaction.message.client.onGoingLoot.set(reaction.message.id, timer);
                     }
@@ -34,7 +34,7 @@ module.exports = {
                         if(reaction.message.client.onGoingLoot.has(reaction.message.id)) {
                             clearTimeout(reaction.message.client.onGoingLoot.get(reaction.message.id));
                         }
-                        reaction.message.client.execute('loot', reaction);
+                        reaction.message.client.execute('loot_reaction', reaction);
                     }
                 })
             }

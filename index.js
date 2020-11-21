@@ -48,7 +48,10 @@ for(const bot of bots){
 
     client.execute = function execute(commandName, message, args = []){
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-        command.execute(message, args);
+        if(command === undefined){
+            return console.error("Error " + commandName + " introuvable !");
+        }
+        return command.execute(message, args);
     }
 
     client.on('message', message => {

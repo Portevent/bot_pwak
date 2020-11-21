@@ -7,12 +7,16 @@ class Inventory {
         return this.inventory.has(userId)
     }
 
-    hasItem(userId, itemId){
-        return this.inventory.get(userId).has(itemId);
-    }
-
     resetUser(userId) {
         this.inventory.set(userId, new Map());
+    }
+
+    getItems(userId){
+        return this.inventory.get(userId);
+    }
+
+    hasItem(userId, itemId){
+        return this.inventory.get(userId).has(itemId);
     }
 
     getItem(userId, itemId){
@@ -45,10 +49,16 @@ class Inventory {
         return this.userHasItem(userId, itemId)?this.getItem(userId,itemId):0;
     }
 
+    getItemsOfUser(userId, itemId){
+        return this.userExists(userId)?this.getItems(userId):{};
+    }
+
     addItemToUser(userId, itemId, quantity = 1){
+
         if (this.userHasItem(userId, itemId)){
             quantity += this.getItemOfUser(userId, itemId);
         }
+
 
         this.createUser(userId);
 

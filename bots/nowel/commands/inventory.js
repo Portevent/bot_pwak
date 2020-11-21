@@ -1,17 +1,16 @@
-const webhooks = require('../../../webhook_template.json');
-const items = require('../../../inventory/items.json');
+const Item = require('../../../inventory/item.js');
 
 module.exports = {
     name: 'inventory',
     aliases: ['inventaire', 'i'],
     description: 'Affiche l\'inventaire',
     execute(message, args) {
-        const inventory = message.client.inventory;
 
 
         const userId = message.author.id;
         const userName = message.author.username;
         const userAvatar = message.author.avatarURL();
+        const inventory = message.client.inventory.getItemsOfUser(userId);
 
         let webhook = {
             "username": "Inventaire",
@@ -27,14 +26,9 @@ module.exports = {
             ]
         };
 
-        if(inventory.userHasItems(userId)){
-            items_id = Object.keys(items);
-            for(var i = 0; i < items_id.length; i++) {
-                let itemId = items_id[i];
-                if(items[itemId].emoji !== "" && inventory.userHasItem(userId, itemId)){
-                    webhook.embeds[0].description += ":" + items[itemId].emoji + ": " + inventory.getItemOfUser(userId, itemId) + ' ';
-                }
-            }
+        for(let item_id of inventory.keys()){
+            const item = Item.get(item_id);
+            webhook.embeds[0].description += item.emoji + item.name + " : " + inventory.get(item_id) + "\n";
         }
 
         message.client.sendWebhook(message.channel, webhook).then(console.log('Inventaire sent !'));
