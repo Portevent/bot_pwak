@@ -1,6 +1,6 @@
 // noinspection JSUnusedLocalSymbols,JSUnresolvedVariable
 module.exports = {
-    prefix:'!',
+    //prefix:'!', /!\ Override any bot prefix
 
     prefixOptionalInDm: true,
 
