@@ -85,6 +85,24 @@ for(const bot of bots){
         }
     }
 
+    // Useful function
+    client.sendWebhookFromUrl = async function sendWebhookFromUrl(url, params) {
+        console.log(params);
+        try{
+
+            await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(params),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+        }catch(error){
+            console.error('Error trying to send webhook: ', error);
+        }
+    }
+
     client.editWebhook = function editWebhook(channel, params, messageId) {
         try{
             const webhook = client.webhooks.get(channel.id);
@@ -102,4 +120,29 @@ for(const bot of bots){
         }
     }
 
+    client.editWebhookFromUrl = function editWebhookFromUrl(url, params, messageId) {
+        console.log(params);
+        try{
+            // noinspection JSIgnoredPromiseFromCall
+            fetch(url + '/messages/' + messageId , {
+                method: 'PATCH',
+                body: JSON.stringify(params),
+                headers: {
+                    'Content-Type': 'application/json'
+                }});
+
+        }catch(error){
+            console.error('Error trying to edit webhook: ', error);
+        }
+    }
+
 }
+
+fetch('https://discordapp.com/api/webhooks/773558618809171988/rVkhJv16lono8tM5dc9UxEydkCAAl1xax0YYa3mQklIy8aUV18_fgmJN01xCAF66aKjp/messages/774085398607560705', {
+    method: 'PATCH',
+    body: JSON.stringify({
+        "content": "Le serveur Wakfu a fermé ses portes en Novembre 2018, plus d'infos: <https://www.wakfu.com/fr/forum/8-discussions-generales/384873-discord-wakfu-votre-espace-discussion-oral-ecrit>\nAutres serveurs Discord\n<https://www.discordservers.com/>\n<https://discord.me/servers>"
+    }),
+    headers: {
+        'Content-Type': 'application/json'
+    }});
