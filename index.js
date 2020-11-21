@@ -14,12 +14,12 @@ for(const bot of bots){
 
     // Setting up the basic commands
     for (const command_name of fs.readdirSync('./bots/_base/commands').filter(file => file.endsWith('.js'))) {
-        command = require('./bots/_base/commands/' + command_name )
+        const command = require('./bots/_base/commands/' + command_name )
         client.commands.set(command.name.toLowerCase(), command);
     }
     // Setting up bot commands
     for (const command_name of fs.readdirSync('./bots/' + bot.type + '/commands').filter(file => file.endsWith('.js'))) {
-        command = require('./bots/' + bot.type + '/commands/' + command_name )
+        const command = require('./bots/' + bot.type + '/commands/' + command_name )
         client.commands.set(command.name.toLowerCase(), command);
     }
 
@@ -33,12 +33,14 @@ for(const bot of bots){
     // Upgrading to new behaviors
     const bot_behaviors = require('./bots/' + bot.type + '/behavior.js');
     for(let behavior in bot_behaviors) {
+        // noinspection JSUnfilteredForInLoop
         client[behavior] = bot_behaviors[behavior];
     }
 
     client.setup(client);
 
-    client.login(bot.token);
+    // noinspection JSUnusedLocalSymbols
+    client.login(bot.token).then(r => {});
 
     client.once('ready', () => {
         console.log('Bot ' + bot.type + ' ready !');
@@ -50,14 +52,16 @@ for(const bot of bots){
     }
 
     client.on('message', message => {
+        // noinspection JSUnresolvedFunction
         message.client.onMessage(message);
     });
 
     client.on('messageReactionAdd', (reaction, user) => {
+        // noinspection JSUnresolvedFunction
         reaction.message.client.onReaction(reaction, user);
     });
 
-    // Usefull function
+    // Useful function
     client.sendWebhook = async function sendWebhook(channel, params) {
         try{
             if (!client.webhooks.has(channel.id)) {
@@ -67,15 +71,16 @@ for(const bot of bots){
 
             const webhook = client.webhooks.get(channel.id);
 
-            fetch('https://discordapp.com/api/webhooks/' + webhook.id + '/' + webhook.token, {
+            await fetch('https://discordapp.com/api/webhooks/' + webhook.id + '/' + webhook.token, {
                 method: 'POST',
                 body: JSON.stringify(params),
                 headers: {
                     'Content-Type': 'application/json'
-                }});
+                }
+            });
 
         }catch(error){
-            console.error('Error trying to send wehbook: ', error);
+            console.error('Error trying to send webhook: ', error);
         }
     }
 
@@ -83,6 +88,7 @@ for(const bot of bots){
         try{
             const webhook = client.webhooks.get(channel.id);
 
+            // noinspection JSIgnoredPromiseFromCall
             fetch('https://discordapp.com/api/webhooks/' + webhook.id + '/' + webhook.token + '/messages/' + messageId , {
                 method: 'PATCH',
                 body: JSON.stringify(params),
@@ -91,7 +97,7 @@ for(const bot of bots){
                 }});
 
         }catch(error){
-            console.error('Error trying to send wehbook: ', error);
+            console.error('Error trying to send webhook: ', error);
         }
     }
 

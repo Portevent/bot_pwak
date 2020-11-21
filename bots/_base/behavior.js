@@ -13,33 +13,42 @@ module.exports = {
     },
 
     onNullCommand(message){
+        
         message.reply('Si tu as besoin d\'aide, n\'hésite pas à utiliser `' + message.client.prefix + 'help` :wink:');
     },
 
     onInvalidCommand(message, args, commandName){
+        
         message.reply('La commande `' + commandName + '` n\'existe pas...\n' +
             'Si tu as besoin d\'aide, n\'hésite pas à utiliser `' + message.client.prefix + 'help` :wink:')
     },
 
     onCommandError(message, args, error, command){
+        
         message.channel.send('Erreur lors de l\'éxécution de ' + command.name + '\n' + error);
+        
         console.log("##### ERREUR #### \n" +
             "## Message : " + message +
             "\n ## Erreur : " + error);
     },
 
     onCommandInvalidGuildOnly(message, args, command){
+        
         message.reply('Cette commande ne marche pas en message privé :slight_frown:');
     },
     onCommandInvalidDmOnly(message, args, command){
+        
         message.reply('Cette commande ne marche pas qu\'en message privé. Tu peux slide dans mes dm :relieved:');
     },
 
     onCommandInvalidArgsCount(message, args, command){
+        
         message.reply('`' + command.name + '` nécessite au moins ' + command.args + ' arguments ');
     },
 
+    
     onCommandInvalidCooldown(message, args, command, timeLeft){
+        
         message.reply('Merci d\'attendre `' + timeLeft + '` secondes avant de réutiliser `' + command.name + '`');
     },
 
@@ -59,7 +68,7 @@ module.exports = {
     onMessage(message) {
         const client = message.client
         if(message.author.id === client.user.id) client.onOwnMessage(message);
-
+        
         // Doesn't require to specify the prefix for dm
         // If we recieve a dm without a prefix, we will add one to properly detect the command
         if(client.prefixOptionalInDm && message.channel.type === 'dm' && !(message.content.startsWith('<@!' + client.user.id + '>') || message.content.startsWith('<@' + client.user.id + '>') || message.content.startsWith(client.prefix))){
@@ -105,6 +114,7 @@ module.exports = {
 
                     const now = Date.now();
                     const timestamps = client.cooldowns.get(command.name);
+                    
                     const cooldownAmount = (command.cooldown || 3) * 1000;
 
                     if (timestamps.has(message.author.id)) {

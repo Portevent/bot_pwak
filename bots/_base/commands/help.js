@@ -1,3 +1,4 @@
+// noinspection SpellCheckingInspection
 module.exports = {
     name: 'help',
     description: 'Liste des commandes',
@@ -17,7 +18,7 @@ module.exports = {
                     data.push('**' + command.name + '** : ' + command.description);
                 }
             })
-            data.push(`\nPour avoir plus de détails sur une commande : \`${prefix}help [commande]\` `);
+            data.push(`\nPour avoir plus de détails sur une commande : \`${message.client.prefix}help [commande]\` `);
 
             return message.author.send(data, { split: true })
                 .then(() => {
@@ -41,10 +42,11 @@ module.exports = {
 
         if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
         if (command.description) data.push(`**Description:** ${command.description}`);
-        if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+        if (command.usage) data.push(`**Usage:** ${message.client.prefix}${command.name} ${command.usage}`);
 
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
+        // noinspection JSIgnoredPromiseFromCall
         message.channel.send(data, { split: true });
 
     },

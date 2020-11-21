@@ -1,3 +1,4 @@
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     setup(client) {
         client.stop = false;
@@ -10,6 +11,7 @@ module.exports = {
         message.client.execute("reply", message, args);
     },
     onWebhook(message){
+        // noinspection JSIgnoredPromiseFromCall
         message.react('🎁');
     },
 

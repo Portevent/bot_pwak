@@ -1,3 +1,4 @@
+// noinspection SpellCheckingInspection,JSUnusedLocalSymbols
 module.exports = {
     name: 'off',
     aliases: ['stop'],
@@ -5,7 +6,9 @@ module.exports = {
     guildOnly: true,
     execute(message, args) {
         message.client.stop = true;
+        // noinspection JSIgnoredPromiseFromCall
         message.client.user.setStatus('invisible');
+        // noinspection JSIgnoredPromiseFromCall
         message.react('👍');
     },
 };

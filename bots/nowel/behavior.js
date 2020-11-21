@@ -13,14 +13,14 @@ module.exports = {
 
     onReaction(reaction, user){
         if(reaction.message.webhookID){
-            if(reaction.emoji.name == '🎁'){
+            if(reaction.emoji.name === '🎁'){
                 let min = 998;
                 let max = 999;
-                if(reaction.message.author.username == 'Un Cadeau Apparait !') {
+                if(reaction.message.author.username === 'Un Cadeau Apparait !') {
                     min = 2;
                     max = 4;
                 }
-                if(reaction.message.author.username == 'Un Gros Cadeau Apparait !'){
+                if(reaction.message.author.username === 'Un Gros Cadeau Apparait !'){
                     min = 4;
                     max = 8;
                 }
@@ -31,6 +31,7 @@ module.exports = {
                         if(reaction.message.client.onGoingLoot.has(reaction.message.id)){
                             return;
                         }
+                        // noinspection JSIgnoredPromiseFromCall
                         reaction.message.react('🥁');
                         let timer = setTimeout(() => {
                             reaction.message.client.execute('loot', reaction);
@@ -55,15 +56,18 @@ module.exports = {
     },
 
     onWebhook(message){
-        if(message.author.username == 'Un Cadeau Apparait !') {
+        if(message.author.username === 'Un Cadeau Apparait !') {
+            // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }
-        if(message.author.username == 'Un Gros Cadeau Apparait !'){
+        if(message.author.username === 'Un Gros Cadeau Apparait !'){
+            // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }
-        if(message.author.username == 'Il neige !'){
+        if(message.author.username === 'Il neige !'){
+            // noinspection JSIgnoredPromiseFromCall
             message.react('⛄');
-            let timer = setTimeout(() => {
+            setTimeout(() => {
                 message.client.editWebhook(message.channel, webhook_template.small_snowmen, message.id);
             }, 60*1000);
         }

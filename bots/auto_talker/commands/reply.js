@@ -1,3 +1,4 @@
+// noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'reply',
     aliases: ['talk', 'start'],
@@ -134,7 +135,7 @@ module.exports = {
         }
 
 
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             if (message.client.stop) return;
             message.reply(randomText());
         }, randomHumanReplyTime());
