@@ -1,4 +1,5 @@
 // noinspection JSUnusedLocalSymbols
+const Drop = require("../../inventory/drop.js");
 module.exports = {
     setup(client) {
         client.stop = false;
@@ -11,8 +12,10 @@ module.exports = {
         message.client.execute("reply", message, args);
     },
     onWebhook(message){
-        // noinspection JSIgnoredPromiseFromCall
-        message.react('🎁');
+        if(Drop.getByName(message.author.username) !== {}){
+            // noinspection JSIgnoredPromiseFromCall
+            message.react('🎁');
+        }
     },
 
     prefix: "all",

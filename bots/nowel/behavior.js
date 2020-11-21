@@ -1,11 +1,12 @@
-const Inventory = require("../../inventory");
+const Inventory = require("../../inventory/inventory.js");
+const Drop = require("../../inventory/drop.js");
 const webhook_template = require("../../webhook_template.json");
 
 module.exports = {
     setup(client) {
         client.inventory = new Inventory();
-        client.drop_params = require('./../../drop_param.json');
-        client.items = require('./../../items.json');
+        client.drop_params = require('../../inventory/drop.json');
+        client.items = require('../../inventory/items.json');
         client.onGoingLoot = new Map();
 
         client.messageSinceLastDrop = 0;
@@ -14,20 +15,10 @@ module.exports = {
     onReaction(reaction, user){
         if(reaction.message.webhookID){
             if(reaction.emoji.name === '🎁'){
-                let min = 998;
-                let max = 999;
-                if(reaction.message.author.username === 'Un Cadeau Apparait !') {
-                    min = 2;
-                    max = 4;
-                }
-                if(reaction.message.author.username === 'Un Gros Cadeau Apparait !'){
-                    min = 4;
-                    max = 8;
-                }
+                const drop = Drop.getByName(reaction.message.author.username);
 
                 reaction.users.fetch().then(users => {
-                    console.log(users.size);
-                    if(users.size >= min){
+                    if(users.size >= drop.min){
                         if(reaction.message.client.onGoingLoot.has(reaction.message.id)){
                             return;
                         }
@@ -39,8 +30,7 @@ module.exports = {
                         reaction.message.client.onGoingLoot.set(reaction.message.id, timer);
                     }
 
-                    if(users.size >= max){
-                        console.log("MAX !");
+                    if(users.size >= drop.max){
                         if(reaction.message.client.onGoingLoot.has(reaction.message.id)) {
                             clearTimeout(reaction.message.client.onGoingLoot.get(reaction.message.id));
                         }

@@ -1,6 +1,4 @@
 class Inventory {
-
-
     constructor() {
         this.inventory = new Map();
     }
@@ -56,8 +54,6 @@ class Inventory {
 
         this.setItem(userId, itemId, quantity);
     }
-
-
 }
 
 module.exports = Inventory

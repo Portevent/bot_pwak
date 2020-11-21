@@ -1,0 +1,44 @@
+{
+  "rare":{
+    "prob": 0.01,
+    "color": 16637698,
+    "name": "⭐ Rare !",
+    "items": {
+      "glutin_chapeau": -1,
+      "glutin_epee": -1,
+      "boule_multi": -1
+    }
+  },
+  "uncommon":{
+    "prob": 0.19,
+    "color": 8645763,
+    "name": "Peu Commun ",
+    "items": {
+      "flocon": 3,
+      "flocon_magique": 1,
+      "kamas_bronze": 8,
+      "kamas_argent": 3,
+      "kamas_or": 1,
+      "boule_violette": 15,
+      "boule_bleue": 15,
+      "boule_jaune": 15,
+      "boule_rouge": 15,
+      "boule_verte": 15
+    }
+  },
+  "common":{
+    "prob": 0.8,
+    "color": 16777214,
+    "name": "",
+    "items": {
+      "flocon": 1,
+      "kamas_bronze": 4,
+      "kamas_argent": 1,
+      "boule_violette": 5,
+      "boule_bleue": 5,
+      "boule_jaune": 5,
+      "boule_rouge": 5,
+      "boule_verte": 5
+    }
+  }
+}

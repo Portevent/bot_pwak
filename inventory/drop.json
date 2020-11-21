@@ -1,0 +1,22 @@
+{
+  "drops": [
+    {
+      "id": "big_gift",
+      "title": "Un Gros Cadeau apparait !",
+      "description": " Il faut être au moins 6 pour l'ouvrir !",
+      "prob": 0.1,
+      "min": 6,
+      "max": 100,
+      "bonus": 1
+    },
+    {
+      "id": "gift",
+      "title": "Un Cadeau apparait !",
+      "description": "Aide Pikpik à ouvrir le cadeau ! À **3** on pourra l'ouvrir.",
+      "prob": 0.9,
+      "min": 2,
+      "max": 4,
+      "bonus": 1
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 const webhooks = require('../../../webhook_template.json');
-const items = require('../../../items.json');
+const items = require('../../../inventory/items.json');
 
 module.exports = {
     name: 'inventory',

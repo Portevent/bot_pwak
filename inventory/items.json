@@ -1,0 +1,82 @@
+{
+  "items": [
+    {
+      "id" : "flocon",
+      "name" : "Flocon de Neige",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png",
+      "emoji": "<:FlocondeNeige:779651342120517632>"
+    },
+    {
+      "id" : "flocon_magique",
+      "name" : "Flocon de Neige Magique",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
+      "emoji": "<:FloconMagique:779651341815250945>"
+    },
+    {
+      "id" : "kamas_bronze",
+      "name" : "Kamas de Bronze",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774284078809098/148002.png",
+      "emoji": "<:KamasdeBronze:779651342049738782>"
+    },
+    {
+      "id" : "kamas_argent",
+      "name" : "Kamas Argenté",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774286486732810/148003.png",
+      "emoji": "<:KamasdArgen:779651342158659615>"
+    },
+    {
+      "id" : "kamas_or",
+      "name" : "Kamas en Or",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774288714170428/148004.png",
+      "emoji": "<:KamasdOr:779651341877248021>"
+    },
+    {
+      "id" : "boule_violette",
+      "name" : "Boule de Nowel",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png",
+      "emoji" : "<:BouledeNowelViolette:779651342229962762>"
+    },
+    {
+      "id" : "boule_bleue",
+      "name" : "Boule de Nowel",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946194724093953/boule_bleue.png",
+      "emoji" : "<:BouledeNowelBleue:779651341923909643>"
+    },
+    {
+      "id" : "boule_jaune",
+      "name" : "Boule de Nowel",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946196862402580/boule_jaune.png",
+      "emoji" : "<:boule_de_nowel_jaune:779651342133362688>"
+    },
+    {
+      "id" : "boule_rouge",
+      "name" : "Boule de Nowel",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946200712773642/boule_rouge.png",
+      "emoji" : "<:BouledeNowelRouge:779651342188150804>"
+    },
+    {
+      "id" : "boule_verte",
+      "name" : "Boule de Nowel",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946204265349140/boule_verte.png",
+      "emoji" : "<:BouledeNowelVerte:779651341995868181>"
+    },
+    {
+      "id" : "glutin_chapeau",
+      "name" : "Chapeau de glutin",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770773836303695912/16346.png",
+      "emoji": ":"
+    },
+    {
+      "id" : "glutin_epee",
+      "name" : "Épée de glutin",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770773825649508383/6069.png",
+      "emoji": ":"
+    },
+    {
+      "id" : "boule_multi",
+      "name" : "Boule de Nowel scintillante",
+      "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946198456500224/boule_multi.png",
+      "emoji": "<:SuperBouledeNowel:779651342103740416>"
+    }
+  ]
+}
