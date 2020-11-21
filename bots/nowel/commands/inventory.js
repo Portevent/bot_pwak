@@ -10,7 +10,11 @@ module.exports = {
         const userId = message.author.id;
         const userName = message.author.username;
         const userAvatar = message.author.avatarURL();
-        const inventory = message.client.inventory.getItemsOfUser(userId);
+        const inventory = message.client.inventory.getInventoryOfUser(userId);
+
+        if(!inventory){
+            return message.reply("Tu n'as pas encore d'inventaire");
+        }
 
         let webhook = {
             "username": "Inventaire",
@@ -21,16 +25,28 @@ module.exports = {
                     "author": {
                         "name": userName,
                         "icon_url": userAvatar
-                    }
+                    },
+                    "fields": []
                 }
             ]
         };
 
-        for(let item_id of inventory.keys()){
-            const item = Item.get(item_id);
-            webhook.embeds[0].description += item.emoji + item.name + " : " + inventory.get(item_id) + "\n";
+        for(let category of Object.keys(inventory)){
+            let text = "";
+            for(let item of inventory[category].items){
+                if(item.quantity > 0)
+                    text += item.emoji + " : " + item.quantity + "\n";
+            }
+
+            if(text != ""){
+                webhook.embeds[0].fields.push({
+                    "name": inventory[category].name,
+                    "inline": true,
+                    "value": text
+                })
+            }
         }
 
-        message.client.sendWebhook(message.channel, webhook).then(console.log('Inventaire sent !'));
+        message.client.sendWebhook(message.channel, webhook);
     },
 };

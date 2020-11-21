@@ -16,9 +16,7 @@ module.exports = {
         let loot = await messageReaction.message.client.execute('loot', messageReaction.message, [bonus, users]);
 
         messageReaction.message.client.editWebhook(messageReaction.message.channel, {
-            "content": loot.meta_loot.name + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name + "**! Bravo à " + users.map(user => user.username),
-            "username": "", //TODO : A retirer si possible
-            "avatar_url": "",
+            "content": loot.meta_loot.name + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name + "**! Bravo à " + users.map(user => user.username)
         }, messageReaction.message.id);
         await messageReaction.message.reactions.removeAll();
 
