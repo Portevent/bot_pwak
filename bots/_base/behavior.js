@@ -67,7 +67,7 @@ module.exports = {
 
     onMessage(message) {
         const client = message.client
-        if(message.author.id === client.user.id) client.onOwnMessage(message);
+        if(message.author.id === client.user.id) return client.onOwnMessage(message);
         
         // Doesn't require to specify the prefix for dm
         // If we recieve a dm without a prefix, we will add one to properly detect the command

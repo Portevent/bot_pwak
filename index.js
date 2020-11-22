@@ -137,12 +137,3 @@ for(const bot of bots){
     }
 
 }
-
-fetch('https://discordapp.com/api/webhooks/773558618809171988/rVkhJv16lono8tM5dc9UxEydkCAAl1xax0YYa3mQklIy8aUV18_fgmJN01xCAF66aKjp/messages/774085398607560705', {
-    method: 'PATCH',
-    body: JSON.stringify({
-        "content": "Le serveur Wakfu a fermé ses portes en Novembre 2018, plus d'infos: <https://www.wakfu.com/fr/forum/8-discussions-generales/384873-discord-wakfu-votre-espace-discussion-oral-ecrit>\nAutres serveurs Discord\n<https://www.discordservers.com/>\n<https://discord.me/servers>"
-    }),
-    headers: {
-        'Content-Type': 'application/json'
-    }});
