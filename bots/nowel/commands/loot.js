@@ -19,15 +19,7 @@ module.exports = {
             users = args[1];
         }
 
-        let loot = Loot.getLoot(bonus);
-
-        if(loot.quantity !== -1){
-            loot.quantity *= 1 + Math.random()/2;
-            loot.quantity *= bonus;
-            loot.quantity = Math.ceil(loot.quantity);
-        }else{
-            loot.quantity = 1;
-        }
+        let loot = Loot.getLoot(bonus, bonus);
 
         for(let user of users.values()){
             message.client.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);

@@ -61,7 +61,7 @@ module.exports = {
         else if(reaction.message.channel.type === 'dm' && reaction.emoji.name === '🎁') {
             reaction.users.fetch().then(users => {
                 if(users.size > 1) {
-                    reaction.remove();
+                    reaction.users.remove(reaction.message.author.id);
                     reaction.message.client.execute('loot_nowalmanax', reaction, user);
                 }
             });

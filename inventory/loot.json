@@ -3,7 +3,7 @@
     "prob": 0.01,
     "color": 16637698,
     "name": "⭐ Rare !",
-    "items": {
+    "loots": {
       "glutin_chapeau": -1,
       "glutin_epee": -1,
       "boule_multi": -1
@@ -13,7 +13,7 @@
     "prob": 0.19,
     "color": 8645763,
     "name": "Peu Commun ",
-    "items": {
+    "loots": {
       "flocon": 3,
       "flocon_magique": 1,
       "kamas_bronze": 8,
@@ -30,7 +30,7 @@
     "prob": 0.8,
     "color": 16777214,
     "name": "",
-    "items": {
+    "loots": {
       "flocon": 1,
       "kamas_bronze": 4,
       "kamas_argent": 1,

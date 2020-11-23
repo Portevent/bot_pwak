@@ -3,7 +3,7 @@ const Item = require('./item.js');
 class Loot {
     static loots = require('./loot.json');
 
-    static getMetaLoot(bonus = 1){
+    static getRandomMetaLoot(bonus = 1){
         let random = Math.random()/bonus;
 
         for(let loot of Object.values(this.loots)){
@@ -17,12 +17,34 @@ class Loot {
         return {}
     }
 
-    static getLoot(quality_bonus){
-        const meta_loot = this.getMetaLoot(quality_bonus);
-        const items = Object.keys(meta_loot.items);
-        const item = items[Math.floor(Math.random() * items.length)]
+    static getMetaLoot(metaloot_id){
+        return this.loots[metaloot_id];
+    }
 
-        return {"meta_loot": meta_loot, "item": Item.get(item), "quantity": meta_loot.items[item]};
+    static lootFrom(meta_loot, quantity_bonus = 1){
+        const loots = Object.keys(meta_loot.loots);
+        const loot = loots[Math.floor(Math.random() * loots.length)]
+        let quantity = meta_loot.loots[loot]
+
+        if(quantity !== -1){
+            quantity *= 1 + Math.random()/2;
+            quantity *= quantity_bonus;
+            quantity = Math.ceil(quantity);
+        }
+
+        else{
+            quantity = 1;
+        }
+
+        return {"meta_loot": meta_loot, "item": Item.get(loot), "quantity": quantity};
+    }
+
+    static getLoot(quality_bonus = 1, quantity_bonus = 1){
+        return this.lootFrom(this.getRandomMetaLoot(quality_bonus), quantity_bonus);
+    }
+
+    static getLootFromMetaLoot(metaloot_id, quantity_bonus = 1){
+        return this.lootFrom(this.getMetaLoot(metaloot_id), quantity_bonus);
     }
 }
 module.exports = Loot

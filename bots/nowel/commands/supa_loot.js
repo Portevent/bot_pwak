@@ -3,7 +3,6 @@ module.exports = {
     name: 'supa_loot',
     aliases: ['sl', 'sloot'],
     description: 'Loot multiple times !',
-    guildOnly: true,
     secret: true,
     adminOnly: true,
     async execute(message, args) {

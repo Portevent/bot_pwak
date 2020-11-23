@@ -8,6 +8,8 @@ class Nowalmanax {
         this.dayQuest = {};
         this.loadCalendar();
         this.loadDay(this.day);
+        this.questItem = 'nowalmanax_star';
+        this.questItemGoal = 10;
     }
 
     reset(day = 1){

@@ -46,6 +46,16 @@ module.exports = {
             }
         }
 
-        message.client.sendWebhook(message.channel, webhook);
+        if(message.channel.type === "dm"){
+            webhook.embeds[0].title = "Inventaire";
+            webhook.embeds[0].author = {};
+            message.channel.send('', {
+                embed: webhook.embeds[0]
+            });
+        }
+
+        else{
+            message.client.sendWebhook(message.channel, webhook);
+        }
     },
 };

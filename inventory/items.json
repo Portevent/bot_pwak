@@ -13,6 +13,12 @@
         "name" : "Flocon de Neige Magique",
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
         "emoji": "<:FloconMagique:779651341815250945>"
+      },
+      {
+        "id" : "nowalmanax_star",
+        "name" : "Magie de Nowel Pure",
+        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
+        "emoji": "<:FloconMagique:779651341815250945>"
       }
     ]
   },
