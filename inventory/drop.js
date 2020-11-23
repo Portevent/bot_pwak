@@ -26,7 +26,7 @@ class Drop {
             }
         }
 
-        return {}
+        return undefined
     }
 }
 module.exports = Drop

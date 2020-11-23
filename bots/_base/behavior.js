@@ -4,6 +4,10 @@ module.exports = {
 
     prefixOptionalInDm: true,
 
+    onceReady(client) {
+        console.log('Bot ' + client.type + ' ready (' + client.token.substr(1,7) + ')');
+    },
+
     onOwnMessage(message){
 
     },

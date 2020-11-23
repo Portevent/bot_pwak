@@ -1,4 +1,5 @@
 const Inventory = require("../../inventory/inventory.js");
+const Nowalmanax = require("../../nowalmanax/nowalmanax");
 const Drop = require("../../inventory/drop.js");
 const webhook_template = require("../../webhook_template.json");
 const cron = require('node-cron');
@@ -14,9 +15,15 @@ module.exports = {
         client.messageSinceLastDrop = 0;
 
 
-        cron.schedule('*/5 * * * * *', function() {
-            //Nowalmanax every 5 secondes
-            client.nowalmanax(client);
+    },
+
+    async onceReady(client){
+        const nowalmanaxChannel = await client.channels.fetch('774531283426213898');
+        client.nowalmanax = new Nowalmanax(nowalmanaxChannel);
+
+        cron.schedule('* * * * *', function() {
+            //Nowalmanax every minutes
+            client.nowalmanax.advance();
         });
     },
 
@@ -25,36 +32,38 @@ module.exports = {
     },
 
     onReaction(reaction, user){
-        if(reaction.message.webhookID){
-            if(reaction.emoji.name === '🎁'){
-                const drop = Drop.getByName(reaction.message.author.username);
+        if(reaction.message.webhookID && reaction.emoji.name === '🎁'){
+            const drop = Drop.getByName(reaction.message.author.username);
 
-                reaction.users.fetch().then(users => {
-                    if(users.size >= drop.min){
-                        if(reaction.message.client.onGoingLoot.has(reaction.message.id)){
-                            return;
-                        }
-                        // noinspection JSIgnoredPromiseFromCall
-                        reaction.message.react('🥁');
-                        let timer = setTimeout(() => {
-                            reaction.message.client.execute('loot_reaction', reaction);
-                        }, 5*1000);
-                        reaction.message.client.onGoingLoot.set(reaction.message.id, timer);
+            reaction.users.fetch().then(users => {
+                if(users.size >= drop.min){
+                    if(reaction.message.client.onGoingLoot.has(reaction.message.id)){
+                        return;
                     }
-
-                    if(users.size >= drop.max){
-                        if(reaction.message.client.onGoingLoot.has(reaction.message.id)) {
-                            clearTimeout(reaction.message.client.onGoingLoot.get(reaction.message.id));
-                        }
+                    // noinspection JSIgnoredPromiseFromCall
+                    reaction.message.react('🥁');
+                    let timer = setTimeout(() => {
                         reaction.message.client.execute('loot_reaction', reaction);
+                    }, 5*1000);
+                    reaction.message.client.onGoingLoot.set(reaction.message.id, timer);
+                }
+
+                if(users.size >= drop.max){
+                    if(reaction.message.client.onGoingLoot.has(reaction.message.id)) {
+                        clearTimeout(reaction.message.client.onGoingLoot.get(reaction.message.id));
                     }
-                })
-            }
+                    reaction.message.client.execute('loot_reaction', reaction);
+                }
+            })
+        }
+        else{
+            reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
         }
     },
 
     onUserMessage(message){
         message.client.execute('attemptDrop', message, []);
+        message.client.nowalmanax.messageValidateQuest(message);
     },
 
     onWebhook(message){

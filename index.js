@@ -8,6 +8,8 @@ for(const bot of bots){
 
     const client = new Discord.Client();
     client.prefix = bot.prefix
+    client.type = bot.type
+    client.token = bot.token
     client.commands = new Discord.Collection();
     client.cooldowns = new Discord.Collection();
     client.webhooks = new Discord.Collection();
@@ -41,7 +43,7 @@ for(const bot of bots){
     client.login(bot.token).then(r => {});
 
     client.once('ready', () => {
-        console.log('Bot ' + bot.type + ' ready !');
+        client.onceReady(client);
     });
 
     client.execute = function execute(commandName, message, args = []){

@@ -4,6 +4,8 @@ module.exports = {
 
     prefixOptionalInDm: true, // Allow user to skip the prefix when private messaging a bot
 
+    onceReady(client) {
+    },
     onMessage(message) {
         // Called when receiving a message
         // Basic behavior use this to redirect the message to a sub function :

@@ -13,7 +13,8 @@ module.exports = {
         message.client.execute("reply", message, args);
     },
     onWebhook(message){
-        if(Drop.getByName(message.author.username) !== {}){
+        if(Drop.getByName(message.author.username) !== undefined){
+            console.log(Drop.getByName(message.author.username));
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }
