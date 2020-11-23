@@ -24,7 +24,7 @@ module.exports = {
         cron.schedule('* * * * *', async function() {
             //Nowalmanax every minutes
             await client.channels.fetch('780095027828752394')
-                .then(channel => channel.bulkDelete(10));
+                .then(channel => channel.bulkDelete(100));
             client.nowalmanax.advance();
         });
     },
