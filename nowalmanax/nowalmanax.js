@@ -149,6 +149,9 @@ class Nowalmanax {
                         break;
                     case "find_daily_mention":
                         completed = this.usersDroppedMention.has(user.id) && reaction.emoji.id === this.dayQuest[condition]
+                        if(completed){
+                            reaction.remove();
+                        }
                         break;
                     default:
                         completed = false;

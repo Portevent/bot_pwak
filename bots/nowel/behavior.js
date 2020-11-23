@@ -21,8 +21,10 @@ module.exports = {
         const nowalmanaxChannel = await client.channels.fetch('774531283426213898');
         client.nowalmanax = new Nowalmanax(nowalmanaxChannel);
 
-        cron.schedule('* * * * *', function() {
+        cron.schedule('* * * * *', async function() {
             //Nowalmanax every minutes
+            await client.channels.fetch('780095027828752394')
+                .then(channel => channel.bulkDelete(10));
             client.nowalmanax.advance();
         });
     },
@@ -56,7 +58,17 @@ module.exports = {
                 }
             })
         }
-        else{
+        else if(reaction.message.channel.type === 'dm' && reaction.emoji.name === '🎁') {
+            reaction.users.fetch().then(users => {
+                if(users.size > 1) {
+                    reaction.remove();
+                    reaction.message.client.execute('loot_nowalmanax', reaction, user);
+                }
+            });
+
+        }
+
+        else {
             reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
         }
     },
