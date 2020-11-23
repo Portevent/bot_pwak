@@ -99,13 +99,48 @@
         "id": "glutin_chapeau",
         "name": "Chapeau de glutin",
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773836303695912/16346.png",
-        "emoji": ":"
+        "emoji": "\uD83C\uDFA9️"
       },
       {
         "id": "glutin_epee",
         "name": "Épée de glutin",
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773825649508383/6069.png",
-        "emoji": ":"
+        "emoji": "\uD83D\uDDE1️"
+      }
+    ]
+  },
+  "craft": {
+    "name": "Objets de quête",
+    "items": [
+      {
+        "id": "aspirateur",
+        "name": "Aspirateur de magie",
+        "img": "https://media.discordapp.net/attachments/770768439773888532/780451012326064198/181003.png",
+        "emoji": "️<:aspirateur:780452424593702932>"
+      },
+      {
+        "id": "scie",
+        "name": "Scie pour buche de Nowel",
+        "img": "https://media.discordapp.net/attachments/770768439773888532/780451055690842132/15781.png",
+        "emoji": "<:scie:780452423847772162>️"
+      },
+      {
+        "id": "bidule",
+        "name": "Machin bidule",
+        "img": "https://media.discordapp.net/attachments/770768439773888532/780451076703780894/15942.png",
+        "emoji": "<:bidule:780452424472461344>️"
+      },
+      {
+        "id": "coffre",
+        "name": "Carton pour cadeau",
+        "img": "https://media.discordapp.net/attachments/770768439773888532/780451101853745192/15013.png",
+        "emoji": "️<:coffre:780452424203632670>"
+      },
+      {
+        "id": "chaudron",
+        "name": "Chaudron de cuisine",
+        "img": "https://media.discordapp.net/attachments/770768439773888532/780451187618480158/59664.png",
+        "emoji": "<:chaudron:780452424590557247>️"
       }
     ]
   }

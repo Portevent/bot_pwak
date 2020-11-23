@@ -1,0 +1,41 @@
+{
+  "bidule": {
+    "result": "bidule",
+    "recipe": [
+      ["flocon_magique", 2],
+      ["boule_rouge", 3],
+      ["boule_orange", 1]
+    ]
+  },
+  "aspirateur": {
+    "require": "bidule",
+    "result": "aspirateur",
+    "recipe": [
+      ["bidule", 1],
+      ["boule_verte", 4],
+      ["boule_bleue", 1],
+      ["boule_rouge", 2]
+    ]
+  },
+  "coffre": {
+    "require": "aspirateur",
+    "result": "coffre",
+    "recipe": [
+      ["aspirateur", 1],
+      ["boule_jaune", 8],
+      ["boule_bleue", 2],
+      ["boule_violette", 6]
+    ]
+  },
+  "chaudron": {
+    "require": "coffre",
+    "result": "chaudron",
+    "recipe": [
+      ["coffre", 1],
+      ["boule_orange", 20],
+      ["boule_bleue", 6],
+      ["boule_rouge", 12],
+      ["boule_verte", 8]
+    ]
+  }
+}
