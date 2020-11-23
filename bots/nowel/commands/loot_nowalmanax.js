@@ -37,7 +37,7 @@ module.exports = {
                             + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name
 
         // noinspection ES6MissingAwait,JSUnresolvedVariable
-        messageReaction.message.edit(text, {
+        messageReaction.message.edit("", {
             embed: embed,
         });
 

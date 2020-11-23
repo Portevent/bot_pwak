@@ -137,7 +137,7 @@ module.exports = {
 
                 client.onCommand(message, args, commandName);
 
-                if(command.deleteCommand){
+                if(message.channel.type !== 'dm' && (command.deleteCommand || command.deleteAfter)){
                     message.delete(command.deleteAfter || 0);
                 }
             } catch (error) {

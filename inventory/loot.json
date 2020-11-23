@@ -23,7 +23,8 @@
       "boule_bleue": 15,
       "boule_jaune": 15,
       "boule_rouge": 15,
-      "boule_verte": 15
+      "boule_verte": 15,
+      "boule_orange": 15
     }
   },
   "common":{
@@ -38,7 +39,8 @@
       "boule_bleue": 5,
       "boule_jaune": 5,
       "boule_rouge": 5,
-      "boule_verte": 5
+      "boule_verte": 5,
+      "boule_orange": 5
     }
   }
 }

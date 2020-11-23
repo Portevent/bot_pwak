@@ -5,6 +5,9 @@ class Item {
     static get(id) {
         return this.items.get(id);
     }
+    static exists(id) {
+        return this.items.has(id);
+    }
     static getCategory(id) {
         return this.categories[id];
     }
@@ -21,5 +24,12 @@ class Item {
         return items_map;
     }
 
+    static getFromName(name){
+        for (let item of this.items.values()) {
+            if(item.name === name){
+                return item;
+            }
+        }
+    }
 }
 module.exports = Item

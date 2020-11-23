@@ -65,17 +65,29 @@ module.exports = {
                     reaction.message.client.execute('loot_nowalmanax', reaction, user);
                 }
             });
+        }
 
+        else if(reaction.message.channel.type === 'dm' && reaction.emoji.name === '🛠️') {
+            reaction.users.fetch().then(users => {
+                if(users.size > 1) {
+                    reaction.users.remove(reaction.message.author.id);
+                    reaction.message.client.execute('craft_reaction', reaction, user);
+                }
+            });
         }
 
         else {
-            reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
+            if(reaction.message.client.inventory.userExists(user.id)){
+                reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
+            }
         }
     },
 
     onUserMessage(message){
         message.client.execute('attemptDrop', message, []);
-        message.client.nowalmanax.messageValidateQuest(message);
+        if(message.client.inventory.userExists(message.author.id)) {
+            message.client.nowalmanax.messageValidateQuest(message);
+        }
     },
 
     onWebhook(message){

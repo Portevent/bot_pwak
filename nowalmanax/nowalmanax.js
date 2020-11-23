@@ -30,7 +30,7 @@ class Nowalmanax {
 
     nextDay() {
         this.day += 1;
-        if(this.day > 10) this.day = 1;
+        if(this.day > 15) this.day = 1;
     }
 
     setDay(new_day) {

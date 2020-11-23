@@ -1,41 +1,50 @@
 {
-  "bidule": {
-    "result": "bidule",
+  "process": {
+    "require": "item_start_quest1",
+    "result": "process",
     "recipe": [
-      ["flocon_magique", 2],
-      ["boule_rouge", 3],
-      ["boule_orange", 1]
-    ]
+      ["flocon", 2],
+      ["boule_rouge", 1],
+      ["item_start_quest1", 1]
+    ],
+    "craftBonus": "kamas_argent",
+    "craftBonusQuantity": 1
   },
-  "aspirateur": {
-    "require": "bidule",
-    "result": "aspirateur",
+  "machine": {
+    "require": "process",
+    "result": "machine",
     "recipe": [
-      ["bidule", 1],
+      ["process", 1],
       ["boule_verte", 4],
       ["boule_bleue", 1],
-      ["boule_rouge", 2]
-    ]
+      ["boule_rouge", 2],
+      ["boule_jaune", 1]
+    ],
+    "craftBonus": "kamas_argent",
+    "craftBonusQuantity": 3
   },
-  "coffre": {
-    "require": "aspirateur",
-    "result": "coffre",
+  "soufle": {
+    "require": "machine",
+    "result": "soufle",
     "recipe": [
-      ["aspirateur", 1],
+      ["machine", 1],
       ["boule_jaune", 8],
-      ["boule_bleue", 2],
-      ["boule_violette", 6]
-    ]
+      ["boule_orange", 10],
+      ["boule_bleue", 9],
+      ["boule_violette", 6],
+      ["boule_verte", 5]
+    ],
+    "craftBonus": "kamas_argent",
+    "craftBonusQuantity": 5
   },
-  "chaudron": {
-    "require": "coffre",
-    "result": "chaudron",
+  "quete1": {
+    "result": "quete1",
     "recipe": [
-      ["coffre", 1],
-      ["boule_orange", 20],
-      ["boule_bleue", 6],
-      ["boule_rouge", 12],
-      ["boule_verte", 8]
-    ]
+      ["nowalmanax_star", 10],
+      ["soufle", 1],
+      ["flocon_magique", 1]
+    ],
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 1
   }
 }

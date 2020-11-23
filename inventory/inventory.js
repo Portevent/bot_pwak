@@ -35,7 +35,7 @@ class Inventory {
     }
 
     userHasItem(userId, itemId) {
-        return this.userExists(userId) && this.hasItem(userId, itemId);
+        return this.userExists(userId) && this.hasItem(userId, itemId) && this.getItem(userId, itemId) > 0;
     }
 
 

@@ -6,8 +6,13 @@ module.exports = {
     execute(message, args) {
         const recipes = Craft.getRecipeFor(message.client.inventory, message.author.id);
         for(recipe of recipes){
+            let embed = Craft.recipeToEmbed(recipe, message.client.inventory, message.author.id);
             message.reply('',{
-                embed: Craft.recipeToEmbed(recipe)
+                embed: embed,
+            }).then(n_message => {
+                if(embed.canCraft){
+                    n_message.react('🛠️');
+                }
             })
         }
     },

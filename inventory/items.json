@@ -5,20 +5,20 @@
       {
         "id" : "flocon",
         "name" : "Flocon de Neige",
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png",
-        "emoji": "<:FlocondeNeige:779651342120517632>"
+        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/780517570611904562/flocon.png",
+        "emoji": "<:Flocon_De_Neige:780517849944555590>"
       },
       {
         "id" : "flocon_magique",
         "name" : "Flocon de Neige Magique",
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
-        "emoji": "<:FloconMagique:779651341815250945>"
+        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png",
+        "emoji": "<:Flocon_Magique:779651342120517632>"
       },
       {
         "id" : "nowalmanax_star",
-        "name" : "Magie de Nowel Pure",
+        "name" : "Magie de Nowel",
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
-        "emoji": "<:FloconMagique:779651341815250945>"
+        "emoji": "<:Magie_De_Nowel:779651341815250945>"
       }
     ]
   },
@@ -89,6 +89,12 @@
         "name" : "Boule de Nowel scintillante",
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946198456500224/boule_multi.png",
         "emoji": "<:SuperBouledeNowel:779651342103740416>"
+      },
+      {
+        "id" : "item_start_quest1",
+        "name" : "Boule de Nowel",
+        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946194724093953/boule_bleue.png",
+        "emoji": "<:BouledeNowelBleue:779651341923909643>"
       }
     ]
   },
@@ -111,6 +117,7 @@
   },
   "craft": {
     "name": "Objets de quête",
+    "displayFullNameInInventory": true,
     "items": [
       {
         "id": "aspirateur",
@@ -141,6 +148,30 @@
         "name": "Chaudron de cuisine",
         "img": "https://media.discordapp.net/attachments/770768439773888532/780451187618480158/59664.png",
         "emoji": "<:chaudron:780452424590557247>️"
+      },
+      {
+        "id": "process",
+        "name": "Noyaux Nowelectronique",
+        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780522730792943666/15920.png",
+        "emoji": "<:Processeur:780531670004006924>"
+      },
+      {
+        "id": "machine",
+        "name": "Machine Magique",
+        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780526598033899580/164096.png",
+        "emoji": "<:Machine:780531670100607028>"
+      },
+      {
+        "id": "soufle",
+        "name": "Insuflateur de magie",
+        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780525836989759538/164116.png",
+        "emoji": "<:Insuflateur:780531670318055457>"
+      },
+      {
+        "id": "quete1",
+        "name": "Etoile de Nowel",
+        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780534292684996639/1.png",
+        "emoji": "<:Etoile_de_Nowel:780534328311545920>"
       }
     ]
   }

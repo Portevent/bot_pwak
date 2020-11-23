@@ -89,27 +89,42 @@
     "msg_contains": "Nowel"
   },
   "3": {
-    "msg_contains_emoji": "😏"
+    "find_daily_mention": "780169188516954222"
   },
   "4": {
-    "msg_mentions_someone": true
+    "msg_contains": "Bouftou"
   },
   "5": {
-    "msg_mentions_user": "214090561055883267"
+    "msg_contains_emoji": "\uD83D\uDE0F"
   },
   "6": {
-    "react_emoji": "😏"
+    "react_emoji": "\uD83D\uDC4C"
   },
   "7": {
-    "react_count": 2
+    "msg_contains": "Cadeau"
   },
   "8": {
-    "find_daily_mention": "780169188516954222"
+    "find_daily_mention": "780545253408768030"
   },
   "9": {
     "msg_starts_with": "Pour nowel je veux "
   },
   "10": {
+    "react_emoji": "\uD83E\uDD29"
+  },
+  "11": {
+    "msg_contains": "Sapin"
+  },
+  "12": {
+    "msg_contains_emoji": "\uD83D\uDE42"
+  },
+  "13": {
+    "find_daily_mention": "780545253504581663"
+  },
+  "14": {
+    "msg_contains": "Neige"
+  },
+  "15": {
     "msg_equals": "Mes pieds sentent les chaussettes de bwork"
   }
 }
