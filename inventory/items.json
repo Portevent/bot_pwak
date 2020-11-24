@@ -12,7 +12,7 @@
           "en": "Snowflake"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/780517570611904562/flocon.png",
-        "emoji": "<:Flocon_De_Neige:780517849944555590>"
+        "emoji": "<:flocon:780851275930533921>"
       },
       {
         "id" : "flocon_magique",
@@ -21,7 +21,7 @@
           "en": "Magic Snowflake"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png",
-        "emoji": "<:Flocon_Magique:779651342120517632>"
+        "emoji": "<:flon_magique:780851276043780096>"
       },
       {
         "id" : "nowalmanax_star",
@@ -30,7 +30,7 @@
           "en": "Chwismas spirit"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
-        "emoji": "<:Magie_De_Nowel:779651341815250945>"
+        "emoji": "<:magie_de_nowel:780851275691589724>"
       }
     ]
   },
@@ -47,7 +47,7 @@
           "en": "Kamas"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774284078809098/148002.png",
-        "emoji": "<:KamasdeBronze:779651342049738782>"
+        "emoji": "<:kamas_bronze:780851275955830814>"
       },
       {
         "id" : "kamas_argent",
@@ -56,7 +56,7 @@
           "en": "Kamas"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774286486732810/148003.png",
-        "emoji": "<:KamasdArgen:779651342158659615>"
+        "emoji": "<:kamas_argent:780851275956617236>"
       },
       {
         "id" : "kamas_or",
@@ -65,7 +65,7 @@
           "en": "Golden Kamas"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774288714170428/148004.png",
-        "emoji": "<:KamasdOr:779651341877248021>"
+        "emoji": "<:kamas_or:780851275948228628>"
       }
     ]
   },
@@ -82,7 +82,7 @@
           "en": "Red Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946200712773642/boule_rouge.png",
-        "emoji" : "<:BouledeNowelRouge:779651342188150804>"
+        "emoji" : "<:boule_de_nowel_rouge:780851276165808158>"
       },
       {
         "id" : "boule_orange",
@@ -91,7 +91,7 @@
           "en": "Orange Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/779767760158195712/boule_orange.png",
-        "emoji" : "<:Boule_De_Nowel_Orange:779762430351114251>"
+        "emoji" : "<:boule_de_nowel_orange:780851276199100436>"
       },
       {
         "id" : "boule_jaune",
@@ -100,7 +100,7 @@
           "en": "Yellow Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946196862402580/boule_jaune.png",
-        "emoji" : "<:boule_de_nowel_jaune:779651342133362688>"
+        "emoji" : "<:boule_de_nowel_jaune:780851275649908837>"
       },
       {
         "id" : "boule_verte",
@@ -109,7 +109,7 @@
           "en": "Green Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946204265349140/boule_verte.png",
-        "emoji" : "<:BouledeNowelVerte:779651341995868181>"
+        "emoji" : "<:boule_de_nowel_verte:780851275981651969>"
       },
       {
         "id" : "boule_bleue",
@@ -118,7 +118,7 @@
           "en": "Blue Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946194724093953/boule_bleue.png",
-        "emoji" : "<:BouledeNowelBleue:779651341923909643>"
+        "emoji" : "<:boule_de_nowel_bleue:780851276157943808>"
       },
       {
         "id" : "boule_violette",
@@ -127,7 +127,7 @@
           "en": "Purple Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png",
-        "emoji" : "<:BouledeNowelViolette:779651342229962762>"
+        "emoji" : "<:boule_de_nowel_violette:780851276161875988>"
       },
       {
         "id" : "boule_multi",
@@ -136,7 +136,7 @@
           "en": "Sparkling Kwismas bauble"
         },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946198456500224/boule_multi.png",
-        "emoji": "<:SuperBouledeNowel:779651342103740416>"
+        "emoji": "<:boule_multi:780851276158205952>"
       }
     ]
   },
@@ -153,7 +153,7 @@
           "en": "Glutin's hat"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773836303695912/16346.png",
-        "emoji": "\uD83C\uDFA9️"
+        "emoji": "<:coiffe:780851275754766338>"
       },
       {
         "id": "glutin_epee",
@@ -162,7 +162,7 @@
           "en": "Glutin's sword"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773825649508383/6069.png",
-        "emoji": "\uD83D\uDDE1️"
+        "emoji": "<:epee:780851276052693002>"
       }
     ]
   },
@@ -174,58 +174,13 @@
     "displayFullNameInInventory": true,
     "items": [
       {
-        "id": "aspirateur",
-        "name": {
-          "fr": "Aspirateur de magie",
-          "en": "Magic Vaccum"
-        },
-        "img": "https://media.discordapp.net/attachments/770768439773888532/780451012326064198/181003.png",
-        "emoji": "️<:aspirateur:780452424593702932>"
-      },
-      {
-        "id": "scie",
-        "name": {
-          "fr": "Scie pour buche de Nowel",
-          "en": "..."
-        },
-        "img": "https://media.discordapp.net/attachments/770768439773888532/780451055690842132/15781.png",
-        "emoji": "<:scie:780452423847772162>️"
-      },
-      {
-        "id": "bidule",
-        "name": {
-          "fr": "Machin bidule",
-          "en": "..."
-        },
-        "img": "https://media.discordapp.net/attachments/770768439773888532/780451076703780894/15942.png",
-        "emoji": "<:bidule:780452424472461344>️"
-      },
-      {
-        "id": "coffre",
-        "name": {
-          "fr": "Carton pour cadeau",
-          "en": "..."
-        },
-        "img": "https://media.discordapp.net/attachments/770768439773888532/780451101853745192/15013.png",
-        "emoji": "️<:coffre:780452424203632670>"
-      },
-      {
-        "id": "chaudron",
-        "name": {
-          "fr": "Chaudron de cuisine",
-          "en": "..."
-        },
-        "img": "https://media.discordapp.net/attachments/770768439773888532/780451187618480158/59664.png",
-        "emoji": "<:chaudron:780452424590557247>️"
-      },
-      {
         "id": "process",
         "name": {
           "fr": "Noyaux Nowelectronique",
           "en": "..."
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780522730792943666/15920.png",
-        "emoji": "<:Processeur:780531670004006924>"
+        "emoji": "<:nowelectronique:780851275968544811>"
       },
       {
         "id": "machine",
@@ -234,7 +189,7 @@
           "en": "..."
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780526598033899580/164096.png",
-        "emoji": "<:Machine:780531670100607028>"
+        "emoji": "<:noyaux:780851276073271396>"
       },
       {
         "id": "soufle",
@@ -243,7 +198,7 @@
           "en": "..."
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780525836989759538/164116.png",
-        "emoji": "<:Insuflateur:780531670318055457>"
+        "emoji": "<:insuflateur:780851275721605151>"
       },
       {
         "id": "quete1",
@@ -252,7 +207,7 @@
           "en": "Kwismas Star"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780534292684996639/1.png",
-        "emoji": "<:Etoile_de_Nowel:780534328311545920>"
+        "emoji": "<:etoile:780851276094767104>"
       }
     ]
   },

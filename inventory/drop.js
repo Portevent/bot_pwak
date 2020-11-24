@@ -21,8 +21,10 @@ class Drop {
 
     static getByName(name){
         for(let drop of this.drops){
-            if(name === drop.title){
-                return drop;
+            for (let drop_title of Object.values(drop.title)){
+                if(drop_title === name){
+                    return drop;
+                }
             }
         }
 
