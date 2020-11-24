@@ -2,21 +2,20 @@
 const Item = require('../../../inventory/item.js');
 
 module.exports = {
-    name: 'give',
+    name: 'get',
     description: {
-        "fr": "Ajoute l'objet à l'inventaire",
-        "en": "Give any item"
+        "fr": "Affiche l'objet dans l'inventaire",
+        "en": "Display an item"
     },
     admin: true,
     args: 1,
-    usage: '<item> <count = 1>',
+    usage: '<item>',
     deleteAfter: 5000,
     execute(message, args) {
 
         if(Item.exists(args[0])){
-            message.client.inventory.addItemToUser(message.author.id, args[0], ((args.length > 1)?args[1]:1));
             // noinspection JSIgnoredPromiseFromCall
-            message.react('👍');
+            message.reply(message.client.inventory.getTrueItemOfUser(message.author.id, args[0]));
         }
 
         else{

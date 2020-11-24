@@ -1,12 +1,11 @@
 const Loot = require('../../../inventory/loot.js');
 module.exports = {
     name: 'loot',
-    aliases: ['loot'],
-    description: 'Génère un loot',
-    adminOnly: true,
-    secret: true,
-    guildOnly: true,
-    cooldown: 0.1,
+    description: {
+        "fr": "Génère un loot",
+        "en": "Generate a loot"
+    },
+    admin: true,
     async execute(message, args) {
         let bonus = 1
         let users = new Map();

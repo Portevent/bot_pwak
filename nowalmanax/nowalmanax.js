@@ -168,13 +168,22 @@ class Nowalmanax {
     }
 
     userValidateQuest(channel, user) {
-        user.send('Je me demande ce qu\'il contient !', {
-            embed: {
-                "title": "Cadeau du " + this.day + " Decembre",
-                "description": this.instructions,
-                "thumbnail": {
-                    "url":  this.calendar.images[this.day],
-                }
+        const language = channel.client.getLanguage(user);
+        user.send(
+            {
+                "fr": 'Je me demande ce qu\'il contient !',
+                "en": 'What\'s inside ?'
+            }[language],
+            {
+                embed: {
+                    "title": {
+                        "fr": "Cadeau du " + this.day + " Decembre",
+                        "en": this.day + "st/nd/th of December's Gift"
+                    }[language],
+                    "description": this.instructions,
+                    "thumbnail": {
+                        "url":  this.calendar.images[this.day],
+                    }
             },
             //files: ['https://cdn.discordapp.com/attachments/770768439773888532/779761054866735124/89045.png']
         }).then(message => {

@@ -8,14 +8,18 @@ module.exports = {
     deleteCommand: true,
     deleteAfter: 5000,
     execute(message, args) {
+        const language = message.client.getLanguage(message.channel);
         const data = [];
         const commands = message.client.commands;
 
         if (!args.length) {
-            data.push('Liste des commandes');
+            data.push({
+                'fr':'Liste des commandes (pas encore tout traduit)',
+                'en': 'Command list (pas encore tout traduit)'
+            }[language]);
             commands.map(command => {
-                if(!command.secret && !command.adminOnly ){
-                    data.push('**' + command.name + '** : ' + command.description);
+                if(!command.secret && !command.admin){
+                    data.push('**' + command.name + '** : ' + command.description[language] + (command.usage?'`' + message.client.prefix + command.name + ' ' + command.usage + '`':''));
                 }
             })
             data.push(`\nPour avoir plus de détails sur une commande : \`${message.client.prefix}help [commande]\` `);

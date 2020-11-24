@@ -45,8 +45,11 @@ class Inventory {
         }
     }
 
-    getItemOfUser(userId, itemId){
-        return this.userHasItem(userId, itemId)?this.getItem(userId,itemId):0;
+    getItemOfUser(userId, itemId, defaultValue = 0){
+        return this.userHasItem(userId, itemId)?this.getItem(userId,itemId):defaultValue;
+    }
+    getTrueItemOfUser(userId, itemId, defaultValue = 0){
+        return (this.userExists(userId) && this.hasItem(userId, itemId))?this.getItem(userId,itemId):defaultValue;
     }
 
     getItemsOfUser(userId){

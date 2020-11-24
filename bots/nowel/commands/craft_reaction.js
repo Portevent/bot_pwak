@@ -1,10 +1,12 @@
 // noinspection JSUnusedLocalSymbols
 const Loot = require('../../../inventory/loot.js');
-const Item = require('../../../inventory/item.js');
 const Craft = require('../../../inventory/craft.js');
 module.exports = {
     name: 'craft_reaction',
-    description: 'Fabrique l\'item du message ciblé (non utilisable manuellement)',
+    description: {
+        "fr": "Fabrique l'item du message ciblé",
+        "en": "Craft the item from the targeted message"
+    },
     secret: true,
     locked: true,
     async execute(messageReaction, user) {
@@ -15,6 +17,7 @@ module.exports = {
 
         embed.description = "Bonus de craft : + " + bonusItem.quantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name;
 
+        // noinspection ES6MissingAwait
         messageReaction.message.edit("", {
             embed: embed,
         });

@@ -2,23 +2,23 @@ const { prefix } = require('../../../config_files/config.json');
 
 module.exports = {
     name: 'help_admin',
-    description: 'Liste des commandes admin',
+    description: {
+        "fr": "Liste des commandes admin",
+        "en": "Admin command name"
+    },
     aliases: ['true_help', 'admin_help', 'helpadmin', 'helpsecret'],
-    usage: '[command name]',
+    usage: '<command?>',
     cooldown: 5,
     execute(message, args) {
+        //TODO : Enhance the function
         const data = [];
         const { commands } = message.client;
 
         if (!args.length) {
             data.push('Here\'s a list of all my commands:');
             commands.map(command => {
-                if(command.secret) {
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description + '  - **Commande secrète**');
-                }else if(command.adminOnly ){
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description + ' - **Commande admin**');
-                }else{
-                    //data.push('**' + command.name + '** : ' + command.description);
+                if(command.admin ){
+                    data.push('\n🔴__' + command.name + '__ : ' + command.description);
                 }
             })
             data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);

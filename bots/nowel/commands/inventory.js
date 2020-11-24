@@ -2,7 +2,10 @@
 module.exports = {
     name: 'inventory',
     aliases: ['inventaire', 'i'],
-    description: 'Affiche l\'inventaire',
+    description: {
+        "fr": "Affiche l'inventaire",
+        "en": "Display the inventory"
+    },
     execute(message, args) {
 
 
@@ -11,12 +14,20 @@ module.exports = {
         const userAvatar = message.author.avatarURL();
         const inventory = message.client.inventory.getInventoryOfUser(userId);
 
+        const language = message.client.getLanguage(message.channel);
+
         if(!inventory){
-            return message.reply("Tu n'as pas encore d'inventaire");
+            return message.reply({
+                "fr": "Tu n'as pas encore d'inventaire",
+                "en": "You don't have any items yet"
+            }[language]);
         }
 
         let webhook = {
-            "username": "Inventaire",
+            "username": {
+                "fr": "Inventaire",
+                "en": "Inventory"
+            }[language],
             "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/775420082285183036/icon__0027_Inventaire.png",
             "embeds": [
                 {
@@ -36,18 +47,18 @@ module.exports = {
             if(inventory[category].hideInInventory) continue;
 
             for(let item of inventory[category].items){
-                if(item.quantity > 0)
-                    if(inventory[category].displayFullNameInInventory){
-                        text += item.emoji + item.name + (item.quantity>1?' (' + item.quantity + ')':'') + "\n";
-                    }
-                    else{
+                if(item.quantity > 0) {
+                    if (inventory[category].displayFullNameInInventory) {
+                        text += item.emoji + item.name[language] + (item.quantity > 1 ? ' (' + item.quantity + ')' : '') + "\n";
+                    } else {
                         text += item.emoji + " : " + item.quantity + "\n";
                     }
+                }
             }
 
             if(text !== ""){
                 webhook.embeds[0].fields.push({
-                    "name": inventory[category].name,
+                    "name": inventory[category].name[language],
                     "inline": true,
                     "value": text
                 })
@@ -55,7 +66,7 @@ module.exports = {
         }
 
         if(message.channel.type === "dm"){
-            webhook.embeds[0].title = "Inventaire";
+            webhook.embeds[0].title = webhook.username;
             webhook.embeds[0].author = {};
             message.channel.send('', {
                 embed: webhook.embeds[0]

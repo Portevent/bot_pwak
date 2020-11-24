@@ -3,11 +3,12 @@ const Drop = require('../../../inventory/drop.js');
 module.exports = {
     name: 'drop',
     aliases: ['drop'],
-    description: 'Force un drop',
-    adminOnly: true,
-    secret: true,
+    description: {
+        "fr": "Fait apparaitre un cadeau",
+        "en": "Spawn a gift"
+    },
+    admin: true,
     guildOnly: true,
-    cooldown: 0.1,
     delete: true,
     execute(message, args) {
         let nb = 1
@@ -18,6 +19,7 @@ module.exports = {
 
         for(let i = 0; i < nb; i++){
             const drop = Drop.getDrop();
+            // noinspection JSIgnoredPromiseFromCall
             message.client.sendWebhook(message.channel, {
                 "content": drop.description,
                 "username": drop.title,

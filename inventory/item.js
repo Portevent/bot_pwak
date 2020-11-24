@@ -26,8 +26,10 @@ class Item {
 
     static getFromName(name){
         for (let item of this.items.values()) {
-            if(item.name === name){
-                return item;
+            for (let item_name of item.name.values()){
+                if(item_name === name){
+                    return item;
+                }
             }
         }
     }

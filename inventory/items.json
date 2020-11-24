@@ -1,6 +1,9 @@
 {
   "flocons": {
-    "name": "Flocons de Neige",
+    "name": {
+      "fr": "Flocons de Neige",
+      "en": "Snowflakes"
+    },
     "items": [
       {
         "id" : "flocon",
@@ -32,7 +35,10 @@
     ]
   },
   "kamas": {
-    "name": "Kamas en Cholocat",
+    "name": {
+      "fr": "Kamas en Cholocat",
+      "en": "Chocolat kamas"
+    },
     "items": [
       {
         "id" : "kamas_bronze",
@@ -64,14 +70,17 @@
     ]
   },
   "boules": {
-    "name": "Boules de Nowel",
+    "name": {
+      "fr": "Boules de Nowel",
+      "en": "Kwismas bauble"
+    },
     "items": [
       {
         "id" : "boule_rouge",
         "name" : {
           "fr": "Boule de Nowel rouge",
           "en": "Red Kwismas bauble"
-        },"",
+        },
         "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946200712773642/boule_rouge.png",
         "emoji" : "<:BouledeNowelRouge:779651342188150804>"
       },
@@ -132,7 +141,10 @@
     ]
   },
   "equipement": {
-    "name": "Équipements",
+    "name": {
+      "fr": "Équipements",
+      "en": "Equipements"
+    },
     "items": [
       {
         "id": "glutin_chapeau",
@@ -155,7 +167,10 @@
     ]
   },
   "craft": {
-    "name": "Objets de quête",
+    "name": {
+      "fr": "Objets de Quêtes",
+      "en": "Quest Item"
+    },
     "displayFullNameInInventory": true,
     "items": [
       {
@@ -234,7 +249,7 @@
         "id": "quete1",
         "name": {
           "fr": "Etoile de Nowel",
-          "en": "Kwismas Star",
+          "en": "Kwismas Star"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780534292684996639/1.png",
         "emoji": "<:Etoile_de_Nowel:780534328311545920>"
@@ -242,11 +257,14 @@
     ]
   },
   "flag":{
-    "name": "",
+    "name": {
+      "fr": "",
+      "en": ""
+    },
     "hideInInventory": true,
     "items": [
       {
-        "id": "en_talker"
+        "id": "language"
       },
       {
         "id" : "start_quest1"

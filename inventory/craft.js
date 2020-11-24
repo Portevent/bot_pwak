@@ -20,7 +20,7 @@ class Craft {
     }
 
     // noinspection JSUnfilteredForInLoop
-    static recipeToEmbed(recipe, inventory, user){
+    static recipeToEmbed(recipe, inventory, user, language){
         const result = Item.get(recipe.result);
         let canCraft = true;
         let instructions = "";
@@ -36,11 +36,11 @@ class Craft {
             }else{
                 instructions += '🟢';
             }
-            instructions += instruction[1] + 'x' + item.emoji + item.name + "\n";
+            instructions += instruction[1] + 'x' + item.emoji + item.name[language] + "\n";
         }
         return {
             "canCraft": canCraft,
-            "title": result.name,
+            "title": result.name[language],
             "description": instructions,
             "thumbnail": {
                 "url": result.img

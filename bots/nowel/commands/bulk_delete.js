@@ -1,13 +1,18 @@
 module.exports = {
     name: 'bulk_delete',
-    aliases: ['bulk', 'bulkDelete', 'reset', 'delete', 'd', 'b', 'bd', 'clear'],
-    description: 'Bulk Delete',
+    aliases: ['bulk', 'delete', 'clear'],
+    description: {
+        "fr": "Supprime des messages en masse",
+        "en": "Bulk delete messages"
+    },
     guildOnly: true,
-    cooldown: 0.1,
+    admin: true,
     execute(message, args) {
         if (!args.length) {
-            message.channel.bulkDelete(10);
+            // noinspection JSIgnoredPromiseFromCall
+            message.channel.bulkDelete(100);
         }else{
+            // noinspection JSIgnoredPromiseFromCall
             message.channel.bulkDelete(args[0]);
         }
     },

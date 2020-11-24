@@ -29,8 +29,12 @@ module.exports = {
         });
     },
 
-    nowalmanax(client){
-        console.log('nowalmanax !');
+    getLanguage(channel){
+        if(channel.type === "dm"){
+            return channel.client.inventory.getTrueItemOfUser(channel.recipient.id, 'language', 'fr');
+        }else{
+            return (['780756123522301962'].includes(channel.id))?"en":"fr";
+        }
     },
 
     onReaction(reaction, user){
@@ -84,7 +88,7 @@ module.exports = {
     },
 
     onUserMessage(message){
-        message.client.execute('attemptDrop', message, []);
+        message.client.execute('attempt_drop', message, []);
         if(message.client.inventory.userExists(message.author.id)) {
             message.client.nowalmanax.messageValidateQuest(message);
         }

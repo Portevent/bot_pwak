@@ -2,7 +2,10 @@
   "rare":{
     "prob": 0.01,
     "color": 16637698,
-    "name": "⭐ Rare !",
+    "name": {
+      "fr": "⭐ Rare !",
+      "en": "⭐ Rare !"
+    },
     "loots": {
       "glutin_chapeau": -1,
       "glutin_epee": -1,
@@ -12,7 +15,10 @@
   "uncommon":{
     "prob": 0.19,
     "color": 8645763,
-    "name": "Peu Commun ",
+    "name": {
+      "fr": "Peu Commun !",
+      "en": "Uncommon !"
+    },
     "loots": {
       "flocon": 3,
       "flocon_magique": 1,
@@ -30,7 +36,10 @@
   "common":{
     "prob": 0.8,
     "color": 16777214,
-    "name": "",
+    "name": {
+      "fr": "",
+      "en": ""
+    },
     "loots": {
       "flocon": 1,
       "kamas_bronze": 4,
