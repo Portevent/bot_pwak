@@ -82,6 +82,12 @@ class Inventory {
 
         this.setItem(userId, itemId, quantity);
     }
+
+    setItemToUser(userId, itemId, quantity = 1){
+        this.createUser(userId);
+
+        this.setItem(userId, itemId, quantity);
+    }
 }
 
 module.exports = Inventory

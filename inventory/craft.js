@@ -61,6 +61,10 @@ class Craft {
 
         inventory.addItemToUser(user.id, bonusItem.id, recipe.craftBonusQuantity);
 
+        if(recipe.craftRemoveFlag){
+            inventory.addItemToUser(user.id, recipe.craftRemoveFlag, -1);
+        }
+
         return bonusItem;
     }
 }

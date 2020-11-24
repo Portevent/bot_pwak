@@ -32,6 +32,9 @@ module.exports = {
 
         for(let category of Object.keys(inventory)){
             let text = "";
+
+            if(inventory[category].hideInInventory) continue;
+
             for(let item of inventory[category].items){
                 if(item.quantity > 0)
                     if(inventory[category].displayFullNameInInventory){

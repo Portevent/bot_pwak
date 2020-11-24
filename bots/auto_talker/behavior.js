@@ -14,7 +14,6 @@ module.exports = {
     },
     onWebhook(message){
         if(Drop.getByName(message.author.username) !== undefined && !message.client.stop){
-            console.log(Drop.getByName(message.author.username));
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }

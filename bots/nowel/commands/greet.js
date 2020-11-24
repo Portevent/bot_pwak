@@ -41,6 +41,6 @@ module.exports = {
             }
         });
 
-        message.client.inventory.addItemToUser(user.id, 'item_start_quest1');
+        message.client.inventory.addItemToUser(user.id, 'start_quest1');
     },
 };

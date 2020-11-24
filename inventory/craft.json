@@ -1,14 +1,15 @@
 {
   "process": {
-    "require": "item_start_quest1",
+    "require": "start_quest1",
     "result": "process",
     "recipe": [
       ["flocon", 2],
       ["boule_rouge", 1],
-      ["item_start_quest1", 1]
+      ["boule_violette", 1]
     ],
     "craftBonus": "kamas_argent",
-    "craftBonusQuantity": 1
+    "craftBonusQuantity": 1,
+    "craftRemoveFlag": "start_quest1"
   },
   "machine": {
     "require": "process",

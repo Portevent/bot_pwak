@@ -91,20 +91,9 @@ module.exports = {
     },
 
     onWebhook(message){
-        if(message.author.username === 'Un Cadeau Apparait !') {
+        if(Drop.getByName(message.author.username) !== undefined){
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
-        }
-        if(message.author.username === 'Un Gros Cadeau Apparait !'){
-            // noinspection JSIgnoredPromiseFromCall
-            message.react('🎁');
-        }
-        if(message.author.username === 'Il neige !'){
-            // noinspection JSIgnoredPromiseFromCall
-            message.react('⛄');
-            setTimeout(() => {
-                message.client.editWebhook(message.channel, webhook_template.small_snowmen, message.id);
-            }, 60*1000);
         }
     }
 };
