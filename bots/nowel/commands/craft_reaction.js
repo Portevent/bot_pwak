@@ -10,12 +10,16 @@ module.exports = {
     secret: true,
     locked: true,
     async execute(messageReaction, user) {
+        const language = messageReaction.message.client.getLanguage(user);
 
         const bonusItem = Craft.craft(Craft.getRecipeFromName(messageReaction.message.embeds[0].title), messageReaction.message.client.inventory, user);
 
         let embed = messageReaction.message.embeds[0];
 
-        embed.description = "Bonus de craft : + " + bonusItem.quantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name;
+        embed.description = {
+            "fr": "Bonus de fabrication ",
+            "en": "Craft bonus"
+        }[language] + ": + " + bonusItem.quantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name[language] + "\n" + bonusItem.text[language];
 
         // noinspection ES6MissingAwait
         messageReaction.message.edit("", {

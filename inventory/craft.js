@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const Item = require('./item');
 
 class Craft {
@@ -27,7 +26,7 @@ class Craft {
         for(let instruction of recipe.recipe){
             const item = Item.get(instruction[0]);
             const count = inventory.getItemOfUser(user, item.id);
-            if(count == 0){
+            if(count === 0){
                 canCraft = false;
                 instructions += '🟠';
             }else if(count < instruction[1]){
@@ -52,12 +51,14 @@ class Craft {
     static craft(recipe, inventory, user){
         inventory.addItemToUser(user.id, recipe.result);
 
+
         for(let ingredient of recipe.recipe){
             inventory.addItemToUser(user.id, ingredient[0], -ingredient[1]);
         }
 
         const bonusItem = Item.get(recipe.craftBonus);
         bonusItem.quantity = recipe.craftBonusQuantity;
+        bonusItem.text = recipe.craftSucces;
 
         inventory.addItemToUser(user.id, bonusItem.id, recipe.craftBonusQuantity);
 
