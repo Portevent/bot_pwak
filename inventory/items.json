@@ -223,6 +223,9 @@
       },
       {
         "id" : "start_quest1"
+      },
+      {
+        "id" : "bad_karma"
       }
     ]
   }

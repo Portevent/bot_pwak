@@ -21,7 +21,7 @@ module.exports = {
         let loot = Loot.getLoot(bonus, bonus);
 
         for(let user of users.values()){
-            message.client.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
+            message.client.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * user.ownBonus));
         }
 
         return loot;

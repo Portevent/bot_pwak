@@ -24,7 +24,8 @@ class Inventory {
     }
 
     setItem(userId, itemId, quantity = 1){
-        return this.inventory.get(userId).set(itemId, quantity);
+        this.inventory.get(userId).set(itemId, quantity);
+        return quantity;
     }
 
     ///////////////////////////////////
@@ -84,6 +85,11 @@ class Inventory {
         this.createUser(userId);
 
         this.setItem(userId, itemId, quantity);
+    }
+
+    safeAddItemToUser(userId, itemId, quantity = 1){
+        this.createUser(userId);
+        return this.setItem(userId, itemId, Math.max(0, this.getTrueItemOfUser(userId, itemId, 0) + quantity));
     }
 
     setItemToUser(userId, itemId, quantity = 1){

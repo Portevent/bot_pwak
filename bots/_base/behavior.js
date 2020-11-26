@@ -138,7 +138,12 @@ module.exports = {
                 client.onCommand(message, args, commandName);
 
                 if(message.channel.type !== 'dm' && (command.deleteCommand || command.deleteAfter)){
-                    message.delete(command.deleteAfter || 0);
+                    try{
+                        message.delete({ timeout: command.deleteAfter || 0 });
+                    }catch (e){
+                        console.error("Trying to delete " + message.id);
+                        console.error(error);
+                    }
                 }
             } catch (error) {
                 console.error(error);
