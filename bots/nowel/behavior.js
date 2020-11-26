@@ -17,8 +17,7 @@ module.exports = {
     },
 
     async onceReady(client){
-        const nowalmanaxChannel = await client.channels.fetch('774531283426213898');
-        client.nowalmanax = new Nowalmanax(nowalmanaxChannel);
+        client.nowalmanax = new Nowalmanax(client);
 
         cron.schedule('* * * * *', async function() {
             //Nowalmanax every minutes
@@ -88,8 +87,8 @@ module.exports = {
 
     onUserMessage(message){
         message.client.execute('attempt_drop', message, []);
-        if(message.client.inventory.userExists(message.author.id)) {
-            message.client.nowalmanax.messageValidateQuest(message);
+        if(message.client.inventory.userHasItem(message.author.id, "drhellers_net")) {
+            message.client.nowalmanax.attemptNowalmanaxDrop(message);
         }
     },
 

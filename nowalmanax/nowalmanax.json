@@ -1,46 +1,4 @@
 {
-  "_template": {
-    "msg": true,
-    "msg_equals": "Mes pieds sentent pier qu'un Bwork",
-    "msg_starts_with": "Bonjour",
-    "msg_ends_with": "!",
-    "msg_contains": "poule",
-    "msg_contains_emoji": "😏",
-    "msg_mentions_someone": true,
-    "msg_mentions_user": "123",
-    "react_emoji": "smirk",
-    "react_count": 4,
-    "find_daily_mention": "123",
-    "open_present": true
-  },
-  "_conditions": [
-    "msg",
-    "msg_equals",
-    "msg_starts_with",
-    "msg_ends_with",
-    "msg_contains",
-    "msg_contains_emoji",
-    "msg_mentions_someone",
-    "msg_mentions_user",
-    "react_emoji",
-    "react_count",
-    "find_daily_mention",
-    "open_present"
-  ],
-  "_instructions": {
-    "msg": "Envoyer un message",
-    "msg_equals": "Ecrire #value#",
-    "msg_starts_with": "Ecrire un message commencant par #value#",
-    "msg_ends_with": "Ecrire un message finissant pas #value#",
-    "msg_contains": "Utiliser le mot #value#",
-    "msg_contains_emoji": "Utiliser #value#",
-    "msg_mentions_someone": "Ping un ami (et être sympa avec lui)",
-    "msg_mentions_user": "Ping <@#value#>",
-    "react_emoji": "Réagir à un message avec #value#",
-    "react_count": "Réagir avec #value# autre personnes",
-    "find_daily_mention": "Trouver un Phoreur Egaré <:phoreur:780169188516954222>",
-    "open_present": "Ouvrir un cadeau"
-  },
   "images": [
     "https://cdn.discordapp.com/attachments/770768439773888532/770773711451848704/89044.png",
     "https://cdn.discordapp.com/attachments/770768439773888532/770773716850311178/89046.png",
@@ -82,49 +40,12 @@
     "https://cdn.discordapp.com/attachments/770768439773888532/779761052974973028/89055.png",
     "https://cdn.discordapp.com/attachments/770768439773888532/779761058142224404/89046.png"
   ],
-  "1": {
-    "msg": true
-  },
-  "2": {
-    "msg_contains": "Nowel"
-  },
-  "3": {
-    "find_daily_mention": "780850965589917748"
-  },
-  "4": {
-    "msg_contains": "Bouftou"
-  },
-  "5": {
-    "msg_contains_emoji": "\uD83D\uDE0F"
-  },
-  "6": {
-    "react_emoji": "\uD83D\uDC4C"
-  },
-  "7": {
-    "msg_contains": "Cadeau"
-  },
-  "8": {
-    "find_daily_mention": "780850965791506462"
-  },
-  "9": {
-    "msg_starts_with": "Pour nowel je veux "
-  },
-  "10": {
-    "react_emoji": "\uD83E\uDD29"
-  },
-  "11": {
-    "msg_contains": "Sapin"
-  },
-  "12": {
-    "msg_contains_emoji": "\uD83D\uDE42"
-  },
-  "13": {
-    "find_daily_mention": "780850967003660318"
-  },
-  "14": {
-    "msg_contains": "Neige"
-  },
-  "15": {
-    "msg_equals": "Mes pieds sentent les chaussettes de bwork"
-  }
+  "emojis": [
+    "780850967003660318",
+    "780850965589917748",
+    "780905723352580130",
+    "780905723310637117",
+    "780850965791506462",
+    "780905724216606780"
+  ]
 }
