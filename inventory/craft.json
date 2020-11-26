@@ -1,4 +1,23 @@
 {
+  "drhellers_net": {
+    "require": "start_quest0",
+    "result": "drhellers_net",
+    "recipe": [
+      ["boule_verte", 2]
+    ],
+    "craftBonus": "kamas_argent",
+    "craftBonusQuantity": 1,
+    "craftAddFlag": "start_quest1",
+    "craftRemoveFlag": "start_quest0",
+    "craftSucces": {
+      "fr": "Super ! On va pouvoir capturer des phorreurs !",
+      "en": "Nice ! With that we can catch drhellers !"
+    },
+    "craftMessage": {
+        "fr": "Si tu croise un phorreur au détour d'un de tes messages, capture le ! https://media.discordapp.net/attachments/770768439773888532/780534292684996639/1.png",
+        "en": "Si tu croise un phorreur au détour d'un de tes messages, capture le ! https://media.discordapp.net/attachments/770768439773888532/780534292684996639/1.png"
+    }
+  },
   "process": {
     "require": "start_quest1",
     "result": "process",
@@ -51,6 +70,7 @@
     }
   },
   "quete1": {
+    "require": "start_quest1",
     "result": "quete1",
     "recipe": [
       ["nowalmanax_star", 10],
@@ -59,6 +79,7 @@
     ],
     "craftBonus": "kamas_or",
     "craftBonusQuantity": 1,
+    "craftRemoveFlag": "start_quest1",
     "craftSucces": {
       "fr": "Magnifique ! +20% quantité de butin, cumulable avec les étoiles des autres aventuriers !",
       "en": "Awesome ! +20% bonus loot, cumulable with the stars of other adventurer !"

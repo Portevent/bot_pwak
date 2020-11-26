@@ -12,6 +12,13 @@ module.exports = {
 
         const recipes = Craft.getRecipeFor(message.client.inventory, message.author.id);
 
+        if(recipes.length < 1) {
+            message.author.send({
+                "fr": "Je n'ai plus rien à te proposer",
+                "en": "I have nothing more for you"
+            }[language]);
+        }
+
         for(let recipe of recipes){
             let embed = Craft.recipeToEmbed(recipe, message.client.inventory, message.author.id, language);
             message.author.send('',{

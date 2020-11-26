@@ -15,15 +15,13 @@ module.exports = {
 
         users.delete(messageReaction.message.client.user.id);
 
+        let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
+
         for(let user of users.values()){
             if(!user.bot && !messageReaction.message.client.inventory.userExists(user.id)){
                 messageReaction.message.client.execute('greet', messageReaction.message, user);
             }
-        }
 
-        let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
-
-        for(let user of users.values()){
             user.badges = [];
             let bad_karmas = 1;
             for(let message of messages.values()){
@@ -34,7 +32,7 @@ module.exports = {
             }
 
             bad_karmas = messageReaction.message.client.inventory.safeAddItemToUser(user.id, 'bad_karma', -2);
-            console.log(bad_karmas)
+
             if(bad_karmas >= 10){
                 user.ownBonus = 0.1;
                 user.badges.push('❗');

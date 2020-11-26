@@ -26,5 +26,9 @@ module.exports = {
             embed: embed,
         });
 
+        if(bonusItem.craftMessage){
+            user.send(bonusItem.craftMessage[language]);
+        }
+
     },
 };

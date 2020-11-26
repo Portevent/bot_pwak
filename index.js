@@ -89,7 +89,6 @@ for(const bot of bots){
 
     // Useful function
     client.sendWebhookFromUrl = async function sendWebhookFromUrl(url, params) {
-        console.log(params);
         try{
 
             await fetch(url, {
@@ -123,7 +122,6 @@ for(const bot of bots){
     }
 
     client.editWebhookFromUrl = function editWebhookFromUrl(url, params, messageId) {
-        console.log(params);
         try{
             // noinspection JSIgnoredPromiseFromCall
             fetch(url + '/messages/' + messageId , {

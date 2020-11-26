@@ -38,7 +38,7 @@ module.exports = {
                 }
             });
 
-        user.send('', {
+        /* user.send('', {
             embed: {
                 "title": {
                     "fr": "Collecte les cadeaux quotidiens",
@@ -55,7 +55,7 @@ module.exports = {
             }
         });
 
-        user.send('', {
+         user.send('', {
             embed: {
                 "title": {
                     "fr": "Fabrique l'Étoile de Nowel",
@@ -70,16 +70,17 @@ module.exports = {
                     "url": "https://cdn.discordapp.com/attachments/770768439773888532/780534292684996639/1.png"
                 }
             }
-        });
+        });*/
         user.send(
             {
                 'fr':
-                    '`!help` Pour voir les commandes\n🇬🇧 type `!english`',
+                    'Voyons les craft : `!craft`\n*🇬🇧 `!english`*',
                 'en':
-                    "`!help` To see commands\n🇨🇵 tappe `!francais`"
+                    "Let's check what we can craft `!craft` \n*🇨🇵 `!francais`*"
             }[language]);
 
-        message.client.inventory.addItemToUser(user.id, 'start_quest1');
+        message.client.inventory.addItemToUser(user.id, 'start_quest0');
+        message.client.inventory.addItemToUser(user.id, 'boule_verte', 2);
         message.client.inventory.setItemToUser(user.id, 'language', language);
 
     }

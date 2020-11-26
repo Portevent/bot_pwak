@@ -59,11 +59,15 @@ class Craft {
         const bonusItem = Item.get(recipe.craftBonus);
         bonusItem.quantity = recipe.craftBonusQuantity;
         bonusItem.text = recipe.craftSucces;
+        bonusItem.craftMessage = recipe.craftMessage;
 
         inventory.addItemToUser(user.id, bonusItem.id, recipe.craftBonusQuantity);
 
         if(recipe.craftRemoveFlag){
             inventory.addItemToUser(user.id, recipe.craftRemoveFlag, -1);
+        }
+        if(recipe.craftAddFlag){
+            inventory.addItemToUser(user.id, recipe.craftAddFlag, 1);
         }
 
         return bonusItem;

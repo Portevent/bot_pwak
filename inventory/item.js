@@ -26,8 +26,8 @@ class Item {
 
     static getFromName(name){
         for (let item of this.items.values()) {
-            for (let item_name of item.name.values()){
-                if(item_name === name){
+            for (let language in item.name){
+                if(item.name[language] === name){
                     return item;
                 }
             }
