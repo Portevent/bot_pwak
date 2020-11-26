@@ -7,8 +7,7 @@
       "en": "⭐ Rare !"
     },
     "loots": {
-      "glutin_chapeau": -1,
-      "glutin_epee": -1,
+      "kamas_or": -1,
       "boule_multi": -1
     }
   },
@@ -23,14 +22,13 @@
       "flocon": 3,
       "flocon_magique": 1,
       "kamas_bronze": 8,
-      "kamas_argent": 3,
-      "kamas_or": 1,
-      "boule_violette": 15,
-      "boule_bleue": 15,
-      "boule_jaune": 15,
-      "boule_rouge": 15,
-      "boule_verte": 15,
-      "boule_orange": 15
+      "kamas_argent": 1,
+      "boule_violette": 5,
+      "boule_bleue": 5,
+      "boule_jaune": 5,
+      "boule_rouge": 5,
+      "boule_verte": 5,
+      "boule_orange": 5
     }
   },
   "common":{
@@ -42,14 +40,13 @@
     },
     "loots": {
       "flocon": 1,
-      "kamas_bronze": 4,
-      "kamas_argent": 1,
-      "boule_violette": 5,
-      "boule_bleue": 5,
-      "boule_jaune": 5,
-      "boule_rouge": 5,
-      "boule_verte": 5,
-      "boule_orange": 5
+      "kamas_bronze": 3,
+      "boule_violette": 2,
+      "boule_bleue": 2,
+      "boule_jaune": 2,
+      "boule_rouge": 2,
+      "boule_verte": 2,
+      "boule_orange": 2
     }
   }
 }

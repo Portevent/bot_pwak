@@ -228,13 +228,28 @@
     "hideInInventory": true,
     "items": [
       {
-        "id": "language"
+        "id": "language",
+        "name": {
+          "fr" : "language"
+        }
       },
       {
-        "id" : "start_quest1"
+        "id" : "start_quest0",
+        "name": {
+          "fr" : "start_quest0"
+        }
       },
       {
-        "id" : "bad_karma"
+        "id" : "start_quest1",
+        "name": {
+          "fr" : "start_quest1"
+        }
+      },
+      {
+        "id" : "bad_karma",
+        "name": {
+          "fr" : "bad_karma"
+        }
       }
     ]
   }

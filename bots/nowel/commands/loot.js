@@ -7,7 +7,7 @@ module.exports = {
     },
     admin: true,
     async execute(message, args) {
-        let bonus = 1
+        let bonus = 1;
         let users = new Map();
         users.set(message.author.id, message.author);
 
@@ -21,7 +21,7 @@ module.exports = {
         let loot = Loot.getLoot(bonus, bonus);
 
         for(let user of users.values()){
-            message.client.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * user.ownBonus));
+            message.client.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (user.ownBonus || 1)));
         }
 
         return loot;

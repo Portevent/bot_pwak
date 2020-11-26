@@ -76,7 +76,6 @@ class Inventory {
     }
 
     addItemToUser(userId, itemId, quantity = 1){
-
         if (this.userHasItem(userId, itemId)){
             quantity += this.getItemOfUser(userId, itemId);
         }
