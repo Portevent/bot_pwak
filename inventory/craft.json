@@ -1,14 +1,14 @@
 {
   "drhellers_net": {
-    "require": "start_quest0",
+    "require": "quest0_available",
     "result": "drhellers_net",
     "recipe": [
       ["boule_verte", 2]
     ],
     "craftBonus": "kamas_argent",
     "craftBonusQuantity": 1,
-    "craftAddFlag": "start_quest1",
-    "craftRemoveFlag": "start_quest0",
+    "craftAddFlag": "quest1_available",
+    "craftRemoveFlag": "quest0_available",
     "craftSucces": {
       "fr": "Super ! On va pouvoir capturer des phorreurs !",
       "en": "Nice ! With that we can catch drhellers !"
@@ -19,7 +19,7 @@
     }
   },
   "process": {
-    "require": "start_quest1",
+    "require": "quest1_available",
     "result": "process",
     "recipe": [
       ["flocon", 2],
@@ -28,7 +28,8 @@
     ],
     "craftBonus": "kamas_argent",
     "craftBonusQuantity": 1,
-    "craftRemoveFlag": "start_quest1",
+    "craftAddFlag": "quest1_started",
+    "craftRemoveFlag": "quest1_available",
     "craftSucces": {
       "fr": "Incroyable, qui sait quel genre de machine peut on faire à partir de celui. Passons à la suite ! `!craft`",
       "en": "Incredible, who knows what kind of tools we can build from it. We need to upgrade it ! `!craft`"
@@ -70,7 +71,7 @@
     }
   },
   "quete1": {
-    "require": "start_quest1",
+    "require": "quest1_started",
     "result": "quete1",
     "recipe": [
       ["nowalmanax_star", 10],
@@ -79,7 +80,7 @@
     ],
     "craftBonus": "kamas_or",
     "craftBonusQuantity": 1,
-    "craftRemoveFlag": "start_quest1",
+    "craftRemoveFlag": "quest1_started",
     "craftSucces": {
       "fr": "Magnifique ! +20% quantité de butin, cumulable avec les étoiles des autres aventuriers !",
       "en": "Awesome ! +20% bonus loot, cumulable with the stars of other adventurer !"

@@ -85,7 +85,6 @@ class Nowalmanax {
     }
 
     reactionValidateQuest(reaction, user){
-        console.log('AAAAAAAAAAa');
         if(this.usersDroppedMention.has(user.id) && reaction.message.author.id === user.id && reaction.emoji.id === this.emojiId){
             reaction.remove();
             this.userValidateQuest(user);

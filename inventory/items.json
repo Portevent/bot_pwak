@@ -234,15 +234,21 @@
         }
       },
       {
-        "id" : "start_quest0",
+        "id" : "quest1_started",
         "name": {
-          "fr" : "start_quest0"
+          "fr" : "quest1_started"
         }
       },
       {
-        "id" : "start_quest1",
+        "id" : "quest1_available",
         "name": {
-          "fr" : "start_quest1"
+          "fr" : "quest1_available"
+        }
+      },
+      {
+        "id" : "quest0_available",
+        "name": {
+          "fr" : "quest0_available"
         }
       },
       {
