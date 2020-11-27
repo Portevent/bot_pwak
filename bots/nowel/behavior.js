@@ -1,7 +1,6 @@
 const Inventory = require("../../inventory/inventory.js");
 const Nowalmanax = require("../../nowalmanax/nowalmanax");
 const Drop = require("../../inventory/drop.js");
-const webhook_template = require("../../webhook_template.json");
 const cron = require('node-cron');
 
 // noinspection JSUnusedLocalSymbols
@@ -99,5 +98,92 @@ module.exports = {
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }
-    }
+    },
+
+
+
+    onNullCommand(message){
+        message.reply({
+            "fr": 'Si tu as besoin d\'aide, n\'hésite pas à utiliser `' + message.client.prefix + 'help` :wink:',
+            "en": 'If you need help, you can use `' + message.client.prefix + 'help` :wink:'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
+
+    onInvalidCommand(message, args, commandName){
+        message.reply({
+            "fr": 'La commande `' + commandName + '` n\'existe pas... (voir `' + message.client.prefix + 'help`)',
+            "en": 'The command `' + commandName + '` doesn\'t exist ... (see `' + message.client.prefix + 'help`)'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
+
+    onCommandError(message, args, error, command){
+        message.reply({
+            "fr": 'Une tempête de neige a perturbé `' + commandName + '` qui a échoué...',
+            "en": 'A snowstorm interrupted`' + commandName + '`...'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+
+        console.error("##### ERREUR #### \n" +
+            "## Message : " + message +
+            "\n ## Erreur : " + error);
+    },
+
+    onCommandInvalidGuildOnly(message, args, command){
+        message.reply({
+            "fr": 'La commande `' + commandName + '` ne marche pas en message privé',
+            "en": 'The command `' + commandName + '` doesn\'t work for DM'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
+
+    onInvalidCommandRight(message, args, command){
+        message.client.onInvalidCommand(message, args, command);
+    },
+
+    onCommandInvalidDmOnly(message, args, command){
+        message.reply({
+            "fr": 'La commande `' + commandName + '` ne marche qu\'en message privé',
+            "en": 'The command `' + commandName + '` only work for DMs. You can slide in my DMs :wink:'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
+
+    onCommandInvalidArgsCount(message, args, command){
+        message.reply({
+            "fr": '`' + command.name + '` nécessite au moins ' + command.args + ' arguments ',
+            "en": '`' + command.name + '` require at least ' + command.args + ' arguments '
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
+
+    onCommandInvalidCooldown(message, args, command, timeLeft){
+        message.reply({
+            "fr": 'Il faut attendre encore `' + timeLeft + '` secondes avant de pouvoir réutiliser `' + command.name + '`',
+            "en": 'You have to wait `' + timeLeft + '` seconds before using `' + command.name + '` again'
+        }[message.client.getLanguage(message.channel)])
+            .then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
+            .catch(console.error);
+    },
 };

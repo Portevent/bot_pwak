@@ -40,19 +40,21 @@ module.exports = {
         
         message.reply('Cette commande ne marche pas en message privé :slight_frown:');
     },
+
+    onInvalidCommandRight(message, args, command){
+        message.reply('Droit insuffisant :slight_frown:');
+    },
+
     onCommandInvalidDmOnly(message, args, command){
-        
         message.reply('Cette commande ne marche pas qu\'en message privé. Tu peux slide dans mes dm :relieved:');
     },
 
     onCommandInvalidArgsCount(message, args, command){
-        
         message.reply('`' + command.name + '` nécessite au moins ' + command.args + ' arguments ');
     },
 
     
     onCommandInvalidCooldown(message, args, command, timeLeft){
-        
         message.reply('Merci d\'attendre `' + timeLeft + '` secondes avant de réutiliser `' + command.name + '`');
     },
 
@@ -99,15 +101,19 @@ module.exports = {
             if (!command)
                 return client.onInvalidCommand(message, args, commandName);
 
+            if(command.admin)
+                if(message.author.id !== '214090561055883267' && !message.member.roles.cache.get('78583869720240128'))
+                    return client.onInvalidCommandRight(message, args, commandName);
+
             if (command.guildOnly && message.channel.type === 'dm')
                 return client.onCommandInvalidGuildOnly(message, args, command);
 
             if (command.dmOnly && message.channel.type !== 'dm')
                 return client.onCommandInvalidDmOnly(message, args, command);
 
-            if (command.args && (!args.length || args.length < command.args)) {
+            if (command.args && (!args.length || args.length < command.args))
                 return client.onCommandInvalidArgsCount(message, args, command);
-            }
+
 
             try {
                 if (command.cooldown){
@@ -162,5 +168,5 @@ module.exports = {
                 return client.onUserMessage(message);
             }
         }
-    },
+    }
 }
