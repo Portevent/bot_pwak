@@ -82,8 +82,8 @@
     "craftBonusQuantity": 1,
     "craftRemoveFlag": "quest1_started",
     "craftSucces": {
-      "fr": "Magnifique ! +20% quantité de butin, cumulable avec les étoiles des autres aventuriers !",
-      "en": "Awesome ! +20% bonus loot, cumulable with the stars of other adventurer !"
+      "fr": "Magnifique ! Il est maintenant possible de voir les 7 Fées de Nowel, et de les capturer. Bonne chance !",
+      "en": "Awesome ! It is now possible to see and catch the 7 Kwismas Fairies ! Good luck !"
     }
   }
 }
