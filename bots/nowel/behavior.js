@@ -81,6 +81,7 @@ module.exports = {
         else {
             if(reaction.message.client.inventory.userExists(user.id)){
                 reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
+                message.client.execute('check_fairy_drop', reaction, user);
             }
         }
     },
@@ -89,6 +90,9 @@ module.exports = {
         message.client.execute('attempt_drop', message, []);
         if(message.client.inventory.userHasItem(message.author.id, "drhellers_net")) {
             message.client.nowalmanax.attemptNowalmanaxDrop(message);
+        }
+        if(message.client.inventory.userHasItem(message.author.id, "quete1")) {
+            message.client.execute('attempt_fairy_drop', message, []);
         }
     },
 
