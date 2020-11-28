@@ -212,11 +212,11 @@
       {
         "id": "quete1",
         "name": {
-          "fr": "Etoile de Nowel",
+          "fr": "Etoile de Nowel pleine de magie (de magie de Nowel)",
           "en": "Kwismas Star"
         },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780534292684996639/1.png",
-        "emoji": "<:etoile:780851276094767104>"
+        "img": "https://cdn.discordapp.com/attachments/781503539142459452/782256473480757309/2.png",
+        "emoji": "<:Etoile_pleine_de_magie:782256624739024896>"
       }
     ]
   },
