@@ -16,18 +16,11 @@ module.exports = {
 
         let embed = messageReaction.message.embeds[0];
 
-        let loot;
+        let loot = {"item": Item.get(messageReaction.message.client.nowalmanax.questItem), "quantity": 1};
         let loot1 = Loot.getLootFromMetaLoot("common", 2);
         let loot2 = Loot.getLootFromMetaLoot("common", 2);
         let loot3 = Loot.getLootFromMetaLoot("common", 2);
 
-        if(advancement < messageReaction.message.client.nowalmanax.questItemGoal){
-            text = 'Plus que ' + (messageReaction.message.client.nowalmanax.questItemGoal - advancement - 1);
-            loot = {"item": Item.get(messageReaction.message.client.nowalmanax.questItem), "quantity": 1};
-        }else{
-            text = 'Wow, magnifique !';
-            loot = Loot.getLootFromMetaLoot("uncommon", 2);
-        }
 
         messageReaction.message.client.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
         messageReaction.message.client.inventory.addItemToUser(user.id, loot1.item.id, loot1.quantity);
@@ -35,7 +28,7 @@ module.exports = {
         messageReaction.message.client.inventory.addItemToUser(user.id, loot3.item.id, loot3.quantity);
 
 
-        embed.description = (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "\n"
+        embed.description = loot.item.emoji + loot.item.name[language] + "\n"
                             + (loot1.quantity>1?loot1.quantity + 'x':'') + loot1.item.emoji + loot1.item.name[language] + "\n"
                             + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "\n"
                             + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name[language]

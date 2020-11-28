@@ -113,6 +113,8 @@ module.exports = {
     },
 
     onInvalidCommand(message, args, commandName){
+        if(message.channel.type === "dm") return;
+
         message.reply({
             "fr": 'La commande `' + commandName + '` n\'existe pas... (voir `' + message.client.prefix + 'help`)',
             "en": 'The command `' + commandName + '` doesn\'t exist ... (see `' + message.client.prefix + 'help`)'
@@ -125,8 +127,8 @@ module.exports = {
 
     onCommandError(message, args, error, command){
         message.reply({
-            "fr": 'Une tempête de neige a perturbé `' + commandName + '` qui a échoué...',
-            "en": 'A snowstorm interrupted`' + commandName + '`...'
+            "fr": 'Une tempête de neige a perturbé `' + command.name + '` qui a échoué...',
+            "en": 'A snowstorm interrupted`' + command.name + '`...'
         }[message.client.getLanguage(message.channel)])
             .then(msg => {
                 msg.delete({ timeout: 10000 })
@@ -140,8 +142,8 @@ module.exports = {
 
     onCommandInvalidGuildOnly(message, args, command){
         message.reply({
-            "fr": 'La commande `' + commandName + '` ne marche pas en message privé',
-            "en": 'The command `' + commandName + '` doesn\'t work for DM'
+            "fr": 'La commande `' + command.name + '` ne marche pas en message privé',
+            "en": 'The command `' + command.name + '` doesn\'t work for DM'
         }[message.client.getLanguage(message.channel)])
             .then(msg => {
                 msg.delete({ timeout: 10000 })

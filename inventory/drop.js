@@ -1,6 +1,20 @@
 class Drop {
-    static drops = require('./drop.json').drops;
-    static resources = require('./ressources.json');
+    static drops = this.require();
+    static resources = this.requireResources();
+
+    static require(){
+        return require('./drop.json').drops;
+    }
+
+    static requireResources(){
+        return require('./ressources.json');
+    }
+
+    static load(){
+        this.drops = this.require();
+        this.resources = this.requireResources();
+    }
+
     static getDrop(){
         let random = Math.random();
 

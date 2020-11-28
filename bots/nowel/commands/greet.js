@@ -22,7 +22,7 @@ module.exports = {
                     "It is Kwismas ! There is plenty of things to do, and we need you !"
             }[language],
             {
-                files: ["https://cdn.discordapp.com/attachments/770768439773888532/779759907158753290/89045.png"] //TODO : Add the correct image
+                files: ["https://cdn.discordapp.com/attachments/781503539142459452/781937867277860894/Nowel.png"]
             }).then(msg => {
                 msg.channel.send(
                     {

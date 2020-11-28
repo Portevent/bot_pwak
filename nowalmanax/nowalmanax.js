@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const fs = require("fs");
 
 class Nowalmanax {
 
@@ -113,6 +114,21 @@ class Nowalmanax {
         }).then(message => {
             message.react('🎁');
         });
+    }
+
+    export(filename = "save"){
+        fs.writeFile("./nowalmanax/saves/" + filename + ".json", JSON.stringify(Object.fromEntries(this.usersDroppedMention), null, 4), err => {
+            if(err) console.log(err)
+        });
+    }
+
+    import(filename = "save"){
+        try{
+            this.usersDroppedMention = new Map(Object.entries(require("./saves/" + filename + ".json")));
+            return 0;
+        }catch(e){
+            return e;
+        }
     }
 }
 

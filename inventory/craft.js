@@ -2,7 +2,15 @@ const Item = require('./item');
 
 class Craft {
 
-    static recipes = require("./craft.json");
+    static recipes = this.require();
+
+    static require(){
+        return require("./craft.json");
+    }
+
+    static load(){
+        this.recipes = this.require();
+    }
 
     static getRecipeFromName(name){
         return this.recipes[Item.getFromName(name).id];
@@ -28,12 +36,12 @@ class Craft {
             const count = inventory.getItemOfUser(user, item.id);
             if(count === 0){
                 canCraft = false;
-                instructions += '🟠';
+                instructions += '🔸';
             }else if(count < instruction[1]){
                 canCraft = false;
-                instructions += '🟡';
+                instructions += '🔸';
             }else{
-                instructions += '🟢';
+                instructions += '🔹';
             }
             instructions += instruction[1] + 'x' + item.emoji + item.name[language] + "\n";
         }
@@ -60,6 +68,7 @@ class Craft {
         bonusItem.quantity = recipe.craftBonusQuantity;
         bonusItem.text = recipe.craftSucces;
         bonusItem.craftMessage = recipe.craftMessage;
+        bonusItem.craftMessageLink = recipe.craftMessageLink;
 
         inventory.addItemToUser(user.id, bonusItem.id, recipe.craftBonusQuantity);
 

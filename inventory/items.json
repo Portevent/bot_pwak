@@ -179,14 +179,14 @@
           "fr": "Filet de Phoreur",
           "en": "Drhellers Net"
         },
-        "img": "https://discord.com/assets/d3a23a6f305b9e9b242bd252296602c1.svg",
-        "emoji": ":mouse_trap:"
+        "img": "https://cdn.discordapp.com/attachments/781503539142459452/781945667580461076/99001.png",
+        "emoji": "<:filet_a_phoreur:781945839928213554>"
       },
       {
         "id": "process",
         "name": {
           "fr": "Noyaux Nowelectronique",
-          "en": "..."
+          "en": "Kwismas Power Core"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780522730792943666/15920.png",
         "emoji": "<:nowelectronique:780851275968544811>"
@@ -195,7 +195,7 @@
         "id": "machine",
         "name": {
           "fr": "Machine Magique",
-          "en": "..."
+          "en": "Magic thingy"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780526598033899580/164096.png",
         "emoji": "<:noyaux:780851276073271396>"
@@ -204,7 +204,7 @@
         "id": "soufle",
         "name": {
           "fr": "Insuflateur de magie",
-          "en": "..."
+          "en": "Magic Blower"
         },
         "img": "https://cdn.discordapp.com/attachments/770768439773888532/780525836989759538/164116.png",
         "emoji": "<:insuflateur:780851275721605151>"

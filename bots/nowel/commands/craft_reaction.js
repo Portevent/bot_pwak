@@ -25,8 +25,10 @@ module.exports = {
         messageReaction.message.edit("", {
             embed: embed,
         });
-
-        if(bonusItem.craftMessage){
+        if(bonusItem.craftMessageLink){
+            user.send(bonusItem.craftMessage[language], {files: [bonusItem.craftMessageLink]});
+        }
+        else if(bonusItem.craftMessage){
             user.send(bonusItem.craftMessage[language]);
         }
 

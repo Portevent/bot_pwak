@@ -1,4 +1,7 @@
+const fs = require("fs");
+
 class Inventory {
+
     constructor() {
         this.inventory = new Map();
     }
@@ -61,7 +64,7 @@ class Inventory {
     getInventoryOfUser(userId){
         // Return a Map with all the items of the user, filtered by Category
         if (this.userExists(userId)) {
-            let inventory = require('./items.json');
+            let inventory = require('./items.json'); // Fait exprès pour ne pas modifier par erreur la liste des items
             for (let category_id of Object.keys(inventory)) {
                 for (let item of inventory[category_id].items) {
                     item.quantity = this.getItemOfUser(userId, item.id);
@@ -95,6 +98,31 @@ class Inventory {
         this.createUser(userId);
 
         this.setItem(userId, itemId, quantity);
+    }
+
+    export(filename = "save"){
+        // Map to obj
+        let obj = {};
+        for(let user of this.inventory.keys()){
+            obj[user] = Object.fromEntries(this.inventory.get(user));
+        }
+
+        fs.writeFile("./inventory/saves/" + filename + ".json", JSON.stringify(obj, null, 4), err => {
+            if(err) console.log(err)
+        });
+    }
+
+    import(filename = "save"){
+        try{
+            let saved_inventory = require("./saves/" + filename + ".json");
+            this.inventory = new Map();
+            for(let user of Object.keys(saved_inventory)){
+                this.inventory.set(user, new Map(Object.entries(saved_inventory[user])));
+            }
+            return 0;
+        }catch(e){
+            return e;
+        }
     }
 }
 

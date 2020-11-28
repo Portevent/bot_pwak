@@ -1,6 +1,17 @@
 class Item {
-    static categories = require('./items.json');
+    static categories = this.require();
     static items = this.setupItemMap();
+
+
+    static require(){
+        return require('./items.json');
+    }
+
+    static load(){
+        this.categories = this.require();
+        this.items = this.setupItemMap();
+    }
+
 
     static get(id) {
         return this.items.get(id);

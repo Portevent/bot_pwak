@@ -14,9 +14,10 @@
       "en": "Nice ! With that we can catch drhellers !"
     },
     "craftMessage": {
-        "fr": "Si tu croise un phorreur au détour d'un de tes messages, capture le ! https://media.discordapp.net/attachments/770768439773888532/780534292684996639/1.png",
-        "en": "Si tu croise un phorreur au détour d'un de tes messages, capture le ! https://media.discordapp.net/attachments/770768439773888532/780534292684996639/1.png"
-    }
+        "fr": "Si tu croise un phorreur au détour d'un de tes messages, capture le !",
+        "en": "If you encounter a drheller on your message, catch it !"
+    },
+    "craftMessageLink": "https://cdn.discordapp.com/attachments/781503539142459452/781937835698814976/Phorreur.png"
   },
   "process": {
     "require": "quest1_available",

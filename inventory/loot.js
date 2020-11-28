@@ -1,7 +1,16 @@
 const Item = require('./item.js');
 
 class Loot {
-    static loots = require('./loot.json');
+    static loots = this.require();
+
+    static require(){
+        return require("./loot.json");
+    }
+
+    static load(){
+        this.loots = this.require();
+    }
+
 
     static getRandomMetaLoot(bonus = 1){
         let random = Math.random()/bonus;

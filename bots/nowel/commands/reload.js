@@ -5,6 +5,7 @@ module.exports = {
         "fr": "Recharge une commande",
         "en": "Reloads a command"
     },
+    admin: true,
     execute(message, args) {
         if (!args.length) return message.channel.send(`You didn't pass any command to reload, ${message.author}!`);
         const commandName = args[0].toLowerCase();

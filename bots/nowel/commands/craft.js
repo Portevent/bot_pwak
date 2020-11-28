@@ -7,6 +7,7 @@ module.exports = {
         "fr": "Affiche la liste des recettes",
         "en": "Show craft recipes"
     },
+    cooldown: 2,
     execute(message, args) {
         const language = message.client.getLanguage(message.channel);
 
