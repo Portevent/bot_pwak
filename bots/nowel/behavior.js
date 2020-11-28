@@ -12,18 +12,22 @@ module.exports = {
         client.onGoingLoot = new Map();
 
         client.messageSinceLastDrop = 0;
-
-
+        client.autoSaveCount = 1;
     },
 
     async onceReady(client){
         client.nowalmanax = new Nowalmanax(client);
 
-        cron.schedule('* * * * *', async function() {
-            //Nowalmanax every minutes
+        cron.schedule('0 0 * * *', async function() {
+            //Nowalmanax every midnight
             await client.channels.fetch('780095027828752394')
                 .then(channel => channel.bulkDelete(100));
             client.nowalmanax.advance();
+        });
+
+        cron.schedule('0 */6 * * *', async function() {
+            //Nowalmanax every 6 hours
+            client.execute('auto_save', client);
         });
     },
 
