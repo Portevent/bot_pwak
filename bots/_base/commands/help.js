@@ -1,7 +1,10 @@
 // noinspection SpellCheckingInspection
 module.exports = {
     name: 'help',
-    description: 'Liste des commandes',
+    description: {
+        'fr': 'Liste des commandes',
+        'en': 'Commands list'
+    },
     aliases: ['commands', 'aide', 'ls', 'list', 'liste'],
     usage: '[command name]',
     cooldown: 5,

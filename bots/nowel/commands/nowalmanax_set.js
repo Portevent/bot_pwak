@@ -6,6 +6,8 @@ module.exports = {
         "en": "Set Kwismalmanax to a specific day"
     },
     args: 1,
+    admin: true,
+    deleteAfter: 5000,
     execute(message, args) {
         message.client.nowalmanax.reset(args[0]);
     },
