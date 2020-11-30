@@ -1,16 +1,16 @@
 // noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'drheller',
-    aliases: ['phoreur'],
+    aliases: ['phorreur'],
     description: {
-        "fr": '**phoreur** : Affiche le phoreur du jour',
+        "fr": '**phorreur** : Affiche le phorreur du jour',
         "en": 'Show the drheller of the day'
     },
     execute(message, args) {
         const language = message.client.getLanguage(message.channel);
         message.author.send(
             {
-                "fr": "Phoreur du " + message.client.nowalmanax.day + " Decembre",
+                "fr": "Phorreur du " + message.client.nowalmanax.day + " Decembre",
                 "en": message.client.nowalmanax.day + (message.client.nowalmanax.day===1?"st":(message.client.nowalmanax.day===2?"nd":"th")) + " of December's Drheller"
             }[language]
             + "\n" +
