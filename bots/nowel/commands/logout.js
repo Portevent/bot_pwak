@@ -9,5 +9,6 @@ module.exports = {
     admin: true,
     execute(message, user) {
         message.client.destroy();
+        process.exit(0);
     }
 };
