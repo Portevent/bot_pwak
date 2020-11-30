@@ -222,45 +222,51 @@
   },
   "flag":{
     "name": {
-      "fr": "",
-      "en": ""
+      "fr": "Flags",
+      "en": "Flags"
     },
     "hideInInventory": true,
     "items": [
       {
         "id": "language",
         "name": {
-          "fr" : "language"
+          "fr" : "language",
+          "en" : "language"
         }
       },
       {
         "id" : "quest1_started",
         "name": {
-          "fr" : "quest1_started"
+          "fr" : "quest1_started",
+          "en" : "quest1_started"
         }
       },
       {
         "id" : "quest1_available",
         "name": {
-          "fr" : "quest1_available"
+          "fr" : "quest1_available",
+          "en" : "quest1_available"
         }
       },
       {
         "id" : "quest0_available",
         "name": {
-          "fr" : "quest0_available"
+          "fr" : "quest0_available",
+          "en" : "quest0_available"
         }
       },
       {
         "id" : "bad_karma",
         "name": {
-          "fr" : "bad_karma"
+          "fr" : "bad_karma",
+          "en" : "bad_karma"
         }
       },
       {
         "id" : "nowalmanax_help",
         "name": {
-          "fr" : "nowalmanax_help"
+          "fr" : "nowalmanax_help",
+          "en" : "nowalmanax_help"
         }
       }
     ]
