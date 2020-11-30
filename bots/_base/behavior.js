@@ -42,7 +42,7 @@ module.exports = {
     },
 
     onInvalidCommandRight(message, args, command){
-        message.reply('Droit insuffisant :slight_frown:');
+        message.reply('Droits insuffisants :slight_frown:');
     },
 
     onCommandInvalidDmOnly(message, args, command){
@@ -55,7 +55,7 @@ module.exports = {
 
     
     onCommandInvalidCooldown(message, args, command, timeLeft){
-        message.reply('Merci d\'attendre `' + timeLeft + '` secondes avant de réutiliser `' + command.name + '`');
+        message.reply('Merci d\'attendre `' + timeLeft + '` seconde(s) avant de réutiliser `' + command.name + '`');
     },
 
     onReaction(reaction, user){
@@ -102,7 +102,7 @@ module.exports = {
                 return client.onInvalidCommand(message, args, commandName);
 
             if(command.admin)
-                if(message.author.id !== '214090561055883267' && !message.member.roles.cache.get('78583869720240128'))
+                if(message.author.id !== '214090561055883267' && !message.member.hasPermission('MANAGE_MESSAGES'))
                     return client.onInvalidCommandRight(message, args, commandName);
 
             if (command.guildOnly && message.channel.type === 'dm')

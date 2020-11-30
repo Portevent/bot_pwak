@@ -27,9 +27,9 @@ module.exports = {
                 msg.channel.send(
                     {
                         'fr':
-                            'Voyons les craft : `!craft`\n*🇬🇧 `!english`*',
+                            'Voyons les craft : `' + msg.client.prefix + 'craft`\n*🇬🇧 `' + msg.client.prefix + 'english`*',
                         'en':
-                            "Let's check what we can craft `!craft` \n*🇨🇵 `!francais`*"
+                            "Let's check what we can craft `' + msg.client.prefix + 'craft` \n*🇨🇵 `' + msg.client.prefix + 'francais`*"
                     }[language]);
         });
 

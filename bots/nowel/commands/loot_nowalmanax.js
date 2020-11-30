@@ -38,5 +38,12 @@ module.exports = {
             embed: embed,
         });
 
+        if(!messageReaction.client.inventory.userHasItem(user.id, 'nowalmanax_help')){
+            messageReaction.client.inventory.addItemToUser(user.id, 'nowalmanax_help');
+            user.send({
+                'fr': "Super, tu as capturé ton premier phoreur ! Chaque jour il est possible de trouver un phoreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + messageReaction.client.prefix + "phoreur`.",
+                'en': "Nice, you caught your first drheller ! Each day you can catch a different dhreller. You can check if you found it with `" + messageReaction.client.prefix + "dhreller`.",
+            }[language]);
+        }
     },
 };

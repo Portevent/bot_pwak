@@ -9,9 +9,11 @@ module.exports = {
     guildOnly: true,
     secret: true,
     execute(message, args) {
-        let nb = Math.random() * Math.max(1, 1 + (2 * (5 - message.client.messageSinceLastDrop)));
+        if(!message.client.dropOn) return;
 
-        if(nb < 0.5){
+        let nb = Math.random() * Math.max(1, 1 + (2 * (5 - message.client.messageSinceLastDrop)));
+        console.log(nb);
+        if(nb < 0.2){
             message.client.execute('drop', message, []);
             message.client.messageSinceLastDrop = 0;
         }else{

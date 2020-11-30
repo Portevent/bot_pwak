@@ -51,6 +51,8 @@ class Nowalmanax {
     }
 
     async postToday() {
+        return;
+
         await fetch(this.url, {
             method: 'POST',
             body: JSON.stringify({
@@ -109,9 +111,9 @@ class Nowalmanax {
                     "thumbnail": {
                         "url":  this.images[this.day],
                     }
-            },
-            //files: ['https://cdn.discordapp.com/attachments/770768439773888532/779761054866735124/89045.png']
-        }).then(message => {
+                },
+                //files: ['https://cdn.discordapp.com/attachments/770768439773888532/779761054866735124/89045.png']
+            }).then(message => {
             message.react('🎁');
         });
     }

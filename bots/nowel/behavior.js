@@ -10,6 +10,7 @@ module.exports = {
         client.drop_params = require('../../inventory/drop.json');
         client.items = require('../../inventory/items.json');
         client.onGoingLoot = new Map();
+        client.dropOn = false;
 
         client.messageSinceLastDrop = 0;
         client.autoSaveCount = 1;
@@ -20,13 +21,11 @@ module.exports = {
 
         cron.schedule('0 0 * * *', async function() {
             //Nowalmanax every midnight
-            await client.channels.fetch('780095027828752394')
-                .then(channel => channel.bulkDelete(100));
             client.nowalmanax.advance();
         });
 
-        cron.schedule('0 */6 * * *', async function() {
-            //Nowalmanax every 6 hours
+        cron.schedule('0 */2 * * *', async function() {
+            //Nowalmanax every 2 hours
             client.execute('auto_save', client);
         });
     },

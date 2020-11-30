@@ -17,8 +17,8 @@ module.exports = {
 
         if (!args.length) {
             data.push({
-                'fr':'Liste des commandes (pas encore tout traduit)',
-                'en': 'Command list (pas encore tout traduit)'
+                'fr':'Liste des commandes',
+                'en': 'Commands '
             }[language]);
             commands.map(command => {
                 if(!command.secret && !command.admin){
@@ -30,11 +30,11 @@ module.exports = {
             return message.author.send(data, { split: true })
                 .then(() => {
                     if (message.channel.type === 'dm') return;
-                    message.reply('Je t\'ai envoyé toutes les commandes en message privé !').then(message => message.delete(10000));
+                    message.reply('Je t\'ai envoyé toutes les commandes en message privé !').then(message => message.delete({ timeout: 10000 }));
                 })
                 .catch(error => {
                     console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-                    message.reply('Est ce que je peux t\'envoyer la liste des commandes en message privé ? Il faut que tu les ouvres pour moi :flushed:').then(message => message.delete(10000));
+                    message.reply('Est ce que je peux t\'envoyer la liste des commandes en message privé ? Il faut que tu les ouvres pour moi :flushed:').then(message => message.delete({ timeout: 10000 }));
                 });
         }
 
@@ -42,7 +42,7 @@ module.exports = {
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply('Cette commande n\'existe pas...');
+            return message.reply('Cette commande n\'existe pas...').then(msg => msg.delete({ timeout: 10000 }));
         }
 
         data.push(`**Name:** ${command.name}`);
@@ -54,7 +54,7 @@ module.exports = {
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
         // noinspection JSIgnoredPromiseFromCall
-        message.channel.send(data, { split: true });
+        message.user.send(data, { split: true });
 
     },
 };

@@ -14,7 +14,7 @@
       "en": "Nice ! With that we can catch drhellers !"
     },
     "craftMessage": {
-        "fr": "Si tu croise un phorreur au détour d'un de tes messages, capture le !",
+        "fr": "Si tu croises un phorreur au détour d'un de tes messages, capture le !",
         "en": "If you encounter a drheller on your message, catch it !"
     },
     "craftMessageLink": "https://cdn.discordapp.com/attachments/781503539142459452/781937835698814976/Phorreur.png"
@@ -67,8 +67,8 @@
     "craftBonus": "kamas_argent",
     "craftBonusQuantity": 5,
     "craftSucces": {
-      "fr": "Super, avec ça nous allons pouvoir réchauffer les coeurs et allumer une étoile de Nowel !",
-      "en": "Nice, with that we can bring magic in the place (I'm tired, pls help me with translation) !"
+      "fr": "Super, avec ça nous allons pouvoir réchauffer les cœurs et allumer une étoile de Nowel !",
+      "en": "Nice, with that we can bring magic in the place !"
     }
   },
   "quete1": {

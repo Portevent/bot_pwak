@@ -69,7 +69,15 @@ for(const bot of bots){
         try{
             if (!client.webhooks.has(channel.id)) {
                 const webhooks = await channel.fetchWebhooks();
-                client.webhooks.set(channel.id, webhooks.first());
+                if(webhooks.size < 1){
+                    await channel.createWebhook('Nowel', {
+                        avatar: 'https://cdn.discordapp.com/attachments/770768439773888532/770773660277145640/89002.png',
+                    }).then(webhook => {
+                        client.webhooks.set(channel.id, webhook)
+                    }).catch(console.error);
+                }else{
+                    client.webhooks.set(channel.id, webhooks.first());
+                }
             }
 
             const webhook = client.webhooks.get(channel.id);

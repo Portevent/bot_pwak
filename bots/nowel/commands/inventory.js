@@ -3,7 +3,7 @@ module.exports = {
     name: 'inventory',
     aliases: ['inventaire', 'i'],
     description: {
-        "fr": "Affiche l'inventaire",
+        "fr": "**inventaire** : Affiche l'inventaire",
         "en": "Display the inventory"
     },
     execute(message, args) {
