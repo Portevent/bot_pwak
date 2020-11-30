@@ -12,6 +12,7 @@ module.exports = {
         if(!message.client.dropOn) return;
 
         let nb = Math.random() * Math.max(1, 1 + (2 * (5 - message.client.messageSinceLastDrop)));
+        console.log(nb);
         if(nb < 0.2){
             message.client.execute('drop', message, []);
             message.client.messageSinceLastDrop = 0;
