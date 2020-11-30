@@ -43,7 +43,7 @@ module.exports = {
             const drop = Drop.getByName(reaction.message.author.username);
 
             reaction.users.fetch().then(users => {
-                console.log("Opening gift : " + users.size + ' VS ' + drop.min);
+                // console.log("Opening gift : " + users.size + ' VS ' + drop.min);
                 if(users.size >= drop.min){
                     if(reaction.message.client.onGoingLoot.has(reaction.message.id)){
                         return;

@@ -108,7 +108,7 @@ class Inventory {
         }
 
         fs.writeFile("./inventory/saves/" + filename + ".json", JSON.stringify(obj, null, 4), err => {
-            if(err) console.log(err)
+            if(err) console.error(err)
         });
     }
 
