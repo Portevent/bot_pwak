@@ -85,7 +85,7 @@ module.exports = {
         else {
             if(reaction.message.client.inventory.userExists(user.id)){
                 reaction.message.client.nowalmanax.reactionValidateQuest(reaction, user);
-                message.client.execute('check_fairy_drop', reaction, user);
+                reaction.message.client.execute('check_fairy_drop', reaction, user);
             }
         }
     },

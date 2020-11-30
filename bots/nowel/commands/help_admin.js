@@ -13,6 +13,7 @@ module.exports = {
     deleteAfter: 5000,
     execute(message, args) {
         //TODO : Enhance the function
+        const language = message.client.getLanguage(message.channel);
         const data = [];
         const { commands } = message.client;
 
@@ -20,10 +21,10 @@ module.exports = {
             data.push('Here\'s a list of all my commands:');
             commands.map(command => {
                 if(command.admin ){
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description);
+                    data.push('\n🔴__' + command.name + '__ : ' + command.description[language]);
                 }
             })
-            data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+            data.push('\nYou can send \`' + message.client.prefix + 'help [command name]\` to get info on a specific command!');
 
             return message.author.send(data, { split: true })
                 .then(() => {
