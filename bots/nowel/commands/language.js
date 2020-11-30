@@ -23,7 +23,7 @@ module.exports = {
 
 
         if(message.channel.type !== "dm"){
-            message.delete(5000);
+            message.delete({ timeout: 10000 });
         }
     },
 };
