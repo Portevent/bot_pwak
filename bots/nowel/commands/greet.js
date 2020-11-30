@@ -13,12 +13,10 @@ module.exports = {
         user.send(
             {
                 'fr':
-                    'Salut ! Je suis Pikpik, le futur bot de nowel.\n' +
-                    'Mais je vais sans doute me faire remplacer par un personnage plus charismatique...\n' +
-                    'Comme tu peux le voir c\'est Nowel ! Il y a plein de truc à faire, et on a besoin de toi ;)\n',
+                    'Salut ! Je suis Pikpik, le Sapik de Nowel.\n' +
+                    'Comme tu peux le voir, la fin de l\'année approche ! Il y a plein de trucs à faire, et on a besoin de toi ;)\n',
                 'en':
-                    "Hey ! I'm Pikpik the futur Kwismas bot\n" +
-                    "Blabla bla bla\n" +
+                    "Hey ! I'm Pikpik !\n" +
                     "It is Kwismas ! There is plenty of things to do, and we need you !"
             }[language],
             {
@@ -27,9 +25,9 @@ module.exports = {
                 msg.channel.send(
                     {
                         'fr':
-                            'Voyons les craft : `' + msg.client.prefix + 'craft`\n*🇬🇧 `' + msg.client.prefix + 'english`*',
+                            'Voyons les crafts : `' + msg.client.prefix + 'craft`\n*🇬🇧 `' + msg.client.prefix + 'english`*',
                         'en':
-                            "Let's check what we can craft `' + msg.client.prefix + 'craft` \n*🇨🇵 `' + msg.client.prefix + 'francais`*"
+                            "Let's check what we can craft `" + msg.client.prefix + "craft` \n*🇨🇵 `" + msg.client.prefix + "francais`*"
                     }[language]);
         });
 
