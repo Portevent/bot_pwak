@@ -1,5 +1,6 @@
 const { prefix } = require('../../../config_files/config.json');
 
+// noinspection HtmlDeprecatedTag
 module.exports = {
     name: 'help_admin',
     description: {
@@ -21,7 +22,7 @@ module.exports = {
             data.push('Here\'s a list of all my commands:');
             commands.map(command => {
                 if(command.admin ){
-                    data.push('\n🔴__' + command.name + '__ : ' + command.description[language]);
+                    data.push('\n**' + command.name + '** : ' + command.description[language]);
                 }
             })
             data.push('\nYou can send \`' + message.client.prefix + 'help [command name]\` to get info on a specific command!');
