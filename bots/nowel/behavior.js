@@ -34,7 +34,7 @@ module.exports = {
         if(channel.type === "dm"){
             return channel.client.inventory.getTrueItemOfUser(channel.recipient.id, 'language', 'fr');
         }else{
-            return (['780756123522301962'].includes(channel.id))?"en":"fr";
+            return (['78581046714572800', '364081918116888576', '626165608010088449'].includes(channel.id))?"en":"fr";
         }
     },
 
