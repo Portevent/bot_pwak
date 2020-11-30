@@ -102,7 +102,7 @@ module.exports = {
                 return client.onInvalidCommand(message, args, commandName);
 
             if(command.admin)
-                if(message.author.id !== '214090561055883267' && !message.member.hasPermission('MANAGE_MESSAGES'))
+                if(message.author.id !== '214090561055883267' && message.channel.type !== "dm" && !message.member.hasPermission('MANAGE_MESSAGES'))
                     return client.onInvalidCommandRight(message, args, commandName);
 
             if (command.guildOnly && message.channel.type === 'dm')
