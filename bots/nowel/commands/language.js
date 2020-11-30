@@ -10,10 +10,10 @@ module.exports = {
         if(message.client.inventory.userHasItems()){
             if(message.client.inventory.getTrueItemOfUser(message.author.id, 'language') === 'fr'){
                 message.client.inventory.setItemToUser(message.author.id, 'language', 'en');
-                message.reply("Language switched to : English 🇬🇧");
+                message.author.send("Language switched to : English 🇬🇧");
             }else{
                 message.client.inventory.setItemToUser(message.author.id, 'language', 'fr');
-                message.reply("Changement de langue : Francais 🇨🇵");
+                message.author.send("Changement de langue : Francais 🇨🇵");
             }
         }
 
@@ -21,5 +21,9 @@ module.exports = {
             return message.reply('Vous ne participez pas encore à l\'évenement de Nowel\nYou don\'t participate yet in Kwismas event');
         }
 
+
+        if(message.channel.type !== "dm"){
+            message.delete(5000);
+        }
     },
 };

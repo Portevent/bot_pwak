@@ -91,12 +91,14 @@ module.exports = {
     },
 
     onUserMessage(message){
-        message.client.execute('attempt_drop', message, []);
-        if(message.client.inventory.userHasItem(message.author.id, "drhellers_net")) {
-            message.client.nowalmanax.attemptNowalmanaxDrop(message);
-        }
-        if(message.client.inventory.userHasItem(message.author.id, "quete1")) {
-            message.client.execute('attempt_fairy_drop', message, []);
+        if(['780756123522301962', '780171576381276231', '774531283426213898', '78581046714572800', '364081918116888576', '626165608010088449', '297779639609327617', '364086525799038976', '626165637252907045'].includes(message.channel.id)){
+            message.client.execute('attempt_drop', message, []);
+            if(message.client.inventory.userHasItem(message.author.id, "drhellers_net")) {
+                message.client.nowalmanax.attemptNowalmanaxDrop(message);
+            }
+            if(message.client.inventory.userHasItem(message.author.id, "quete1")) {
+                message.client.execute('attempt_fairy_drop', message, []);
+            }
         }
     },
 

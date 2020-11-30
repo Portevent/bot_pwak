@@ -76,5 +76,10 @@ module.exports = {
         else{
             message.client.sendWebhook(message.channel, webhook);
         }
+
+
+        if(message.channel.type !== "dm"){
+            message.delete(5000);
+        }
     },
 };

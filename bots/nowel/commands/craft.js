@@ -13,6 +13,7 @@ module.exports = {
 
         const recipes = Craft.getRecipeFor(message.client.inventory, message.author.id);
 
+
         if(recipes.length < 1) {
             message.author.send({
                 "fr": "Je n'ai plus rien à te proposer",
@@ -30,6 +31,11 @@ module.exports = {
                     n_message.react('🛠️');
                 }
             })
+        }
+
+
+        if(message.channel.type !== "dm"){
+            message.delete(5000);
         }
     },
 };
