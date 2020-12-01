@@ -17,8 +17,8 @@ module.exports = {
             ((message.client.nowalmanax.usersDroppedMention.has(message.author.id))
             ?
             {
-                "fr": "Trouvé (si tu ne l'as pas encore attrapé, c'est que tu l'as sûrement raté. Reviens sur tes pas.)",
-                "en": "Found (if you haven't catch if yet, you must have missed it.)"
+                "fr": "**Trouvé** \n*(si tu ne l'as pas encore attrapé, c'est que tu l'as sûrement raté. Reviens sur tes pas.)*",
+                "en": "**Found** \n*(if you haven't catch if yet, you must have missed it.)*"
             }[language]
             :
             {

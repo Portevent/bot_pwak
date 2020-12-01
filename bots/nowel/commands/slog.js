@@ -4,7 +4,7 @@ module.exports = {
     name: 'slog',
     description: {
         "fr": "Affiche les logs (short)",
-        "en": "Show log (short"
+        "en": "Show log (short)"
     },
     admin: true,
     execute(message, args) {
