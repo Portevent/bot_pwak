@@ -8,7 +8,7 @@ module.exports = {
     },
     admin: true,
     execute(message, args) {
-        let log = require("./log.log");
+        let log = require("./../log.log");
         message.author.send(log);
     },
 };
