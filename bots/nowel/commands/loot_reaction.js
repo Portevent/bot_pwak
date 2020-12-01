@@ -52,9 +52,9 @@ module.exports = {
         }, messageReaction.message.id);
         await messageReaction.message.reactions.removeAll();
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id));
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => console.log('Erreur while fetching members : ' + users.map(user => user.id) + ' : \n ' + err ));
         for(user of messageReaction.message.client.inventory.inventory.keys()) {
-            messageReaction.message.client.users.fetch(user);
+            messageReaction.message.client.users.fetch(user).catch(err => console.log('Erreur while fetching user : ' + users.id + ' : \n ' + err ));
         }
 
     },
