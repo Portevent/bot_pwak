@@ -1,18 +1,20 @@
 // noinspection JSUnusedLocalSymbols
 module.exports = {
-    name: 'inventory',
-    aliases: ['inventaire', 'i'],
+    name: 'sinventory',
+    aliases: ['sinventaire', 'si'],
     description: {
-        "fr": "**inventaire** : Affiche l'inventaire",
-        "en": "Display the inventory"
+        "fr": "**inventaire** : Affiche l'inventaire d'un joueur (avec son ID)",
+        "en": "Display someone inventory (based on id)"
     },
-    delete: true,
-    execute(message, args) {
+    admin: true,
+    args: 1,
+    async execute(message, args) {
 
 
-        const userId = message.author.id;
-        const userName = message.author.username;
-        const userAvatar = message.author.avatarURL();
+        const userId = args[0];
+        const user = await message.client.users.fetch(userId);
+        const userName = user.username;
+        const userAvatar = user.avatarURL();
         const inventory = message.client.inventory.getInventoryOfUser(userId);
 
         const language = message.client.getLanguage(message.channel);

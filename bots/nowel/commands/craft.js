@@ -8,6 +8,7 @@ module.exports = {
         "en": "Show craft recipes"
     },
     cooldown: 2,
+    delete: true,
     execute(message, args) {
         const language = message.client.getLanguage(message.channel);
 
@@ -31,11 +32,6 @@ module.exports = {
                     n_message.react('🛠️');
                 }
             })
-        }
-
-
-        if(message.channel.type !== "dm"){
-            message.delete({ timeout: 10000 });
         }
     },
 };
