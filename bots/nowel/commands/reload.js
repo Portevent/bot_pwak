@@ -16,12 +16,12 @@ module.exports = {
             delete require.cache[require.resolve(`./${command.name}.js`)];
         }
         try {
-            const newCommand = require(`./${command.name}.js`);
+            const newCommand = require(`./${commandName}.js`);
             message.client.commands.set(newCommand.name, newCommand);
-            message.channel.send(`Command \`${command.name}\` was reloaded!`);
+            message.channel.send(`Command \`${commandName}\` was reloaded!`);
         } catch (error) {
             console.error(error);
-            message.channel.send(`There was an error while reloading a command \`${command.name}\`:\n\`${error.message}\``);
+            message.channel.send(`There was an error while reloading a command \`${commandName}\`:\n\`${error.message}\``);
         }
 
     },
