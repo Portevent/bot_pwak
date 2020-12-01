@@ -51,7 +51,7 @@ module.exports = {
                     // noinspection JSIgnoredPromiseFromCall
                     reaction.message.react('🥁');
                     let timer = setTimeout(() => {
-                        reaction.message.client.execute('loot_reaction', reaction);
+                        reaction.message.client.execute('loot_reaction', reaction, users);
                     }, 5*1000);
                     reaction.message.client.onGoingLoot.set(reaction.message.id, timer);
                 }

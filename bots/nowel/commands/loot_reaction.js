@@ -7,10 +7,9 @@ module.exports = {
     },
     secret: true,
     locked: true,
-    async execute(messageReaction, args) {
+    async execute(messageReaction, users) {
         const language = messageReaction.message.client.getLanguage(messageReaction.message.channel);
 
-        let users = await messageReaction.users.fetch();
         let messages = await messageReaction.message.channel.messages.fetch({ limit: 10 })
 
         users.delete(messageReaction.message.client.user.id);
