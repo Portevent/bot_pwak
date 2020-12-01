@@ -46,11 +46,7 @@ module.exports = {
 
             for(let item of inventory[category].items){
                 if(item.quantity !== 0) {
-                    if (inventory[category].displayFullNameInInventory) {
-                        text += item.emoji + item.name[language] + (item.quantity > 1 ? ' (' + item.quantity + ')' : '') + "\n";
-                    } else {
-                        text += item.emoji + " : " + item.quantity + "\n";
-                    }
+                    text += item.emoji + item.name[language] + (item.quantity > 1 ? ' (' + item.quantity + ')' : '') + "\n";
                 }
             }
 
