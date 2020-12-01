@@ -8,14 +8,17 @@ module.exports = {
     admin: true,
     async execute(message, args) {
         let bonus = 1;
-        let users = new Map();
-        users.set(message.author.id, message.author);
+        let users;
 
         if(args && args.length && args.length > 0){
             bonus = args[0]
         }
+
         if(args && args.length && args.length > 1){
             users = args[1];
+        }else{
+            let users = new Map();
+            users.set(message.author.id, message.author);
         }
 
         let loot = Loot.getLoot(bonus, bonus);
