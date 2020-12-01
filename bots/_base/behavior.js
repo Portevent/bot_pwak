@@ -13,7 +13,7 @@ module.exports = {
     },
 
     onCommand(message, args, commandName){
-        console.log("<#" + message.channel.id + "> <@" + message.author.id + "> " + commandName + " : " + args);
+        console.log("<#" + message.channel.id + "> <@" + message.author.id + "> " + commandName + ' : ' + args);
         message.client.execute(commandName, message, args);
     },
 
@@ -73,7 +73,6 @@ module.exports = {
     },
 
     onMessage(message) {
-        console.log("Traitement de : <#" + message.channel.id + "> <@" + message.author.id + "> : " + message.content);
         const client = message.client
         if(message.author.id === client.user.id) return client.onOwnMessage(message);
         

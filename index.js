@@ -47,9 +47,6 @@ for(const bot of bots){
     });
 
     client.execute = function execute(commandName, message, args = []){
-        if(message.channel){
-            console.log("<#" + message.channel.id + "> <@" + message.author.id + "> " + commandName + " : " + args);
-        }
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         if(command === undefined){
             return console.error("Error " + commandName + " introuvable !");
