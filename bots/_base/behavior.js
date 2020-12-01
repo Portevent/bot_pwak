@@ -13,7 +13,7 @@ module.exports = {
     },
 
     onCommand(message, args, commandName){
-        console.log(message.author.username + "(" + message.author.id + ") execute la commande " + commandName + " : " + args);
+        console.log("<# " + message.channel.id + "> <@" + message.author.id + "> " + commandName + " : " + args);
         message.client.execute(commandName, message, args);
     },
 
