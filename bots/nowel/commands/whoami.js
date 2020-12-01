@@ -6,7 +6,7 @@ module.exports = {
     },
     admin: true,
     execute(message, args) {
-        message.reply('User id : ' + message.user.id);
-        message.reply('User username : ' + message.user.username);
+        message.reply('User id : ' + message.author.id);
+        message.reply('User username : ' + message.author.username);
     },
 };
