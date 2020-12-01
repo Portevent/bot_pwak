@@ -2,8 +2,8 @@ const Loot = require('../../../inventory/loot.js');
 module.exports = {
     name: 'loot',
     description: {
-        "fr": "Génère un loot",
-        "en": "Generate a loot"
+        "fr": "Génère un loot (non utilisable manuellement)",
+        "en": "Generate a loot (bot only)"
     },
     admin: true,
     async execute(message, args) {
@@ -17,14 +17,14 @@ module.exports = {
         if(args && args.length && args.length > 1){
             users = args[1];
         }else{
-            let users = new Map();
+            users = new Map();
             users.set(message.author.id, message.author);
         }
 
         let loot = Loot.getLoot(bonus, bonus);
 
         for(let user of users.values()){
-            message.client.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (user.ownBonus || 1)));
+            message.client.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
         }
 
         return loot;
