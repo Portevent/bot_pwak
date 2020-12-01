@@ -108,7 +108,14 @@ class Inventory {
         }
 
         fs.writeFile("./inventory/saves/" + filename + ".json", JSON.stringify(obj, null, 4), err => {
-            if(err) console.error(err)
+            if(err){
+                console.log(err);
+                fs.writeFile("./inventory/saves/" + filename + ".error", err, err2 => {
+                    if(err2){
+                        console.log(err2);
+                    }
+                });
+            }
         });
     }
 
