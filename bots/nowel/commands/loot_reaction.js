@@ -53,6 +53,9 @@ module.exports = {
         await messageReaction.message.reactions.removeAll();
 
         messageReaction.message.guild.members.fetch(users.map(user => user.id));
+        for(user of messageReaction.message.client.inventory.inventory.keys()) {
+            messageReaction.message.client.users.fetch(user);
+        }
 
     },
 };
