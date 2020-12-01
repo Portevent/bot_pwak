@@ -54,7 +54,7 @@ module.exports = {
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
         // noinspection JSIgnoredPromiseFromCall
-        message.user.send(data, { split: true });
+        message.author.send(data, { split: true });
 
     },
 };
