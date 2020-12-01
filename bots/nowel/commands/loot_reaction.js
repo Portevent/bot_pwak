@@ -7,11 +7,12 @@ module.exports = {
     },
     secret: true,
     locked: true,
-    async execute(messageReaction, users) {
+    async execute(messageReaction, arg) {
         const language = messageReaction.message.client.getLanguage(messageReaction.message.channel);
 
         let messages = await messageReaction.message.channel.messages.fetch({ limit: 10 })
-
+        let users = await messageReaction.users.fetch();
+        console.log("Looting gift : " + users.map(user => user.username + ' '));
         users.delete(messageReaction.message.client.user.id);
 
         let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
