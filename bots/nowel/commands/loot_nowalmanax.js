@@ -42,7 +42,7 @@ module.exports = {
             messageReaction.client.inventory.addItemToUser(user.id, 'nowalmanax_help');
             user.send({
                 'fr': "Super, tu as capturé ton premier phorreur ! Chaque jour il est possible de trouver un phorreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + messageReaction.client.prefix + "phorreur`.",
-                'en': "Nice, you caught your first drheller ! Each day you can catch a different dhreller. You can check if you found it with `" + messageReaction.client.prefix + "dhreller`.",
+                'en': "Nice, you caught your first drheller ! Each day you can catch a different drheller. You can check if you found it with `" + messageReaction.client.prefix + "drheller`.",
             }[language]);
         }
     },
