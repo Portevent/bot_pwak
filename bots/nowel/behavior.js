@@ -32,11 +32,11 @@ module.exports = {
     },
 
     logError(err){
-        this.debbuger.send(err);
+        this.debbuger.send("Error " + err);
     },
 
     logErrorMsg(err, msg){
-        this.debbuger.send(err, {
+        this.debbuger.send("Error " + err, {
             'embed': {
                 "description": msg.content,
                 "author": {
