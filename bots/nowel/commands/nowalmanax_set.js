@@ -10,7 +10,7 @@ module.exports = {
     admin: true,
     delete: true,
     execute(message, args) {
-        message.client.nowalmanax.reset(args[0]);
+        message.client.nowalmanax.reset(Number(args[0]));
         message.reply('Day set to ' + message.client.nowalmanax.day);
     },
 };
