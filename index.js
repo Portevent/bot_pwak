@@ -6,8 +6,9 @@ console.log('Launching ...');
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
-    console.log('Launching bot ' + bot.token);
+    console.log('Launching bot . ' + bot.token);
     const client = new Discord.Client({ ws: { intents: 'GUILD_MEMBERS' }});
+    console.log('Launching bot - ' + bot.token);
     client.prefix = bot.prefix
     client.type = bot.type
     client.token = bot.token
