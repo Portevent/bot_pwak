@@ -33,6 +33,7 @@ module.exports = {
             client.execute('auto_save', client);
         });
         console.log('Ready !');
+        client.debbuger.send('AAA');
     },
 
     logError(err){
