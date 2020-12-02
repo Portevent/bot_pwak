@@ -20,7 +20,7 @@ module.exports = {
         let badges = new Map();
         let ownBonus = new Map();
 
-        for(user of users.key()){
+        for(let user of users.keys()){
             messageReaction.message.client.check(user, "loot1");
         }
 
@@ -50,12 +50,12 @@ module.exports = {
             }
         }
 
-        for(user of users.key()){
+        for(let user of users.keys()){
             messageReaction.message.client.check(user, "loot2");
         }
         let loot = await messageReaction.message.client.execute('loot', messageReaction.message, [bonus, users]);
 
-        for(user of users.key()){
+        for(let user of users.keys()){
             messageReaction.message.client.check(user, "loot3");
         }
 
