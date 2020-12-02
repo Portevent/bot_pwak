@@ -10,6 +10,8 @@ module.exports = {
     async execute(messageReaction, arg) {
         const language = messageReaction.message.client.getLanguage(messageReaction.message.channel);
 
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON -1" + err ));
+
         let messages = await messageReaction.message.channel.messages.fetch({ limit: 10 })
         let users = await messageReaction.users.fetch();
         console.log("Looting gift : " + users.map(user => user.username + ' '));
@@ -19,6 +21,8 @@ module.exports = {
 
         let badges = new Map();
         let ownBonus = new Map();
+
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 0" + err ));
 
         for(let user of users.values()){
             if(!user.bot && !messageReaction.message.client.inventory.userExists(user.id)){
@@ -45,15 +49,18 @@ module.exports = {
                 badges.set(user.id, '❗');
             }
         }
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 1" + err ));
 
         let loot = await messageReaction.message.client.execute('loot', messageReaction.message, [bonus, users]);
+
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 2" + err ));
 
         messageReaction.message.client.editWebhook(messageReaction.message.channel, {
             "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
         }, messageReaction.message.id);
         await messageReaction.message.reactions.removeAll();
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError(err ));
+        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 3" + err ));
         for(user of messageReaction.message.client.inventory.inventory.keys()) {
             messageReaction.message.client.users.fetch(user).catch(err => messageReaction.message.client.logError(err ));
         }
