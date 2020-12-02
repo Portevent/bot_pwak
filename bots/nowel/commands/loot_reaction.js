@@ -20,7 +20,9 @@ module.exports = {
         let badges = new Map();
         let ownBonus = new Map();
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 0" + err ));
+        for(user of users.key()){
+            messageReaction.message.client.check(user, "loot1");
+        }
 
         for(let user of users.values()){
             if(!user.bot && !messageReaction.message.client.inventory.userExists(user.id)){
@@ -47,21 +49,21 @@ module.exports = {
                 badges.set(user.id, '❗');
             }
         }
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 1" + err ));
 
+        for(user of users.key()){
+            messageReaction.message.client.check(user, "loot2");
+        }
         let loot = await messageReaction.message.client.execute('loot', messageReaction.message, [bonus, users]);
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 2" + err ));
+        for(user of users.key()){
+            messageReaction.message.client.check(user, "loot3");
+        }
 
         messageReaction.message.client.editWebhook(messageReaction.message.channel, {
             "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
         }, messageReaction.message.id);
         await messageReaction.message.reactions.removeAll();
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON 3" + err ));
-        for(user of messageReaction.message.client.inventory.inventory.keys()) {
-            messageReaction.message.client.users.fetch(user).catch(err => messageReaction.message.client.logError(err ));
-        }
 
     },
 };
