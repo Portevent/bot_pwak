@@ -57,6 +57,8 @@ module.exports = {
             if(user){
                 if(user.id !== userId){
                     this.logError("Mauvais fetch sur " + userId + " (considéré comme " + user.id + ") " + txt);
+                }else{
+                    this.logError("Bon fetch sur " + userId + " (bu lu comme " + user.id + ") " + txt)
                 }
             }else{
                 this.logError("Can't fetch " + userId);
