@@ -7,7 +7,7 @@ module.exports = {
     admin: true,
     args: 1,
     async execute(message, args) {
-        message.client.user.fetch(args[0]).then(user => {
+        message.client.users.fetch(args[0]).then(user => {
             message.reply('', {
                 'embed': {
                     "description": args[0] + ' : ' + user.id,
