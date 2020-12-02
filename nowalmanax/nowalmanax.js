@@ -130,7 +130,7 @@ class Nowalmanax {
     import(filename = "save"){
         try{
             this.usersDroppedMention = new Map(Object.entries(require("./saves/" + filename + ".json")));
-            this.day = this.usersDroppedMention.get('day');
+            this.day = this.usersDroppedMention.get("day");
             return 0;
         }catch(e){
             return e;
