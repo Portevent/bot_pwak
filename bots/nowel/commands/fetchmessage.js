@@ -9,6 +9,6 @@ module.exports = {
     delete: true,
     args: 1,
     execute(message, args) {
-        message.channel.messages.fetch(args[0]);
+        message.channel.messages.fetch(args[0]).catch(e => message.client.logErrorMsg(e, message));
     },
 };
