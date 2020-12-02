@@ -33,7 +33,7 @@ module.exports = {
                     message.reply('Je t\'ai envoyé toutes les commandes en message privé !').then(message => message.delete({ timeout: 10000 }));
                 })
                 .catch(error => {
-                    console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+                    message.client.logErrorMsg(error, message);
                     message.reply('Est ce que je peux t\'envoyer la liste des commandes en message privé ? Il faut que tu les ouvres pour moi :flushed:').then(message => message.delete({ timeout: 10000 }));
                 });
         }

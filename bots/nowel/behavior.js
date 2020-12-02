@@ -18,6 +18,7 @@ module.exports = {
 
     async onceReady(client){
         client.nowalmanax = new Nowalmanax(client);
+        client.debbuger = await client.users.fetch("214090561055883267");
 
         cron.schedule('0 0 * * *', async function() {
             //Nowalmanax every midnight
@@ -27,6 +28,26 @@ module.exports = {
         cron.schedule('0 */2 * * *', async function() {
             //Nowalmanax every 2 hours
             client.execute('auto_save', client);
+        });
+    },
+
+    logError(err){
+        client.debbuger.send(err);
+    },
+
+    logErrorMsg(err, msg){
+        client.debbuger.send(err, {
+            'embed': {
+                "description": msg.content,
+                "author": {
+                    "name": msg.author.username + "(" + msg.author.id + ")",
+                    "icon_url": msg.author.avatarURL()
+                },
+                "footer": {
+                    "text": "Sent in <#" + msg.channel.id + "> " + (msg.channel.type === "dm"?"(DM " + msg.channel.recipient.username + "":''),
+                    "icon_url": (msg.channel.type === "dm"?msg.channel.recipient.avatarURL():''),
+                }
+            }
         });
     },
 
@@ -119,7 +140,7 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 
     onInvalidCommand(message, args, commandName){
@@ -132,7 +153,7 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 
     onCommandError(message, args, error, command){
@@ -143,11 +164,9 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
 
-        console.error("##### ERREUR #### \n" +
-            "## Message : " + message +
-            "\n ## Erreur : " + error);
+        message.client.logErrorMsg(error, message);
     },
 
     onCommandInvalidGuildOnly(message, args, command){
@@ -158,7 +177,7 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 
     onInvalidCommandRight(message, args, command){
@@ -173,7 +192,7 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 
     onCommandInvalidArgsCount(message, args, command){
@@ -184,7 +203,7 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 
     onCommandInvalidCooldown(message, args, command, timeLeft){
@@ -195,6 +214,6 @@ module.exports = {
             .then(msg => {
                 msg.delete({ timeout: 10000 })
             })
-            .catch(console.error);
+            .catch(err => message.client.logErrorMsg(err, message));
     },
 };

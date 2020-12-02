@@ -35,7 +35,7 @@ module.exports = {
                     });
                 })
                 .catch(error => {
-                    console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+                    message.client.logErrorMsg(error, message);
                     message.reply('it seems like I can\'t DM you! Do you have DMs disabled?').then(msg => {
                         msg.delete(5000);
                     });

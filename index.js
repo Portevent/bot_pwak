@@ -49,7 +49,7 @@ for(const bot of bots){
     client.execute = function execute(commandName, message, args = []){
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         if(command === undefined){
-            return console.error("Error " + commandName + " introuvable !");
+            return client.logErrorMsg("Error : UNKNOWN COMMAND " + commandName, message);
         }
         return command.execute(message, args);
     }
@@ -75,7 +75,7 @@ for(const bot of bots){
                         avatar: 'https://cdn.discordapp.com/attachments/770768439773888532/770773660277145640/89002.png',
                     }).then(webhook => {
                         client.webhooks.set(channel.id, webhook)
-                    }).catch(console.error);
+                    }).catch(err => client.logError(err));
                 }else{
                     client.webhooks.set(channel.id, webhooks.first());
                 }
@@ -92,7 +92,7 @@ for(const bot of bots){
             });
 
         }catch(error){
-            console.error('Error trying to send webhook: ', error);
+            client.logError(error);
         }
     }
 
@@ -109,7 +109,7 @@ for(const bot of bots){
             });
 
         }catch(error){
-            console.error('Error trying to send webhook: ', error);
+            client.logError(error);
         }
     }
 
@@ -126,7 +126,7 @@ for(const bot of bots){
                 }});
 
         }catch(error){
-            console.error('Error trying to send webhook: ', error);
+            client.logError(error);
         }
     }
 
@@ -141,7 +141,7 @@ for(const bot of bots){
                 }});
 
         }catch(error){
-            console.error('Error trying to edit webhook: ', error);
+            client.logError(error);
         }
     }
 

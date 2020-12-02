@@ -32,9 +32,7 @@ module.exports = {
         
         message.channel.send('Erreur lors de l\'éxécution de ' + command.name + '\n' + error);
         
-        console.error("##### ERREUR #### \n" +
-            "## Message : " + message +
-            "\n ## Erreur : " + error);
+        message.client.logErrorMsg(error, message);
     },
 
     onCommandInvalidGuildOnly(message, args, command){
@@ -148,12 +146,11 @@ module.exports = {
                     try{
                         message.delete({ timeout: command.deleteAfter || 0 });
                     }catch (e){
-                        console.error("Trying to delete " + message.id);
-                        console.error(error);
+                        message.client.logErrorMsg(error, message);
                     }
                 }
             } catch (error) {
-                console.error(error);
+                client.logErrorMsg(error, message);
                 client.onCommandError(message, args, error, command);
             }
         }

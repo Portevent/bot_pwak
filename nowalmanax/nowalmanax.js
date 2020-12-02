@@ -120,7 +120,9 @@ class Nowalmanax {
 
     export(filename = "save"){
         fs.writeFile("./nowalmanax/saves/" + filename + ".json", JSON.stringify(Object.fromEntries(this.usersDroppedMention), null, 4), err => {
-            if(err) console.error(err)
+            if(err) {
+                console.log(err);
+            }
         });
     }
 
