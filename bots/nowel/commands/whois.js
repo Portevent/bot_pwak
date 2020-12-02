@@ -7,15 +7,16 @@ module.exports = {
     admin: true,
     args: 1,
     async execute(message, args) {
-        const user = await message.client.user.fetch(args[0]);
-        message.reply('', {
-            'embed': {
-                "description": args[0] + ' : ' + user.id,
-                "author": {
-                    "name": user.username,
-                    "icon_url": user.avatarURL()
+        message.client.user.fetch(args[0]).then(user => {
+            message.reply('', {
+                'embed': {
+                    "description": args[0] + ' : ' + user.id,
+                    "author": {
+                        "name": user.username,
+                        "icon_url": user.avatarURL()
+                    }
                 }
-            }
+            })
         })
     },
 };
