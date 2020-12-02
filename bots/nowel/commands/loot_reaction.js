@@ -37,9 +37,17 @@ module.exports = {
                 messageReaction.message.client.execute('greet', messageReaction.message, user);
             }
 
+            for(let user2 of users.keys()){
+                await messageReaction.message.client.check(user2, "loot1--|" + user.id);
+            }
+
             if(messageReaction.message.client.inventory.userHasItem(user.id, 'quete1')){
                 badges.set(user.id, '<:etoile:780851276094767104>');
                 bonus += 0.2;
+            }
+
+            for(let user2 of users.keys()){
+                await messageReaction.message.client.check(user2, "loot1--|-" + user.id);
             }
 
             let bad_karmas = 1;
@@ -50,11 +58,19 @@ module.exports = {
                 }
             }
 
+            for(let user2 of users.keys()){
+                await messageReaction.message.client.check(user2, "loot1--|--" + user.id);
+            }
+
             bad_karmas = messageReaction.message.client.inventory.safeAddItemToUser(user.id, 'bad_karma', -2);
 
             if(bad_karmas >= 10){
                 ownBonus.set(user.id, 0.1);
                 badges.set(user.id, '❗');
+            }
+
+            for(let user2 of users.keys()){
+                await messageReaction.message.client.check(user2, "loot1--|--|" + user.id);
             }
         }
 
