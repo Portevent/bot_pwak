@@ -2,18 +2,15 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const {bots} = require('./config_files/config.json');
 const fetch = require('node-fetch');
-console.log('Launching ...');
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
-    console.log('Launching bot . ' + bot.token);
     const intents = new Discord.Intents([
         Discord.Intents.NON_PRIVILEGED, // include all non-privileged intents, would be better to specify which ones you actually need
         "GUILD_MEMBERS", // lets you request guild members (i.e. fixes the issue)
     ]);
     const client = new Discord.Client({ ws: { intents }});
 
-    console.log('Launching bot - ' + bot.token);
     client.prefix = bot.prefix
     client.type = bot.type
     client.token = bot.token
@@ -47,13 +44,9 @@ for(const bot of bots){
     client.setup(client);
 
     // noinspection JSUnusedLocalSymbols
-    client.login(bot.token).then(r => {
-        console.log("Ready soooon... ");
-        console.log("Token : " + r);
-    }).catch(err => console.log(err));
+    client.login(bot.token).catch(err => console.log(err));
 
     client.once('ready', () => {
-        console.log("Ready soooOon... ");
         client.onceReady(client);
     });
 
@@ -66,7 +59,6 @@ for(const bot of bots){
     }
 
     client.on('message', message => {
-        console.log("Message");
         // noinspection JSUnresolvedFunction
         message.client.onMessage(message);
     });
