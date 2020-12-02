@@ -7,7 +7,7 @@ module.exports = {
     admin: true,
     args: 1,
     async execute(message, args) {
-        message.client.check(args[0], 'Manual check');
         message.react('👍');
+        message.client.check(args[0], 'Manual check');
     },
 };
