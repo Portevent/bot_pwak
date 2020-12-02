@@ -8,11 +8,10 @@ module.exports = {
         "en": "Show all inventory"
     },
     admin: true,
-    args: 1,
-    usage: '<max>',
-    execute(message, args) {
+    async execute(message, args) {
 
-        for(let user of message.client.inventory.inventory.keys()){
+        for(let userId of message.client.inventory.inventory.keys())
+            const user = await message.client.users.fetch(userId);
             const userName = user.username;
             const userAvatar = user.avatarURL();
             const inventory = message.client.inventory.getInventoryOfUser(userId);
