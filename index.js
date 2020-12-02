@@ -7,7 +7,12 @@ for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
     console.log('Launching bot . ' + bot.token);
-    const client = new Discord.Client({ ws: { intents: ['GUILD_MEMBERS'] }});
+    const intents = new Discord.Intents([
+        Discord.Intents.NON_PRIVILEGED, // include all non-privileged intents, would be better to specify which ones you actually need
+        "GUILD_MEMBERS", // lets you request guild members (i.e. fixes the issue)
+    ]);
+    const client = new Discord.Client({ ws: { intents }});
+
     console.log('Launching bot - ' + bot.token);
     client.prefix = bot.prefix
     client.type = bot.type
