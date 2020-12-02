@@ -17,6 +17,8 @@ module.exports = {
                     }
                 }
             })
-        })
+        }).catch(
+            err => message.client.logErrorMsg(err, message)
+        )
     },
 };
