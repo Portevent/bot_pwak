@@ -12,6 +12,9 @@ module.exports = {
 
         let messages = await messageReaction.message.channel.messages.fetch({ limit: 10 })
         let users = await messageReaction.users.fetch();
+        for(let user of users.keys()){
+            await messageReaction.message.client.check(user, "loot0");
+        }
         console.log("Looting gift : " + users.map(user => user.username + ' '));
         users.delete(messageReaction.message.client.user.id);
 
@@ -21,7 +24,7 @@ module.exports = {
         let ownBonus = new Map();
 
         for(let user of users.keys()){
-            messageReaction.message.client.check(user, "loot1");
+            await messageReaction.message.client.check(user, "loot1");
         }
 
         for(let user of users.values()){
@@ -51,12 +54,12 @@ module.exports = {
         }
 
         for(let user of users.keys()){
-            messageReaction.message.client.check(user, "loot2");
+            await messageReaction.message.client.check(user, "loot2");
         }
         let loot = await messageReaction.message.client.execute('loot', messageReaction.message, [bonus, users]);
 
         for(let user of users.keys()){
-            messageReaction.message.client.check(user, "loot3");
+            await messageReaction.message.client.check(user, "loot3");
         }
 
         messageReaction.message.client.editWebhook(messageReaction.message.channel, {
