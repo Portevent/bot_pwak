@@ -13,6 +13,7 @@ module.exports = {
     },
 
     onCommand(message, args, commandName){
+        console.log((message.channel.type === "dm"?"DM":"<#" + message.channel.id + ">") + "<@" + message.author.id + "> " + commandName + ": " + args);
         message.client.execute(commandName, message, args);
     },
 
@@ -70,7 +71,8 @@ module.exports = {
     },
 
     onMessage(message) {
-        const client = message.client
+        const client = message.client;
+        if(message.content.startsWith('> ')) return;
         if(message.author.id === client.user.id) return client.onOwnMessage(message);
         
         // Doesn't require to specify the prefix for dm

@@ -131,6 +131,8 @@ class Nowalmanax {
         try{
             this.usersDroppedMention = new Map(Object.entries(require("./saves/" + filename + ".json")));
             this.day = this.usersDroppedMention.get("day");
+            this.emojiId = this.emojis[this.day];
+            this.emoji = this.emojisManager.cache.find(emoji => emoji.id === this.emojiId);
             return 0;
         }catch(e){
             return e;

@@ -55,7 +55,6 @@ for(const bot of bots){
     }
 
     client.on('message', message => {
-        console.log("Message reçu : <#" + message.channel.id + "> <@" + message.author.id + "> : " + message.content);
         // noinspection JSUnresolvedFunction
         message.client.onMessage(message);
     });
