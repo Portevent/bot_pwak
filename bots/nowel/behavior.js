@@ -37,7 +37,7 @@ module.exports = {
 
     logErrorMsg(err, msg){
         this.debbuger.send("Error " + err, {
-            'embed': {
+            embed: {
                 "description": msg.content,
                 "author": {
                     "name": msg.author.username + "(" + msg.author.id + ")",

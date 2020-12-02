@@ -4,9 +4,9 @@ const fs = require("fs");
 class Nowalmanax {
 
     constructor(client) {
-        this.usersDroppedMention = new Map();
         this.client = client;
         this.day = 1;
+        this.usersDroppedMention = new Map();
         this.questItem = 'nowalmanax_star';
 
         this.url = require("./nowalmanax_url.json").url;
@@ -46,6 +46,7 @@ class Nowalmanax {
 
     loadDay(){
         this.usersDroppedMention = new Map();
+        this.usersDroppedMention.set('day', this.day);
         this.emojiId = this.emojis[this.day];
         this.emoji = this.emojisManager.cache.find(emoji => emoji.id === this.emojiId);
     }
@@ -129,6 +130,7 @@ class Nowalmanax {
     import(filename = "save"){
         try{
             this.usersDroppedMention = new Map(Object.entries(require("./saves/" + filename + ".json")));
+            this.day = this.usersDroppedMention.get('day');
             return 0;
         }catch(e){
             return e;

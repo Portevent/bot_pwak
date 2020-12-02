@@ -9,7 +9,7 @@ module.exports = {
     async execute(message, args) {
         message.client.users.fetch(args[0], false, true).then(user => {
             message.reply('', {
-                'embed': {
+                embed: {
                     "description": "Id : " + user.id,
                     "author": {
                         "name": user.username,
