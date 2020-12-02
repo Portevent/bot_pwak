@@ -6,6 +6,7 @@ module.exports = {
     },
     admin: true,
     args: 1,
+    delete: true,
     async execute(message, args) {
         message.client.onGoingLoot.delete(args[0]);
     },
