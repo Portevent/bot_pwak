@@ -5,7 +5,7 @@ class Nowalmanax {
 
     constructor(client) {
         this.usersDroppedMention = new Map();
-
+        this.client = client;
         this.day = 1;
         this.questItem = 'nowalmanax_star';
 
@@ -121,7 +121,7 @@ class Nowalmanax {
     export(filename = "save"){
         fs.writeFile("./nowalmanax/saves/" + filename + ".json", JSON.stringify(Object.fromEntries(this.usersDroppedMention), null, 4), err => {
             if(err) {
-                console.log(err);
+                this.client.logError(err);
             }
         });
     }
