@@ -10,7 +10,7 @@ module.exports = {
     admin: true,
     async execute(message, args) {
 
-        for(let userId of message.client.inventory.inventory.keys())
+        for(let userId of message.client.inventory.inventory.keys()){
             const user = await message.client.users.fetch(userId);
             const userName = user.username;
             const userAvatar = user.avatarURL();
@@ -78,6 +78,5 @@ module.exports = {
                 message.client.sendWebhook(message.channel, webhook);
             }
         }
-
-    },
+    }
 };
