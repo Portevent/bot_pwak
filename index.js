@@ -44,10 +44,11 @@ for(const bot of bots){
     // noinspection JSUnusedLocalSymbols
     client.login(bot.token).then(r => {
         console.log("Ready soooon... ");
-        console.log(r);
+        console.log("Token : " + r);
     }).catch(err => console.log(err));
 
     client.once('ready', () => {
+        console.log("Ready soooOon... ");
         client.onceReady(client);
     });
 
