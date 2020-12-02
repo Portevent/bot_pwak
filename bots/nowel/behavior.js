@@ -55,10 +55,10 @@ module.exports = {
     check(userId, txt = ""){
         this.users.fetch(userId, true, true).then(user => {
             if(user.id !== userId){
-                message.client.logError("Mauvais fetch sur " + userId + " (considéré comme " + user.id + ") " + txt);
+                this.logError("Mauvais fetch sur " + userId + " (considéré comme " + user.id + ") " + txt);
             }
         }).catch(
-            err => message.client.logError(err)
+            err => this.logError(err)
         );
     },
 
