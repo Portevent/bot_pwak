@@ -13,7 +13,6 @@ module.exports = {
     },
 
     onCommand(message, args, commandName){
-        console.log("<#" + message.channel.id + "> <@" + message.author.id + "> " + commandName + ' : ' + args);
         message.client.execute(commandName, message, args);
     },
 
