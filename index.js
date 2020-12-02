@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
-    const client = new Discord.Client();
+    const client = new Discord.Client({ ws: { intents: 'GUILD_MEMBERS' }});
     client.prefix = bot.prefix
     client.type = bot.type
     client.token = bot.token
