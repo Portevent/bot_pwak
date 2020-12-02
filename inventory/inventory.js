@@ -2,8 +2,9 @@ const fs = require("fs");
 
 class Inventory {
 
-    constructor() {
+    constructor(client) {
         this.inventory = new Map();
+        this.client = client;
     }
 
     userExists(userId) {
@@ -109,12 +110,7 @@ class Inventory {
 
         fs.writeFile("./inventory/saves/" + filename + ".json", JSON.stringify(obj, null, 4), err => {
             if(err){
-                console.log(err);
-                fs.writeFile("./inventory/saves/" + filename + ".error", err, err2 => {
-                    if(err2){
-                        console.log(err2);
-                    }
-                });
+                this.client.logError(err);
             }
         });
     }

@@ -6,7 +6,7 @@ const cron = require('node-cron');
 // noinspection JSUnusedLocalSymbols
 module.exports = {
     setup(client) {
-        client.inventory = new Inventory();
+        client.inventory = new Inventory(client);
         client.drop_params = require('../../inventory/drop.json');
         client.items = require('../../inventory/items.json');
         client.onGoingLoot = new Map();
