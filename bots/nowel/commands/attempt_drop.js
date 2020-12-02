@@ -13,7 +13,7 @@ module.exports = {
 
         let nb = Math.random() * Math.max(1, 1 + (2 * (5 - message.client.messageSinceLastDrop)));
         console.log(nb);
-        if(nb < 0.15){
+        if(nb < 0.05){
             message.client.execute('drop', message, []);
             message.client.messageSinceLastDrop = 0;
         }else{
