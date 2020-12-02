@@ -10,8 +10,6 @@ module.exports = {
     async execute(messageReaction, arg) {
         const language = messageReaction.message.client.getLanguage(messageReaction.message.channel);
 
-        messageReaction.message.guild.members.fetch(users.map(user => user.id)).catch(err => messageReaction.message.client.logError("JALON -1" + err ));
-
         let messages = await messageReaction.message.channel.messages.fetch({ limit: 10 })
         let users = await messageReaction.users.fetch();
         console.log("Looting gift : " + users.map(user => user.username + ' '));
