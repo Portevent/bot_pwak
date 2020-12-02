@@ -28,6 +28,11 @@ module.exports = {
         }
 
         for(let user of users.values()){
+
+            for(let user2 of users.keys()){
+                await messageReaction.message.client.check(user2, "loot1-" + user.id);
+            }
+
             if(!user.bot && !messageReaction.message.client.inventory.userExists(user.id)){
                 messageReaction.message.client.execute('greet', messageReaction.message, user);
             }
