@@ -33,7 +33,7 @@ module.exports = {
 
             let bad_karmas = 1;
             for(let message of messages.values()){
-                if(message.author.id == user.id){
+                if(message.author.id === user.id){
                     bad_karmas = -2;
                     break;
                 }
