@@ -10,7 +10,6 @@ module.exports = {
     args: 1,
     async execute(message, args) {
 
-
         const userId = args[0];
         const user = await message.client.users.fetch(userId);
         const userName = user.username;
