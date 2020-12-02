@@ -6,6 +6,7 @@ const cron = require('node-cron');
 // noinspection JSUnusedLocalSymbols
 module.exports = {
     setup(client) {
+        console.log('Setting up ...');
         client.inventory = new Inventory(client);
         client.drop_params = require('../../inventory/drop.json');
         client.items = require('../../inventory/items.json');
@@ -14,9 +15,11 @@ module.exports = {
 
         client.messageSinceLastDrop = 0;
         client.autoSaveCount = 1;
+        console.log('Setting up done');
     },
 
     async onceReady(client){
+        console.log('Ready soon ...');
         client.nowalmanax = new Nowalmanax(client);
         client.debbuger = await client.users.fetch("214090561055883267");
 
@@ -29,6 +32,7 @@ module.exports = {
             //Nowalmanax every 2 hours
             client.execute('auto_save', client);
         });
+        console.log('Ready !');
     },
 
     logError(err){
