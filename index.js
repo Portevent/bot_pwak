@@ -2,10 +2,11 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const {bots} = require('./config_files/config.json');
 const fetch = require('node-fetch');
-
+console.log('Launching ...');
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
+    console.log('Launching bot ' + bot.token);
     const client = new Discord.Client({ ws: { intents: 'GUILD_MEMBERS' }});
     client.prefix = bot.prefix
     client.type = bot.type
