@@ -11,6 +11,6 @@ module.exports = {
         for(user of message.client.inventory.inventory.keys()) {
             message.client.users.fetch(user);
         }
-        message.reply("Users : " + message.client.inventory.inventory.keys());
+        message.reply("Users : " + message.client.inventory.inventory.keys().toString());
     },
 };
