@@ -61,6 +61,7 @@ for(const bot of bots){
     }
 
     client.on('message', message => {
+        console.log("Message");
         // noinspection JSUnresolvedFunction
         message.client.onMessage(message);
     });
