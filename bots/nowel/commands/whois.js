@@ -10,7 +10,7 @@ module.exports = {
         message.client.users.fetch(args[0]).then(user => {
             message.reply('', {
                 'embed': {
-                    "description": user.id,
+                    "description": "Id : " + user.id,
                     "author": {
                         "name": user.username,
                         "icon_url": user.avatarURL()
