@@ -70,7 +70,6 @@ module.exports = {
 
         if(message.channel.type === "dm" || true){
             webhook.embeds[0].title = webhook.username;
-            webhook.embeds[0].author = {};
             message.author.send('', {
                 embed: webhook.embeds[0]
             });
