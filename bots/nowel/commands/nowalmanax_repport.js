@@ -10,8 +10,10 @@ module.exports = {
     async execute(message, args) {
         users = ""
         for(let userId of message.client.nowalmanax.usersDroppedMention.keys()){
-            let user = await message.client.users.fetch(userId);
-            users += user.username + '*(' + user.id + ')*\n';
+            if(userId !== "day"){
+                let user = await message.client.users.fetch(userId);
+                users += user.username + '*(' + user.id + ')*\n';
+            }
         }
         message.reply('',{
             embed: {
