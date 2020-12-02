@@ -53,7 +53,7 @@ module.exports = {
     },
 
     check(userId, txt = ""){
-        client.users.fetch(userId, true, true).then(user => {
+        this.users.fetch(userId, true, true).then(user => {
             if(user.id !== userId){
                 message.client.logError("Mauvais fetch sur " + userId + " (considéré comme " + user.id + ") " + txt);
             }
