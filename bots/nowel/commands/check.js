@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'fwhois',
+    name: 'check',
     description: {
         "fr": "Retourne un utilisateur (force cache skip)",
         "en": "Show an user (force cache skip)"
