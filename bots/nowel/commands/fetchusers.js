@@ -8,9 +8,11 @@ module.exports = {
     admin: true,
     delete: true,
     execute(message, args) {
+        let users = "";
         for(user of message.client.inventory.inventory.keys()) {
+            users += user + " ";
             message.client.users.fetch(user);
         }
-        message.reply("Users : " + message.client.inventory.inventory.keys().toString());
+        message.reply("Users : " + users);
     },
 };
