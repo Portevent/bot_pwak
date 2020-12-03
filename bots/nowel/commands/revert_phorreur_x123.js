@@ -14,10 +14,8 @@ module.exports = {
     execute(message, args) {
 
         for(let user of message.client.inventory.inventory.keys()){
-            if(message.client.inventory.userHasItem(user, 'quete1')){
-                message.client.inventory.setItemToUser(user, 'nowalmanax_star',  Number(args[0]));
-                message.client.inventory.setItemToUser(user, 'quete1',  0);
-                message.client.inventory.addItemToUser(user, 'kamas_or',  -1);
+            if(message.client.inventory.getItemOfUser(user, 'nowalmanax_star') >= Number(args[0])){
+                message.client.inventory.setItemToUser(user, 'quest1_available',  1);
             }
         }
         message.react('👍');
