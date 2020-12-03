@@ -14,8 +14,8 @@ module.exports = {
     execute(message, args) {
 
         for(let user of message.client.inventory.inventory.keys()){
-            if(message.client.inventory.getItemOfUser(user, 'nowalmanax_star') > args[0]){
-                message.client.inventory.setItemToUser(user, 'nowalmanax_star',  args[0]);
+            if(message.client.inventory.getItemOfUser(user, 'nowalmanax_star') >= args[0]){
+                message.client.inventory.setItemToUser(user, 'nowalmanax_star',  Number(args[0]));
             }
         }
         message.react('👍');

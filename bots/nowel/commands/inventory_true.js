@@ -8,7 +8,6 @@ module.exports = {
     admin: true,
     execute(message, args) {
 
-
         const userId = message.author.id;
         const userName = message.author.username;
         const userAvatar = message.author.avatarURL();
