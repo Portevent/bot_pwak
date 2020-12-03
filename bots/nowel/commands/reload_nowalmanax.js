@@ -1,13 +1,20 @@
 module.exports = {
-    name: 'reload_loots',
+    name: 'reload_nowalmanax',
     description: {
-        "fr": "Recharge le calendrier du Nowalmanax (pour debugger)",
-        "en": "Reload Kwismalmanax's calendar (debug purpose)"
+        "fr": "Importe l'avancement des joueurs sur le Nowalmanax du jour depuis la sauvegarde",
+        "en": "Import players nowalmanax advancement from save"
     },
     admin: true,
-    execute(message, args) {
-        message.author.client.nowalmanax.loadCalendar();
-        // noinspection JSIgnoredPromiseFromCall
-        message.react('👍');
+    async execute(message, args) {
+        let filename = "save";
+        if (args.length) {
+            filename = args[0];
+        }
+        const code = message.author.client.nowalmanax.import(filename);
+        if(code == 0){
+            message.react('👍');
+        }else{
+            message.reply(" " + code);
+        }
     },
 };

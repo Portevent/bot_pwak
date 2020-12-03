@@ -1,7 +1,8 @@
 const fs = require("fs");
 
 module.exports = {
-    name: 'slog',
+    name: 'logs',
+    aliases: ['sl', 'slog'],
     description: {
         "fr": "Affiche les logs (short)",
         "en": "Show log (short)"
