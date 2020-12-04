@@ -54,33 +54,6 @@ class Craft {
             }
         }
     }
-
-    // noinspection JSUnfilteredForInLoop
-    static craft(recipe, inventory, user){
-        inventory.addItemToUser(user.id, recipe.result);
-
-
-        for(let ingredient of recipe.recipe){
-            inventory.addItemToUser(user.id, ingredient[0], -ingredient[1]);
-        }
-
-        const bonusItem = Item.get(recipe.craftBonus);
-        bonusItem.quantity = recipe.craftBonusQuantity;
-        bonusItem.text = recipe.craftSucces;
-        bonusItem.craftMessage = recipe.craftMessage;
-        bonusItem.craftMessageLink = recipe.craftMessageLink;
-
-        inventory.addItemToUser(user.id, bonusItem.id, recipe.craftBonusQuantity);
-
-        if(recipe.craftRemoveFlag){
-            inventory.addItemToUser(user.id, recipe.craftRemoveFlag, -1);
-        }
-        if(recipe.craftAddFlag){
-            inventory.addItemToUser(user.id, recipe.craftAddFlag, 1);
-        }
-
-        return bonusItem;
-    }
 }
 
 module.exports = Craft
