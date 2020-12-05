@@ -6,6 +6,7 @@ module.exports = {
     },
     admin: true,
     execute(message, args) {
+        delete require.cache[require.resolve("../../nowalmanax.json")];
         message.author.client.nowalmanax.loadCalendar();
         // noinspection JSIgnoredPromiseFromCall
         message.react('👍');
