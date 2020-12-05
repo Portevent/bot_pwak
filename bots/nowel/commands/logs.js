@@ -10,7 +10,7 @@ module.exports = {
     admin: true,
     execute(message, args) {
         fs.readFile('./log.log', 'utf8', function(err, data) {
-            if (err) throw err;
+            if (err) message.client.logError(err);
             message.author.send(data.substr(-300));
         });
     },

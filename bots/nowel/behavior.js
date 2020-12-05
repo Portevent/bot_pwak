@@ -1,6 +1,8 @@
 const Inventory = require("../../inventory/inventory.js");
+const Item = require("../../inventory/item.js");
 const Nowalmanax = require("../../nowalmanax/nowalmanax");
 const Drop = require("../../inventory/drop.js");
+const Loot = require("../../inventory/loot.js");
 const Craft = require("../../inventory/craft.js");
 const cron = require('node-cron');
 
@@ -92,6 +94,7 @@ module.exports = {
     onReaction(reaction, user){
         if(reaction.message.webhookID && reaction.emoji.name === '🎁'){
             const drop = Drop.getByName(reaction.message.author.username);
+            if(drop === undefined) return;
 
             reaction.users.fetch().then(users => {
                 console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
@@ -102,7 +105,7 @@ module.exports = {
                     // noinspection JSIgnoredPromiseFromCall
                     reaction.message.react('🥁');
                     let timer = setTimeout(() => {
-                        this.execute('loot_reaction', reaction   );
+                        this.loot(reaction);
                     }, 5*1000);
                     this.onGoingLoot.set(reaction.message.id, timer);
                 }
@@ -111,7 +114,7 @@ module.exports = {
                     if(this.onGoingLoot.has(reaction.message.id)) {
                         clearTimeout(this.onGoingLoot.get(reaction.message.id));
                     }
-                    this.execute('loot_reaction', reaction);
+                    this.loot(reaction);
                 }
             })
         }
@@ -119,7 +122,40 @@ module.exports = {
             reaction.users.fetch().then(users => {
                 if(users.size > 1) {
                     reaction.users.remove(reaction.message.author.id).catch(err => this.logError(err));
-                    this.execute('loot_nowalmanax', reaction, user);
+                    const language = this.getLanguage(reaction.message.channel);
+
+                    let embed = reaction.message.embeds[0];
+
+                    let loot = {"item": Item.get(this.nowalmanax.questItem), "quantity": Math.ceil(this.nowalmanax.day/6)};
+                    let loot1 = Loot.getLootFromMetaLoot("common", 2);
+                    let loot2 = Loot.getLootFromMetaLoot("common", 2);
+                    let loot3 = Loot.getLootFromMetaLoot("common", 2);
+
+
+                    this.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
+                    this.inventory.addItemToUser(user.id, loot1.item.id, loot1.quantity);
+                    this.inventory.addItemToUser(user.id, loot2.item.id, loot2.quantity);
+                    this.inventory.addItemToUser(user.id, loot3.item.id, loot3.quantity);
+
+
+                    embed.description =
+                          ( loot.quantity>1? loot.quantity + 'x':'') +  loot.item.emoji +  loot.item.name[language] + "\n"
+                        + (loot1.quantity>1?loot1.quantity + 'x':'') + loot1.item.emoji + loot1.item.name[language] + "\n"
+                        + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "\n"
+                        + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name[language]
+
+                    // noinspection ES6MissingAwait,JSUnresolvedVariable
+                    reaction.message.edit("", {
+                        embed: embed,
+                    });
+
+                    if(!this.inventory.userHasItem(user.id, 'nowalmanax_help')){
+                        this.inventory.addItemToUser(user.id, 'nowalmanax_help');
+                        user.send({
+                            'fr': "Super, tu as capturé ton premier phorreur ! Chaque jour il est possible de trouver un phorreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + this.prefix + "phorreur`.",
+                            'en': "Nice, you caught your first drheller ! Each day you can catch a different drheller. You can check if you found it with `" + this.prefix + "drheller`.",
+                        }[language]);
+                    }
                 }
             });
         }
@@ -136,7 +172,7 @@ module.exports = {
         else {
             if(this.inventory.userExists(user.id)){
                 this.nowalmanax.reactionValidateQuest(reaction, user);
-                this.execute('check_fairy_drop', reaction, user);
+                this.checkFairyDrop(reaction, user);
             }
         }
     },
@@ -252,7 +288,7 @@ module.exports = {
 
         let nb = Math.random() * Math.max(1, 1 + (2 * (5 - this.messageSinceLastDrop)));
         console.log(nb);
-        if(nb < 0.05){
+        if(nb < 0.85){
             this.drop(channel);
             this.messageSinceLastDrop = 0;
         }else{
@@ -264,7 +300,7 @@ module.exports = {
         const language = this.getLanguage(channel);
         const drop = Drop.getDrop();
         // noinspection JSIgnoredPromiseFromCall
-        this.sendWebhook(message.channel, {
+        this.sendWebhook(channel, {
             "content": drop.description[language],
             "username": drop.title[language],
             "avatar_url": drop.image || Drop.getGift()
@@ -272,6 +308,9 @@ module.exports = {
     },
 
     attemptFairy(message){
+    },
+
+    checkFairyDrop(reaction, user){
     },
 
     autoSave(){
@@ -318,6 +357,98 @@ module.exports = {
         else if(recipe.craftMessage){
             user.send(recipe.craftMessage[language]);
         }
+    },
+
+    async loot(reaction){
+        const language = this.getLanguage(reaction.message.channel);
+
+        let messages = await reaction.message.channel.messages.fetch({ limit: 10 })
+        let users = await reaction.users.fetch();
+        console.log("Looting gift : " + users.map(user => user.username + ' '));
+        users.delete(this.user.id);
+
+        let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
+
+        let badges = new Map();
+        let ownBonus = new Map();
+
+        for(let user of users.values()){
+
+            if(!user.bot && !this.inventory.userExists(user.id)){
+                this.greet(user, language);
+            }
+
+            if(this.inventory.userHasItem(user.id, 'booster1')){
+                badges.set(user.id, '<:etoile:780851276094767104>');
+                bonus += 0.25;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'booster2')){
+                badges.set(user.id, '<:etoile:780851276094767104>');
+                bonus += 0.75;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'booster3')){
+                badges.set(user.id, '<:etoile:780851276094767104>');
+                bonus += 1.75;
+            }
+
+            let bad_karmas = 1;
+            for(let message of messages.values()){
+                if(message.author.id === user.id){
+                    bad_karmas = -5;
+                    break;
+                }
+            }
+
+            bad_karmas = this.inventory.safeAddItemToUser(user.id, 'bad_karma', bad_karmas);
+
+            if(bad_karmas >= 10){
+                ownBonus.set(user.id, 0.1);
+                badges.set(user.id, '❗');
+            }
+        }
+
+        let loot = Loot.getLoot(bonus, bonus);
+
+        for(let user of users.values()){
+            this.inventory.addItemToUser(user.id, loot.item.id, loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1));
+        }
+
+        this.editWebhook(reaction.message.channel, {
+            "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
+        }, reaction.message.id);
+
+        // noinspection ES6MissingAwait
+        reaction.message.reactions.removeAll();
+
+    },
+
+    greet(user, language){
+        user.send(
+            {
+                'fr':
+                    'Salut ! Je suis Pikpik, le Sapik de Nowel.\n' +
+                    'Comme tu peux le voir, la fin de l\'année approche ! Il y a plein de trucs à faire, et on a besoin de toi ;)\n',
+                'en':
+                    "Hey ! I'm Pikpik !\n" +
+                    "It is Kwismas ! There is plenty of things to do, and we need you !"
+            }[language],
+            {
+                files: ["https://cdn.discordapp.com/attachments/781503539142459452/781937867277860894/Nowel.png"]
+            }).then(msg => {
+            msg.channel.send(
+                {
+                    'fr':
+                        'Voyons les crafts : `' + this.prefix + 'craft`\n*🇬🇧 `' + this.prefix + 'english`*',
+                    'en':
+                        "Let's check what we can craft `" + this.prefix + "craft` \n*🇨🇵 `" + this.prefix + "francais`*"
+                }[language]);
+        });
+
+        this.inventory.addItemToUser(user.id, 'quest0_available');
+        this.inventory.addItemToUser(user.id, 'boule_verte', 2);
+        this.inventory.setItemToUser(user.id, 'language', language);
     }
 
 };

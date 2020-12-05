@@ -16,4 +16,4 @@ module.exports = {
             message.channel.bulkDelete(args[0]);
         }
     },
-};s
+};

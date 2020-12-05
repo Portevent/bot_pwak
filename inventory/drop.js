@@ -42,7 +42,7 @@ class Drop {
             }
         }
 
-        return undefined
+        return undefined;
     }
 }
 module.exports = Drop

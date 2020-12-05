@@ -2,7 +2,7 @@
 const Item = require('../../../inventory/item.js');
 
 module.exports = {
-    name: 'cap_phorreur_x123',
+        name: 'cap_phorreur_x123',
     description: {
         "fr": "Fonctions spéciale, ne surtout pas utiliser",
         "en": "Do not use"

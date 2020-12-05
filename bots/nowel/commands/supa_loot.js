@@ -1,13 +1,13 @@
 // noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'supa_loot',
-    aliases: ['sl', 'sloot'],
+    aliases: ['l+', 'sloot'],
     description: {
         "fr": "Loot 10 fois !",
         "en": "Loot 10 times !"
     },
     secret: true,
-    adminOnly: true,
+    admin: true,
     async execute(message, args) {
         const language = message.client.getLanguage(message.channel);
 

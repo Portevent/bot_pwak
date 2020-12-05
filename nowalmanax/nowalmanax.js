@@ -33,7 +33,7 @@ class Nowalmanax {
 
     moveDay(day) {
         this.day += day;
-        if(this.day >= this.emojis.length) this.day = 1;
+        if(this.day > this.emojis.length) this.day = 1;
         if(this.day <= 0) this.day = this.emojis.length - 1;
         this.loadDay();
     }
