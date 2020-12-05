@@ -6,9 +6,13 @@ module.exports = {
     },
     admin: true,
     execute(message, args) {
-        delete require.cache[require.resolve("../../nowalmanax/nowalmanax.json")];
-        message.author.client.nowalmanax.loadCalendar();
-        // noinspection JSIgnoredPromiseFromCall
-        message.react('👍');
+        try{
+            delete require.cache[require.resolve("../../nowalmanax/nowalmanax.json")];
+            message.author.client.nowalmanax.loadCalendar();
+            // noinspection JSIgnoredPromiseFromCall
+            message.react('👍');
+        }catch(e){
+            message.client.logError(e);
+        }
     },
 };
