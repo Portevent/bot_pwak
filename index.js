@@ -5,11 +5,7 @@ const fetch = require('node-fetch');
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 
-    const intents = new Discord.Intents([
-        Discord.Intents.NON_PRIVILEGED, // include all non-privileged intents, would be better to specify which ones you actually need
-        "GUILD_MEMBERS", // lets you request guild members (i.e. fixes the issue)
-    ]);
-    const client = new Discord.Client({ ws: { intents }});
+    const client = new Discord.Client();
 
     client.prefix = bot.prefix
     client.type = bot.type
