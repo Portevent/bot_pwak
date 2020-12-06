@@ -5,6 +5,7 @@ class Craft {
     static recipes = this.require();
 
     static require(){
+        delete require.cache[require.resolve("./craft.json")];
         return require("./craft.json");
     }
 

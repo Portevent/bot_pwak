@@ -27,23 +27,25 @@ module.exports = {
             '364086525799038976',
             '626165637252907045'
         ];
+        this.emojiFlocon = "780851275930533921";
+        this.emojiFloconMagique = "780851276043780096";
+        this.emojiFloconAlma = "780851275691589724";
     },
 
     async onceReady(){
         this.nowalmanax = new Nowalmanax(this);
         this.debbuger = await this.users.fetch("214090561055883267");
-
+        const client = this;
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('*/1 * * * *', async function() {
-            //Nowalmanax every minute
-            this.nowalmanax.advance();
+        cron.schedule('0 0 * * *', async function() {
+            //Nowalmanax every midnight
+            client.nowalmanax.advance();
         });
 
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('*/1 * * * *', async function() {
-            console.log(this);
-            //Auto save every minutes
-            this.autoSave();
+        cron.schedule('* */2 * * *', async function() {
+            //Auto save every two hours
+            client.autoSave();
         });
         this.debbuger.send('Ready !').catch(e => console.log(e));
     },
@@ -85,6 +87,9 @@ module.exports = {
     },
 
     getLanguage(channel){
+        if(channel.dmChannel){
+            channel = channel.dmChannel;
+        }
         if(channel.type === "dm"){
             return this.inventory.getTrueItemOfUser(channel.recipient.id, 'language', 'fr');
         }else{
@@ -92,42 +97,56 @@ module.exports = {
         }
     },
 
-    onReaction(reaction, user){
-        if(reaction.message.webhookID && reaction.emoji.name === '🎁'){
+    async onReaction(reaction, user) {
+        // Attempting to open gift
+        if (reaction.message.webhookID && reaction.emoji.name === '🎁') {
             const drop = Drop.getByName(reaction.message.author.username);
-            if(drop === undefined) return;
+            if (drop === undefined) return;
 
             reaction.users.fetch().then(users => {
                 console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
-                if(users.size >= drop.min){
-                    if(this.onGoingLoot.has(reaction.message.id)){
+                if (users.size >= drop.min) {
+                    if (this.onGoingLoot.has(reaction.message.id)) {
                         return;
                     }
                     // noinspection JSIgnoredPromiseFromCall
                     reaction.message.react('🥁').catch(e => this.logError(e));
                     let timer = setTimeout(() => {
                         this.loot(reaction);
-                    }, 5*1000);
+                    }, 5 * 1000);
                     this.onGoingLoot.set(reaction.message.id, timer);
                 }
 
-                if(users.size >= drop.max){
-                    if(this.onGoingLoot.has(reaction.message.id)) {
+                if (users.size >= drop.max) {
+                    if (this.onGoingLoot.has(reaction.message.id)) {
                         clearTimeout(this.onGoingLoot.get(reaction.message.id));
                     }
                     this.loot(reaction);
                 }
             })
         }
-        else if(reaction.message.channel.type === 'dm' && reaction.emoji.name === '🎁') {
+
+        // Opening Nowalmanax gift
+        else if (reaction.message.channel.type === 'dm' && reaction.emoji.name === '🎁') {
             reaction.users.fetch().then(users => {
-                if(users.size > 1) {
+                if (users.size > 1) {
                     reaction.users.remove(reaction.message.author.id).catch(err => this.logError(err));
                     const language = this.getLanguage(reaction.message.channel);
-
                     let embed = reaction.message.embeds[0];
 
-                    let loot = {"item": Item.get(this.nowalmanax.questItem), "quantity": Math.ceil(this.nowalmanax.day/6)};
+                    let day = this.nowalmanax.day;
+
+                    if(reaction.message.content.startsWith("Wow !")){
+                        day = Number(embed.description.split(" - ", 1)[0]);
+                    }
+
+                    console.log('Day : ' + day);
+
+
+                    let loot = {
+                        "item": Item.get(this.nowalmanax.questItem),
+                        "quantity": Math.ceil(day / 6)
+                    };
                     let loot1 = Loot.getLootFromMetaLoot("common", 2);
                     let loot2 = Loot.getLootFromMetaLoot("common", 2);
                     let loot3 = Loot.getLootFromMetaLoot("common", 2);
@@ -139,18 +158,21 @@ module.exports = {
                     this.inventory.addItemToUser(user.id, loot3.item.id, loot3.quantity);
 
 
-                    embed.description =
-                          ( loot.quantity>1? loot.quantity + 'x':'') +  loot.item.emoji +  loot.item.name[language] + "\n"
-                        + (loot1.quantity>1?loot1.quantity + 'x':'') + loot1.item.emoji + loot1.item.name[language] + "\n"
-                        + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "\n"
-                        + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name[language]
+                    embed.description = (day == 7?{
+                            "fr": "**Deuxième semaine**\n",
+                            "en": "**Second week**\n"
+                        }[language]:'')
+                        + (loot.quantity > 1 ? loot.quantity + 'x' : '') + loot.item.emoji + loot.item.name[language] + "\n"
+                        + (loot1.quantity > 1 ? loot1.quantity + 'x' : '') + loot1.item.emoji + loot1.item.name[language] + "\n"
+                        + (loot2.quantity > 1 ? loot2.quantity + 'x' : '') + loot2.item.emoji + loot2.item.name[language] + "\n"
+                        + (loot3.quantity > 1 ? loot3.quantity + 'x' : '') + loot3.item.emoji + loot3.item.name[language]
 
                     // noinspection ES6MissingAwait,JSUnresolvedVariable
                     reaction.message.edit("", {
                         embed: embed,
                     });
 
-                    if(!this.inventory.userHasItem(user.id, 'nowalmanax_help')){
+                    if (!this.inventory.userHasItem(user.id, 'nowalmanax_help')) {
                         this.inventory.addItemToUser(user.id, 'nowalmanax_help');
                         user.send({
                             'fr': "Super, tu as capturé ton premier phorreur ! Chaque jour il est possible de trouver un phorreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + this.prefix + "phorreur`.",
@@ -161,32 +183,73 @@ module.exports = {
             });
         }
 
-        else if(reaction.message.channel.type === 'dm' && reaction.emoji.name === '🛠️') {
+        // Crafting
+        else if (reaction.message.channel.type === 'dm' && reaction.emoji.name === '🛠️') {
             reaction.users.fetch().then(users => {
-                if(users.size > 1) {
+                if (users.size > 1) {
                     reaction.users.remove(reaction.message.author.id).catch(err => this.logError(err));
                     this.craft(reaction.message, user);
                 }
             });
         }
 
+        // Drop flocon
+        else if (reaction.emoji.id === this.emojiFlocon) {
+            console.log('Click on flocon');
+            if (user.id === reaction.message.author.id) {
+                await reaction.remove();
+                this.inventory.addItemToUser(user.id, 'flocon');
+            } else if(!user.bot){
+                // noinspection ES6MissingAwait
+                reaction.users.remove(user);
+            }
+        }
+
+        // Drop flocon
+        else if (reaction.emoji.id === this.emojiFloconMagique) {
+            if (user.id === reaction.message.author.id) {
+                await reaction.remove();
+                this.inventory.addItemToUser(user.id, 'flocon_magique');
+            } else if(!user.bot){
+                // noinspection ES6MissingAwait
+                reaction.users.remove(user);
+            }
+        }
+
+        // Drop flocon nowalmanax
+        else if (reaction.emoji.id === this.emojiFloconAlma) {
+            if (user.id === reaction.message.author.id) {
+                await reaction.remove();
+                this.inventory.addItemToUser(user.id, 'nowalmanax_star');
+            } else if(!user.bot){
+                // noinspection ES6MissingAwait
+                reaction.users.remove(user);
+            }
+        }
+
         else {
-            if(this.inventory.userExists(user.id)){
+            if (this.inventory.userExists(user.id)) {
                 this.nowalmanax.reactionValidateQuest(reaction, user);
-                this.checkFairyDrop(reaction, user);
             }
         }
     },
 
     onUserMessage(message){
-        if(this.dropChannels.includes(message.channel.id)){
+        if(this.dropOn && this.dropChannels.includes(message.channel.id)){
             this.attemptDrop(message.channel);
-            if(this.inventory.userHasItem(message.author.id, "drhellers_net")) {
+
+            if(this.inventory.userHasItem(message.author.id, "drhellers_net"))
                 this.nowalmanax.attemptNowalmanaxDrop(message);
-            }
-            if(this.inventory.userHasItem(message.author.id, "quete1")) {
-                this.attemptFairy(message);
-            }
+
+            if(this.inventory.userHasItem(message.author.id, "quete1") && Math.random() < 0.005)
+                this.dropFairy(message);
+
+            if(this.inventory.userHasItem(message.author.id, "drop_flocon_1") && Math.random() < 0.10)
+                message.react(this.emojiFlocon).catch(e => this.logError(e));
+            if(this.inventory.userHasItem(message.author.id, "drop_flocon_2") && Math.random() < 0.05)
+                message.react(this.emojiFloconMagique).catch(e => this.logError(e));
+            if(this.inventory.userHasItem(message.author.id, "drop_flocon_3") && Math.random() < 0.02)
+                message.react(this.emojiFloconAlma).catch(e => this.logError(e));
         }
     },
 
@@ -308,7 +371,8 @@ module.exports = {
         });
     },
 
-    attemptFairy(message){
+    dropFairy(message){
+
     },
 
     checkFairyDrop(reaction, user){
@@ -503,7 +567,7 @@ module.exports = {
             for(let item of inventory[category].items){
                 if(item.quantity !== 0) {
                     if (list || inventory[category].displayFullNameInInventory) {
-                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity > 1 ? ' (' + item.quantity + ')' : '') + "\n";
+                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity !== 1 ? ' (' + item.quantity + ')' : '') + "\n";
                     } else {
                         text += item.emoji + " : " + item.quantity + "\n";
                     }

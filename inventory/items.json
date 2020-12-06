@@ -37,7 +37,7 @@
   "kamas": {
     "name": {
       "fr": "Kamas en Cholocat",
-      "en": "Chocolat kamas"
+      "en": "Chocolate kamas"
     },
     "items": [
       {
@@ -72,7 +72,7 @@
   "boules": {
     "name": {
       "fr": "Boules de Nowel",
-      "en": "Kwismas bauble"
+      "en": "Kwismas baubles"
     },
     "items": [
       {
@@ -169,7 +169,7 @@
   "craft": {
     "name": {
       "fr": "Objets de Quêtes",
-      "en": "Quest Item"
+      "en": "Quest Items"
     },
     "displayFullNameInInventory": true,
     "items": [
@@ -219,13 +219,31 @@
         "emoji": "<:Etoile_pleine_de_magie:782256624739024896>"
       },
       {
-        "id": "flocon_drop",
+        "id": "drop_flocon_1",
         "name": {
           "fr": "Bonbon Fraicheur",
           "en": "Freshness candy"
         },
         "img": "https://cdn.discordapp.com/attachments/781503539142459452/785094289356357652/42160.png",
         "emoji": "<:Bonbon_Saveur_Fraicheur:785094341051547699>"
+      },
+      {
+        "id": "drop_flocon_2",
+        "name": {
+          "fr": "Bonbon Froideur",
+          "en": "Coldness candy"
+        },
+        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785144902010011688/bonbonfroid.png",
+        "emoji": "<:Bonbon_Saveur_Froideur:785145194365845514>"
+      },
+      {
+        "id": "drop_flocon_3",
+        "name": {
+          "fr": "Bonbon Nowel",
+          "en": "Kwismas candy"
+        },
+        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785146055737212948/bonbonmagique.png",
+        "emoji": "<:Bonbon_Saveur_Nowel:785146198355869706>"
       },
       {
         "id": "recycleur1",
@@ -295,6 +313,15 @@
           "fr" : "nowalmanax_help",
           "en" : "nowalmanax_help"
         }
+      },
+      {
+        "id" : "can_recycle",
+        "name": {
+          "fr" : "can_recycle",
+          "en" : "can_recycle"
+        },
+        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785093914285047829/Petit_Recycleur_de_Chokolat.png",
+        "emoji": "<:Petit_Recycleur_de_Chokolat:785093987961929729>"
       }
     ]
   }

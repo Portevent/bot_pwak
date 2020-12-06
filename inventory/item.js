@@ -4,6 +4,7 @@ class Item {
 
 
     static require(){
+        delete require.cache[require.resolve("./items.json")];
         return require('./items.json');
     }
 

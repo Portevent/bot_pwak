@@ -8,6 +8,7 @@ module.exports = {
         "en": "Melts chocolate kamas to make better ones"
     },
     delete: true,
+    require: 'can_recycle',
     execute(message, args) {
         const language = message.client.getLanguage(message.channel);
         if(message.client.inventory.userHasItem(message.author.id, 'recycleur1') || message.client.inventory.userHasItem(message.author.id, 'recycleur2')){
@@ -29,7 +30,7 @@ module.exports = {
             message.client.inventory.addItemToUser(message.author.id, 'kamas_argent', d_bronze/10);
 
 
-            if(message.client.inventory.userHasItem(message.author.id, 'reycleur2')){
+            if(message.client.inventory.userHasItem(message.author.id, 'recycleur2')){
                 icon = "https://cdn.discordapp.com/attachments/781503539142459452/785093880725897216/Recycleur_de_Chokolat.png";
                 const d_argent = r_argent - r_argent%10;
                 r_argent = r_argent%10;

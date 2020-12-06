@@ -39,6 +39,7 @@ class Nowalmanax {
     }
 
     loadCalendar() {
+        delete require.cache[require.resolve('./nowalmanax.js')];
         this.calendar = require("./nowalmanax.json");
         this.emojis = this.calendar.emojis;
         this.images = this.calendar.images;
@@ -99,8 +100,8 @@ class Nowalmanax {
         const language = user.client.getLanguage(user);
         user.send(
             {
-                "fr": 'Je me demande ce qu\'il contient !',
-                "en": 'What\'s inside ?'
+                "fr": 'Wow ! Je me demande ce qu\'il contient !',
+                "en": 'Wow ! What\'s inside ?'
             }[language],
             {
                 embed: {
@@ -108,7 +109,10 @@ class Nowalmanax {
                         "fr": "Cadeau du " + this.day + " Decembre",
                         "en": this.day + (this.day===1?"st":(this.day===2?"nd":"th")) + " of December's Gift"
                     }[language],
-                    "description": {"fr": "Trouver un ", "en": "Find a "}[language] + "<:" + this.emoji.name + ":" + this.emoji.id + ">",
+                    "description": this.day + " - " + {"fr": "Trouver un ", "en": "Find a "}[language] + "<:" + this.emoji.name + ":" + this.emoji.id + ">\n" + (this.day == 7?{
+                        "fr": "**Deuxième semaine**",
+                        "en": "**Second week**"
+                    }[language]:''),
                     "thumbnail": {
                         "url":  this.images[this.day],
                     }

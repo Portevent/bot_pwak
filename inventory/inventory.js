@@ -68,7 +68,7 @@ class Inventory {
             let inventory = require('./items.json'); // Fait exprès pour ne pas modifier par erreur la liste des items
             for (let category_id of Object.keys(inventory)) {
                 for (let item of inventory[category_id].items) {
-                    item.quantity = this.getItemOfUser(userId, item.id);
+                    item.quantity = this.getTrueItemOfUser(userId, item.id);
                 }
             }
             return inventory;
@@ -117,6 +117,7 @@ class Inventory {
 
     import(filename = "save"){
         try{
+            delete require.cache[require.resolve("./saves/" + filename + ".json")];
             let saved_inventory = require("./saves/" + filename + ".json");
             this.inventory = new Map();
             for(let user of Object.keys(saved_inventory)){

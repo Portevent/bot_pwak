@@ -21,7 +21,7 @@ module.exports = {
                 'en': 'Commands '
             }[language]);
             commands.map(command => {
-                if(!command.secret && !command.admin){
+                if(!command.secret && !command.admin && !(command.require && !message.client.inventory.userHasItem(message.author.id, command.require))){
                     data.push('**' + command.name + '** : ' + command.description[language] + (command.usage?'`' + message.client.prefix + command.name + ' ' + command.usage + '`':''));
                 }
             })

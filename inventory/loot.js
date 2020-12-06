@@ -4,6 +4,7 @@ class Loot {
     static loots = this.require();
 
     static require(){
+        delete require.cache[require.resolve("./loot.json")];
         return require("./loot.json");
     }
 

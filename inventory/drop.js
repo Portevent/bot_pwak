@@ -3,10 +3,12 @@ class Drop {
     static resources = this.requireResources();
 
     static require(){
+        delete require.cache[require.resolve("./drop.json")];
         return require('./drop.json').drops;
     }
 
     static requireResources(){
+        delete require.cache[require.resolve("./ressources.json")];
         return require('./ressources.json');
     }
 
