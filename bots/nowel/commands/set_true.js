@@ -2,7 +2,7 @@
 const Item = require('../../../inventory/item.js');
 
 module.exports = {
-    name: 'set',
+    name: 'set_true',
     description: {
         "fr": "Definis la quantité de l'objet à l'inventaire (non texte)",
         "en": "Set any inventory's item to an amount (non texte)"
