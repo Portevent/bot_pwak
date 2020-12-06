@@ -34,21 +34,22 @@ module.exports = {
         this.debbuger = await this.users.fetch("214090561055883267");
 
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('0 0 * * *', async function() {
-            //Nowalmanax every midnight
+        cron.schedule('*/1 * * * *', async function() {
+            //Nowalmanax every minute
             this.nowalmanax.advance();
         });
 
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('0 */2 * * *', async function() {
-            //Nowalmanax every 2 hours
+        cron.schedule('*/1 * * * *', async function() {
+            console.log(this);
+            //Auto save every minutes
             this.autoSave();
         });
-        this.debbuger.send('Ready !');
+        this.debbuger.send('Ready !').catch(e => console.log(e));
     },
 
     logError(err){
-        this.debbuger.send("Error " + err);
+        this.debbuger.send("Error " + err).catch(e => console.log(e));
     },
 
     logErrorMsg(err, msg){
@@ -64,7 +65,7 @@ module.exports = {
                     "icon_url": (msg.channel.type === "dm"?msg.channel.recipient.avatarURL():''),
                 }
             }
-        });
+        }).catch(e => console.log(e));
     },
 
     async check(userId, txt = ""){
@@ -103,7 +104,7 @@ module.exports = {
                         return;
                     }
                     // noinspection JSIgnoredPromiseFromCall
-                    reaction.message.react('🥁');
+                    reaction.message.react('🥁').catch(e => this.logError(e));
                     let timer = setTimeout(() => {
                         this.loot(reaction);
                     }, 5*1000);
@@ -154,7 +155,7 @@ module.exports = {
                         user.send({
                             'fr': "Super, tu as capturé ton premier phorreur ! Chaque jour il est possible de trouver un phorreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + this.prefix + "phorreur`.",
                             'en': "Nice, you caught your first drheller ! Each day you can catch a different drheller. You can check if you found it with `" + this.prefix + "drheller`.",
-                        }[language]);
+                        }[language]).catch(e => this.logError(e));
                     }
                 }
             });
@@ -192,7 +193,7 @@ module.exports = {
     onWebhook(message){
         if(Drop.getByName(message.author.username) !== undefined){
             // noinspection JSIgnoredPromiseFromCall
-            message.react('🎁');
+            message.react('🎁').catch(e => this.logError(e));
         }
     },
 
@@ -352,10 +353,10 @@ module.exports = {
         });
 
         if(recipe.craftMessageLink){
-            user.send(recipe.craftMessage[language], {files: [recipe.craftMessageLink]});
+            user.send(recipe.craftMessage[language], {files: [recipe.craftMessageLink]}).catch(e => this.logError(e));
         }
         else if(recipe.craftMessage){
-            user.send(recipe.craftMessage[language]);
+            user.send(recipe.craftMessage[language]).catch(e => this.logError(e));
         }
     },
 
@@ -444,11 +445,80 @@ module.exports = {
                     'en':
                         "Let's check what we can craft `" + this.prefix + "craft` \n*🇨🇵 `" + this.prefix + "francais`*"
                 }[language]);
-        });
+        }).catch(e => this.logError(e));
 
         this.inventory.addItemToUser(user.id, 'quest0_available');
         this.inventory.addItemToUser(user.id, 'boule_verte', 2);
         this.inventory.setItemToUser(user.id, 'language', language);
-    }
+    },
+
+    sendInventory(user, channel, flags = false, list = false) {
+        const language = this.getLanguage(user);
+        const inventory = this.getInventory(user, language, flags, list);
+
+        if(channel.type === "dm"){
+            channel.send('', {
+                embed: inventory.embeds[0]
+            }).catch(e => this.logError(e));
+        }
+        else{
+            this.sendWebhook(channel, inventory);
+        }
+    },
+
+    getInventory(user, language = "fr", flags = false, list = false){
+        const inventory = this.inventory.getInventoryOfUser(user.id);
+
+        let webhook = {
+            "username": {
+                "fr": "Inventaire",
+                "en": "Inventory"
+            }[language],
+            "avatar_url": "https://cdn.discordapp.com/attachments/770768439773888532/775420082285183036/icon__0027_Inventaire.png",
+            "embeds": [
+                {
+                    "description": "",
+                    "author": {
+                        "name": user.username,
+                        "icon_url": user.avatarURL()
+                    },
+                    "fields": []
+                }
+            ]
+        };
+
+        if(!inventory){
+            webhook.embeds[0].description = {
+                "fr": "Inventaire vide",
+                "en": "Empty inventory"
+            }[language];
+            return webhook;
+        }
+
+        for(let category of Object.keys(inventory)){
+            let text = "";
+
+            if(!flags && inventory[category].hideInInventory) continue;
+
+            for(let item of inventory[category].items){
+                if(item.quantity !== 0) {
+                    if (list || inventory[category].displayFullNameInInventory) {
+                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity > 1 ? ' (' + item.quantity + ')' : '') + "\n";
+                    } else {
+                        text += item.emoji + " : " + item.quantity + "\n";
+                    }
+                }
+            }
+
+            if(text !== ""){
+                webhook.embeds[0].fields.push({
+                    "name": inventory[category].name[language],
+                    "inline": true,
+                    "value": text
+                })
+            }
+        }
+        return webhook;
+    },
 
 };

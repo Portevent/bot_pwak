@@ -1,3 +1,5 @@
+const Loot = require("../../../inventory/loot.js");
+
 // noinspection JSUnusedLocalSymbols
 module.exports = {
     name: 'supa_loot',
@@ -14,7 +16,8 @@ module.exports = {
         let text = "";
 
         for (let i = 0; i < 10; i++) {
-            let loot = await message.client.execute('loot', message, [3]);
+            let loot = Loot.getLoot();
+            message.client.inventory.addItemToUser(message.author.id, loot.item.id, loot.quantity);
             text += loot.item.emoji + loot.item.name[language] + " : " + loot.quantity + "\n";
         }
 
