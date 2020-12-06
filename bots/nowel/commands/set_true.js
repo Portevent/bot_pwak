@@ -14,7 +14,9 @@ module.exports = {
     execute(message, args) {
 
         if(Item.exists(args[0])){
+            console.log('Setting true something');
             message.client.inventory.setItemToUser((args.length > 2?args[2]:message.author.id), args[0], (args.length > 1)?args[1]:1);
+            console.log('Setting true something 2');
             // noinspection JSIgnoredPromiseFromCall
             message.react('👍');
         }
