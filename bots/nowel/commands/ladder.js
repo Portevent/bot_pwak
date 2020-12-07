@@ -46,7 +46,11 @@ module.exports = {
 
         let ladder = "<:flocon:780851275930533921> **LADDER** <:Flon_Magique:780851276043780096>\n\n";
         let pre = -1;
+
+        console.log("Leaderboard : " + leaderboard);
+
         for (i = 0; i < leaderboard.length; i++) {
+            console.log(i);
             if(i < 9 || usersToHave.has(leaderboard[i].id)){
                 if(pre + 1 !== i){ //If we skipped some places
                     ladder += '...\n';
@@ -56,7 +60,6 @@ module.exports = {
             }
         }
 
-        console.log("Leaderboard : " + leaderboard);
         console.log("Ladder : " + ladder);
 
         message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
