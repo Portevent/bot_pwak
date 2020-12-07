@@ -56,7 +56,8 @@ module.exports = {
             }
         }
 
-        console.log(ladder);
+        console.log("Leaderboard : " + leaderboard);
+        console.log("Ladder : " + ladder);
 
         message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
     }
