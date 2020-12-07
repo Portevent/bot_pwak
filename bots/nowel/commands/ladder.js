@@ -8,7 +8,6 @@ module.exports = {
         "fr": "Affiche le classement",
         "en": "Show the leaderboard"
     },
-    admin: true,
     delete: true,
     async execute(message, args) {
         const language = message.client.getLanguage(message.channel);
@@ -67,8 +66,11 @@ module.exports = {
                     ladder += '...\n';
                 }
                 pre = i;
-                ladder += (i==0?'🥇':(i==1?'🥈':(i==2?'🥉':i+1))) + " : " + leaderboard[i].name + " **" + leaderboard[i].or + "**<:Kamas_Or:780851275948228628> " + leaderboard[i].argent + "<:Kamas_Argent:780851275956617236>\n";
+                ladder += (i===0?'🥇':(i===1?'🥈':(i===2?'🥉':i+1))) + " : " + leaderboard[i].name + " **" + leaderboard[i].or + "**<:Kamas_Or:780851275948228628> " + leaderboard[i].argent + "<:Kamas_Argent:780851275956617236>\n";
             }
+        }
+        if(ladder === ""){
+            ladder = {fr:"Le concours des Gourmands de Nowel ne recrute que des chefs de renom",en:"The Nowel Gourmet Competition only recruits renowned chefs"}[language]
         }
 
         //console.log("Ladder : " + ladder);
@@ -76,14 +78,13 @@ module.exports = {
             message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
         }
         else{
-            message.client.logError(message.client.offTopics[language]);
             message.client.sendWebhook(message.client.offTopics[language], {
-                "content": ">PIKPIK_DELETE_ME",
+                "content": "",
                 "username": {fr:"Classement",en:"Ladder"}[language],
                 "avatar_url": "https://cdn.discordapp.com/attachments/781503539142459452/785398844132294706/16074.png",
                 "embeds": [
                     {
-                        "description": "",
+                        "description": ladder,
                         "footer": {
                             "text": {fr:"Une toque de chef gourmand est requise pour aspirer à devenir le plus grand Gourmand de Nowel",en:"A gourmet chef’s hat is required to aspire to become Nowel’s greatest gourmet"}[language],
                             "icon_url": "https://cdn.discordapp.com/attachments/781503539142459452/785398844132294706/16074.png"
