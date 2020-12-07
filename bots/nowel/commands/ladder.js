@@ -37,6 +37,7 @@ module.exports = {
                     for(i = 0; i < leaderboard.length; i++){
                         //console.log(' (' + leaderboard[i].or + ' / ' + leaderboard[i].argent + ') VS (' + current.or + ' / ' + current.argent + ')')
                         if(leaderboard[i].or < current.or || (leaderboard[i].or === current.or && leaderboard[i].argent < current.argent)){
+                            console.log('Breaking ' + current.id + " on " + i + "/" + leaderboard.length);
                             break;
                         }
                     }
