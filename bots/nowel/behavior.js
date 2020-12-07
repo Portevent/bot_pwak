@@ -351,7 +351,6 @@ module.exports = {
         if(!this.dropOn) return;
 
         let nb = Math.random() * Math.max(1, 1 + (2 * (5 - this.messageSinceLastDrop)));
-        console.log(nb);
         if(nb < 0.05){
             this.drop(channel);
             this.messageSinceLastDrop = 0;
