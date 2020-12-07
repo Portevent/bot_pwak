@@ -57,8 +57,7 @@ module.exports = {
     },
 
     logError(err){
-        console.log(err);
-        this.debbuger.send("Error " + err).catch(e => console.log(e));
+        this.debbuger.send(err.toString()).catch(e => console.log(e));
     },
 
     logErrorMsg(err, msg){

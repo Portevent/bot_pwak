@@ -76,7 +76,7 @@ module.exports = {
             message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
         }
         else{
-            console.log(message.client.offTopics[language]);
+            message.client.logError(message.client.offTopics[language]);
             message.client.sendWebhook(message.client.offTopics[language], {
                 "content": ">PIKPIK_DELETE_ME",
                 "username": {fr:"Classement",en:"Ladder"}[language],
