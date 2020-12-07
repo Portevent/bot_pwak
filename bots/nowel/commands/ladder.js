@@ -29,19 +29,17 @@ module.exports = {
                     or: inventory.getItemOfUser(user.user.id, 'kamas_argent'),
                     argent: inventory.getItemOfUser(user.user.id, 'kamas_bronze'),
                 }
-                console.log(current.id + ' : ' + current.name + ' (' + current.or + ' / ' + current.argent + ')');
+                //console.log(current.id + ' : ' + current.name + ' (' + current.or + ' / ' + current.argent + ')');
                 if(leaderboard.length === 0){
                     leaderboard = [current];
-                    console.log("Placé par défaut");
                 }else{
                     for(i = 0; i < leaderboard.length; i++){
-                        console.log(' (' + leaderboard[i].or + ' / ' + leaderboard[i].argent + ') VS (' + current.or + ' / ' + current.argent + ')')
+                        //console.log(' (' + leaderboard[i].or + ' / ' + leaderboard[i].argent + ') VS (' + current.or + ' / ' + current.argent + ')')
                         if(leaderboard[i].or < current.or || (leaderboard[i].or === current.or && leaderboard[i].argent < current.argent)){
                             break;
                         }
                     }
                     leaderboard.splice(i, 0, current);
-                    console.log("Placé en " + i);
                 }
             }
         }
@@ -57,6 +55,8 @@ module.exports = {
                 ladder += (i==0?'🥇':(i==1?'🥈':(i==2?'🥉':i+1))) + " : " + leaderboard[i].name + " **" + leaderboard[i].or + "**<:Kamas_Or:780851275948228628> " + leaderboard[i].argent + "<:Kamas_Argent:780851275956617236>\n";
             }
         }
+
+        console.log(ladder);
 
         message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
     }
