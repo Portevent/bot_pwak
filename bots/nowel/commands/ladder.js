@@ -25,7 +25,7 @@ module.exports = {
         for(let userId of inventory.inventory.keys()){
             j++;
             //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
-            if(inventory.userHasItem(userId, 'soufle')){
+            if(inventory.userHasItem(userId, 'ladder')){
                 let user = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!user) continue;
