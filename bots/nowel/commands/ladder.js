@@ -20,6 +20,7 @@ module.exports = {
             usersToHave.set(message.author.id, true);
         }
 
+        console.log(inventory.inventory.keys());
         for(let userId of inventory.inventory.keys()){
             console.log(userId);
             if(true || inventory.userHasItem(userId, 'ladder')){
