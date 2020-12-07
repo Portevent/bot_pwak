@@ -24,15 +24,16 @@ module.exports = {
         console.log(inventory.inventory.keys());
         for(let userId of inventory.inventory.keys()){
             j++;
-            console.log(userId + ' : ' + j + '/' + inventory.inventory.size);
+            console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(true || inventory.userHasItem(userId, 'ladder')){
                 let user = await message.client.referenceGuild.members.fetch(userId);
                 let current = {
                     id: user.user.id,
                     name: user.nickname || user.user.username,
-                    or: inventory.getItemOfUser(user.user.id, 'kamas_argent'),
-                    argent: inventory.getItemOfUser(user.user.id, 'kamas_bronze'),
+                    or: inventory.getItemOfUser(user.user.id, 'kamas_or'),
+                    argent: inventory.getItemOfUser(user.user.id, 'kamas_argent'),
                 }
+                console.log(userId + ' : 2 ' + j + '/' + inventory.inventory.size);
                 //console.log(current.id + ' : ' + current.name + ' (' + current.or + ' / ' + current.argent + ')');
                 if(leaderboard.length === 0){
                     leaderboard = [current];
@@ -46,6 +47,7 @@ module.exports = {
                     }
                     leaderboard.splice(i, 0, current);
                 }
+                console.log(userId + ' : 3 ' + j + '/' + inventory.inventory.size);
             }
         }
 
