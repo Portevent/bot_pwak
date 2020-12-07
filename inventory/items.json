@@ -328,6 +328,13 @@
         }
       },
       {
+        "id" : "quest1_finished",
+        "name": {
+          "fr" : "quest1_finished",
+          "en" : "quest1_finished"
+        }
+      },
+      {
         "id" : "quest2_crafted",
         "name": {
           "fr" : "quest2_crafted",
