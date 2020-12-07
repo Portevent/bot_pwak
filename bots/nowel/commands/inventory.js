@@ -7,12 +7,13 @@ module.exports = {
         "en": "Display the inventory"
     },
     delete: true,
+    cooldown: 1,
     async execute(message, args) {
         let target = message.author;
         if(args.length && message.client.inventory.userHasItem(message.author.id, 'invspy')){
             const name = args[0].toLowerCase();
             for(let userId of message.client.inventory.inventory.keys()){
-                let member = (message.guild?await message.guild.members.fetch(userId).catch(e => message.client.logError(e)):await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e)));
+                let member = (message.guild?await message.guild.members.fetch(userId).catch(e => {}):await message.client.referenceGuild.members.fetch(userId).catch(e => {}));
                 if (member
                     && (
                         (member.nickname && member.nickname.toLowerCase().match(new RegExp(name)))
