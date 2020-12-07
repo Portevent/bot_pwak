@@ -87,12 +87,16 @@ module.exports = {
     },
 
     getLanguage(channel){
+        // User passed as channel
         if(channel.dmChannel){
-            channel = channel.dmChannel;
+            return this.inventory.getTrueItemOfUser(channel.id, 'language', 'fr');
         }
-        if(channel.type === "dm"){
+        // DM Channel
+        else if(channel.type === "dm"){
             return this.inventory.getTrueItemOfUser(channel.recipient.id, 'language', 'fr');
-        }else{
+        }
+        //Public channel
+        else{
             return (['78581046714572800', '364081918116888576', '626165608010088449'].includes(channel.id))?"en":"fr";
         }
     },
@@ -517,7 +521,12 @@ module.exports = {
         const language = this.getLanguage(user);
         const inventory = this.getInventory(user, language, flags, list);
 
-        if(channel.type === "dm"){
+        if(channel.dmChannel){
+            channel.send('', {
+                embed: inventory.embeds[0]
+            }).catch(e => this.logError(e));
+        }
+        else if(channel.type === "dm"){
             channel.send('', {
                 embed: inventory.embeds[0]
             }).catch(e => this.logError(e));
