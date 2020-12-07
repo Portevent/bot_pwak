@@ -81,10 +81,125 @@
     ],
     "craftBonus": "kamas_or",
     "craftBonusQuantity": 1,
+    "craftAddFlag": "quest1_finished",
     "craftRemoveFlag": "quest1_started",
     "craftSucces": {
-      "fr": "Magnifique ! Il est maintenant possible de voir les 7 Fées de Nowel, et de les capturer. Bonne chance !",
-      "en": "Awesome ! It is now possible to see and catch the 7 Kwismas Fairies ! Good luck !"
+      "fr": "Magnifique ! Il est maintenant possible de voir les 7 Fées de Nowel, et de les capturer. Bonne chance (il vous en faudra) !",
+      "en": "Awesome ! It is now possible to see and catch the 7 Kwismas Fairies ! Good luck (and I mean it)!"
+    }
+  },
+  "drop_flocon_1": {
+    "require": "quest1_finished",
+    "forbide": "drop_flocon_1_crafted",
+    "result": "drop_flocon_1",
+    "recipe": [
+      ["flocon", 200],
+      ["boule_rouge", 37],
+      ["boule_bleue", 28],
+      ["boule_violette", 19]
+    ],
+    "craftTooltip": {
+      "fr": "Rend cool, un style à couper le souffle et donne l'haleine fraiche. Même un peu trop fraiche... <:flocon:780851275930533921>",
+      "en": "Do you ever wanted to be cool and have a fresh breath. A very fresh breath... <:flocon:780851275930533921>"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 1,
+    "craftAddFlag": "drop_flocon_1_crafted",
+    "craftSucces": {
+      "fr": "Cool ! On ne pourra plus vous appeler Emile. Cependant il faudrat toujours eviter de parler trop près des gens, pour éviter de ne pas les transformer en glaçon <:flocon:780851275930533921>",
+      "en": "Cool ! A bit too, but cool tho. Don't talk to close to people, you may turn them into snowmen. <:flocon:780851275930533921>"
+    }
+  },
+  "recycleur1": {
+    "require": "quest1_finished",
+    "forbide": "can_recycle",
+    "result": "recycleur1",
+    "recipe": [
+      ["flocon_magique", 10],
+      ["boule_orange", 87],
+      ["boule_verte", 48],
+      ["boule_violette", 68]
+    ],
+    "craftTooltip": {
+      "fr": "Fait fondre les coeurs et les kamas chocolatés. Ideal pour recycler ses ex ou ses kamas de bronze en quelques kamas d'argent.",
+      "en": "Melts hearts and chocolate kamas. Ideal for recycling ex’s or bronze kamas into a few silver kamas."
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 1,
+    "craftAddFlag": "can_recycle",
+    "craftSucces": {
+      "fr": "Super ! On peut maintenant l'utiliser avec `>recycler`. 10 kamas chocolaté de bronze feront 1 kamas chocolaté kamas d'argent.",
+      "en": "Nice ! We can use it with `>recycle`. 10 bronze chocolate kamas make 1 sylver chocolat kamas."
+    }
+  },
+  "invspy": {
+    "require": "quest1_finished",
+    "forbide": "invspy_crafted",
+    "result": "invspy",
+    "recipe": [
+      ["boule_bleue", 42],
+      ["boule_orange", 27],
+      ["boule_verte", 38],
+      ["boule_violette", 29],
+      ["boule_jaune", 33]
+    ],
+    "craftTooltip": {
+      "fr": "Permet de voir les étoiles, la copie de son voisin ainsi que son inventaire",
+      "en": "Allows you to see the stars, the answers of your neighbour as well as his inventory"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 1,
+    "craftAddFlag": "invspy_crafted",
+    "craftSucces": {
+      "fr": "Intéressant ! Tu peux maintenant voir l'inventaire des gens en rajoutant leur nom.\nEx : `>inventaire Portevent`",
+      "en": "Interesting ! You can now see other peoples inventory. E.g. :  `>inventory Portevent`"
+    }
+  },
+  "ladder": {
+    "require": "quest1_finished",
+    "forbide": "ladder_crafted",
+    "result": "ladder",
+    "recipe": [
+      ["boule_violette", 49],
+      ["boule_jaune", 61],
+      ["boule_bleue", 51],
+      ["boule_rouge", 68],
+      ["boule_orange", 76]
+    ],
+    "craftTooltip": {
+      "fr": "Vous fait entrer dans la cour des grands, des gourmands, et des grands gourmands",
+      "en": "Brings you into the big leagues"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 1,
+    "craftAddFlag": "ladder_crafted",
+    "craftSucces": {
+      "fr": "Miam ! Collectionnons les kamas chocolatés en or pour devenir le plus gourmands des plus gourmands.\n`>classement`",
+      "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
+    }
+  },
+  "quete2": {
+    "require": "quest1_finished",
+    "forbide": "quest2_crafted",
+    "result": "ladder",
+    "recipe": [
+      ["nowalmanax_star", 12],
+      ["boule_bleue", 41],
+      ["boule_rouge", 38],
+      ["boule_violette", 54],
+      ["boule_orange", 56],
+      ["boule_jaune", 61]
+    ],
+    "craftTooltip": {
+      "fr": "Quête principale",
+      "en": "Main Quest"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 3,
+    "craftAddFlag": "quest2_crafted",
+    "craftSucces": {
+      "fr": "Miam ! Collectionnons les kamas chocolatés en or pour devenir le plus gourmands des plus gourmands.\n`>classement`",
+      "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
     }
   }
 }

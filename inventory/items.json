@@ -328,6 +328,13 @@
         }
       },
       {
+        "id" : "quest2_crafted",
+        "name": {
+          "fr" : "quest2_crafted",
+          "en" : "quest2_crafted"
+        }
+      },
+      {
         "id" : "bad_karma",
         "name": {
           "fr" : "bad_karma",
@@ -339,6 +346,27 @@
         "name": {
           "fr" : "nowalmanax_help",
           "en" : "nowalmanax_help"
+        }
+      },
+      {
+        "id" : "drop_flocon_1_crafted",
+        "name": {
+          "fr" : "drop_flocon_1_crafted",
+          "en" : "drop_flocon_1_crafted"
+        }
+      },
+      {
+        "id" : "ladder_crafted",
+        "name": {
+          "fr" : "ladder_crafted",
+          "en" : "ladder_crafted"
+        }
+      },
+      {
+        "id" : "invspy_crafted",
+        "name": {
+          "fr" : "invspy_crafted",
+          "en" : "invspy_crafted"
         }
       },
       {

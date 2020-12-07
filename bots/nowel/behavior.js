@@ -103,7 +103,7 @@ module.exports = {
         }
         //Public channel
         else{
-            return (['78581046714572800', '364081918116888576', '626165608010088449'].includes(channel.id))?"en":"fr";
+            return (['78581046714572800', '364081918116888576', '626165608010088449', '297780920268750858'].includes(channel.id))?"en":"fr";
         }
     },
 
@@ -524,7 +524,7 @@ module.exports = {
     },
 
     sendInventory(user, channel, flags = false, list = false) {
-        const language = this.getLanguage(user);
+        const language = this.getLanguage(channel);
         const inventory = this.getInventory(user, language, flags, list);
 
         if(channel.dmChannel){
@@ -538,7 +538,7 @@ module.exports = {
             }).catch(e => this.logError(e));
         }
         else{
-            this.sendWebhook(channel, inventory);
+            this.sendWebhook(this.offTopics[language], inventory);
         }
     },
 

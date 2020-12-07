@@ -20,9 +20,13 @@ class Craft {
     static getRecipeFor(inventory, user){
         let recipes = [];
         for (let recipe of Object.values(this.recipes)) {
-            if(!recipe.require || inventory.userHasItem(user, recipe.require)){
-                recipes.push(recipe);
+            if(recipe.require && !inventory.userHasItem(user, recipe.require)){
+                continue;
             }
+            if(recipe.forbide && inventory.userHasItem(user, recipe.forbide)){
+                continue;
+            }
+            recipes.push(recipe);
         }
         return recipes;
     }
@@ -31,7 +35,7 @@ class Craft {
     static recipeToEmbed(recipe, inventory, user, language){
         const result = Item.get(recipe.result);
         let canCraft = true;
-        let instructions = "";
+        let instructions = (recipe.craftTooltip?recipe.craftTooltip[language]+"\n":"");
         for(let instruction of recipe.recipe){
             const item = Item.get(instruction[0]);
             const count = inventory.getItemOfUser(user, item.id);

@@ -3,6 +3,7 @@ const Item = require('../../../inventory/item.js');
 
 module.exports = {
     name: 'recycle',
+    aliases: ['recycler'],
     description: {
         "fr": "Fait fondre les kamas chocolatés pour en faire d'autre",
         "en": "Melts chocolate kamas to make better ones"

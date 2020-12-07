@@ -25,6 +25,6 @@ module.exports = {
                 }
             }
         }
-        message.client.sendInventory(target, message.author);
+        message.client.sendInventory(target, message.channel);
     },
 };
