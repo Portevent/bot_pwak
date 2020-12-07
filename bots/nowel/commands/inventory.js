@@ -8,6 +8,6 @@ module.exports = {
     },
     delete: true,
     execute(message, args) {
-        message.client.sendInventory(message.author, message.channel);
+        message.client.sendInventory(message.author, message.author.dmChannel);
     },
 };
