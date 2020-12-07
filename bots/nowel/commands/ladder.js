@@ -21,20 +21,21 @@ module.exports = {
             usersToHave.set(message.author.id, true);
         }
 
-        console.log(inventory.inventory.keys());
+        //console.log(inventory.inventory.keys());
         for(let userId of inventory.inventory.keys()){
             j++;
-            console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
+            //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(true || inventory.userHasItem(userId, 'ladder')){
                 let user = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
-                console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
+                //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
+                if(!user) continue;
                 let current = {
                     id: user.user.id,
                     name: user.nickname || user.user.username,
                     or: inventory.getItemOfUser(user.user.id, 'kamas_or'),
                     argent: inventory.getItemOfUser(user.user.id, 'kamas_argent'),
                 }
-                console.log(userId + ' : 2 ' + j + '/' + inventory.inventory.size);
+                //console.log(userId + ' : 2 ' + j + '/' + inventory.inventory.size);
                 //console.log(current.id + ' : ' + current.name + ' (' + current.or + ' / ' + current.argent + ')');
                 if(leaderboard.length === 0){
                     leaderboard = [current];
@@ -48,17 +49,17 @@ module.exports = {
                     }
                     leaderboard.splice(i, 0, current);
                 }
-                console.log(userId + ' : 3 ' + j + '/' + inventory.inventory.size);
+                //console.log(userId + ' : 3 ' + j + '/' + inventory.inventory.size);
             }
         }
 
         let ladder = "<:flocon:780851275930533921> **LADDER** <:Flon_Magique:780851276043780096>\n\n";
         let pre = -1;
 
-        console.log("Leaderboard : " + leaderboard);
+        //console.log("Leaderboard : " + leaderboard);
 
         for (i = 0; i < leaderboard.length; i++) {
-            console.log(i);
+            //console.log(i);
             if(i < 9 || usersToHave.has(leaderboard[i].id)){
                 if(pre + 1 !== i){ //If we skipped some places
                     ladder += '...\n';
@@ -68,7 +69,7 @@ module.exports = {
             }
         }
 
-        console.log("Ladder : " + ladder);
+        //console.log("Ladder : " + ladder);
 
         message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
     }
