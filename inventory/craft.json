@@ -181,7 +181,7 @@
   "quete2": {
     "require": "quest1_finished",
     "forbide": "quest2_crafted",
-    "result": "ladder",
+    "result": "quete2",
     "recipe": [
       ["nowalmanax_star", 12],
       ["boule_bleue", 41],
