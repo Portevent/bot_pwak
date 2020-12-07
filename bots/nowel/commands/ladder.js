@@ -12,6 +12,7 @@ module.exports = {
     async execute(message, args) {
         let leaderboard = [];
         let i = 0;
+        let j = 0;
         const inventory = message.client.inventory;
 
         let messages = await message.channel.messages.fetch({ limit: 5 });
@@ -22,8 +23,8 @@ module.exports = {
 
         console.log(inventory.inventory.keys());
         for(let userId of inventory.inventory.keys()){
-            i++;
-            console.log(userId + ' : ' + i + '/' + inventory.inventory.size);
+            j++;
+            console.log(userId + ' : ' + j + '/' + inventory.inventory.size);
             if(true || inventory.userHasItem(userId, 'ladder')){
                 let user = await message.client.referenceGuild.members.fetch(userId);
                 let current = {
