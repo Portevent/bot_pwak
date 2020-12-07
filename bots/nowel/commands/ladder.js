@@ -10,6 +10,7 @@ module.exports = {
     },
     admin: true,
     async execute(message, args) {
+        const language = message.client.getLanguage(message.channel);
         let leaderboard = [];
         let i = 0;
         let j = 0;
@@ -53,7 +54,7 @@ module.exports = {
             }
         }
 
-        let ladder = "<:flocon:780851275930533921> **LADDER** <:Flon_Magique:780851276043780096>\n\n";
+        let ladder = "";
         let pre = -1;
 
         //console.log("Leaderboard : " + leaderboard);
@@ -70,7 +71,24 @@ module.exports = {
         }
 
         //console.log("Ladder : " + ladder);
-
-        message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
+        if(message.channel.type === "dm"){
+            message.author.send(ladder).catch(e => message.client.logErrorMsg(e, message));
+        }
+        else{
+            message.client.sendWebhook(message.client.offTopics[language], {
+                "content": ">PIKPIK_DELETE_ME",
+                "username": {fr:"Classement",en:"Ladder"}[language],
+                "avatar_url": "https://cdn.discordapp.com/attachments/781503539142459452/785398844132294706/16074.png",
+                "embeds": [
+                    {
+                        "description": "",
+                        "footer": {
+                            "text": {fr:"Une toque de chef gourmand est requise pour aspirer à devenir le plus grand Gourmand de Nowel",en:"A gourmet chef’s hat is required to aspire to become Nowel’s greatest gourmet"}[language],
+                            "icon_url": "https://cdn.discordapp.com/attachments/781503539142459452/785398844132294706/16074.png"
+                        }
+                    }
+                ]
+            });
+        }
     }
 };

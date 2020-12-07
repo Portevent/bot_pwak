@@ -35,8 +35,12 @@ module.exports = {
     async onceReady(){
         this.nowalmanax = new Nowalmanax(this);
         this.debbuger = await this.users.fetch("214090561055883267");
-        //this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
-        this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
+        this.offTopics = {
+            fr: this.channels.fetch('372100313890553856'),
+            en: this.channels.fetch('297780920268750858')
+        }
+        this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
+        //this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
         const client = this;
         // noinspection ES6ShorthandObjectProperty
         cron.schedule('0 0 * * *', async function() {
