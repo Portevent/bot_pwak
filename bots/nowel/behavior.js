@@ -140,8 +140,6 @@ module.exports = {
                         day = Number(embed.description.split(" - ", 1)[0]);
                     }
 
-                    console.log('Day : ' + day);
-
 
                     let loot = {
                         "item": Item.get(this.nowalmanax.questItem),
