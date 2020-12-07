@@ -43,7 +43,7 @@ module.exports = {
         });
 
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('* */2 * * *', async function() {
+        cron.schedule('0 */2 * * *', async function() {
             //Auto save every two hours
             client.autoSave();
         });
