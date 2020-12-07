@@ -39,8 +39,8 @@ module.exports = {
             fr: await this.channels.fetch('372100313890553856'),
             en: await this.channels.fetch('297780920268750858')
         }
-        this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
-        //this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
+        //this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
+        this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
         const client = this;
         // noinspection ES6ShorthandObjectProperty
         cron.schedule('0 0 * * *', async function() {

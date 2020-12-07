@@ -12,7 +12,7 @@ module.exports = {
         if(args.length && message.client.inventory.userHasItem(message.author.id, 'invspy')){
             const name = args[0].toLowerCase();
             for(let userId of message.client.inventory.inventory.keys()){
-                let member = (message.guild?await message.guild.members.fetch(userId):await message.client.referenceGuild.members.fetch(userId));
+                let member = (message.guild?await message.guild.members.fetch(userId).catch(e => message.client.logError(e)):await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e)));
                 if (member
                     && (
                         (member.nickname && member.nickname.toLowerCase().match(new RegExp(name)))
