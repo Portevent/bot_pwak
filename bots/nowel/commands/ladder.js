@@ -26,7 +26,8 @@ module.exports = {
             j++;
             console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(true || inventory.userHasItem(userId, 'ladder')){
-                let user = await message.client.referenceGuild.members.fetch(userId);
+                let user = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
+                console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 let current = {
                     id: user.user.id,
                     name: user.nickname || user.user.username,
