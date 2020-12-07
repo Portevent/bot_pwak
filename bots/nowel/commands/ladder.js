@@ -9,6 +9,7 @@ module.exports = {
         "en": "Show the leaderboard"
     },
     delete: true,
+    cooldown: 5,
     async execute(message, args) {
         const language = message.client.getLanguage(message.channel);
         let leaderboard = [];
