@@ -73,7 +73,7 @@ module.exports = {
     onMessage(message) {
         const client = message.client;
         if(message.content.startsWith('> ')) return;
-        if(message.content.startsWith('>PIKPIK_DELETE_ME')) return message.delete();
+        if(message.content.startsWith('>PIKPIK_DELETE_ME')) return message.delete({timeout: 500});
         if(message.author.id === client.user.id) return client.onOwnMessage(message);
         
         // Doesn't require to specify the prefix for dm
