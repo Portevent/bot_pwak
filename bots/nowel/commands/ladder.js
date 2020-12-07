@@ -21,6 +21,7 @@ module.exports = {
         }
 
         for(let userId of inventory.inventory.keys()){
+            console.log(userId);
             if(true || inventory.userHasItem(userId, 'ladder')){
                 let user = await message.client.referenceGuild.members.fetch(userId);
                 let current = {
