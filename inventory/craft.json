@@ -201,5 +201,19 @@
       "fr": "Miam ! Collectionnons les kamas chocolatés en or pour devenir le plus gourmands des plus gourmands.\n`>classement`",
       "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
     }
+  },
+  "boule_rouge": {
+    "require": "test_exploit",
+    "result": "boule_rouge",
+    "recipe": [
+      ["test_exploit", 1]
+    ]
+  },
+  "boule_orange": {
+    "require": "test_exploit",
+    "result": "boule_rouge",
+    "recipe": [
+      ["test_exploit", 1]
+    ]
   }
 }

@@ -377,6 +377,20 @@
         }
       },
       {
+        "id" : "test_exploit",
+        "name": {
+          "fr" : "test_exploit",
+          "en" : "test_exploit"
+        }
+      },
+      {
+        "id" : "test_exploit2",
+        "name": {
+          "fr" : "test_exploit2",
+          "en" : "test_exploit2"
+        }
+      },
+      {
         "id" : "can_recycle",
         "name": {
           "fr" : "can_recycle",
