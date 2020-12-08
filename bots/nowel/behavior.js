@@ -396,6 +396,14 @@ module.exports = {
         const language = this.getLanguage(user);
 
         const recipe = Craft.getRecipeFromName(message.embeds[0].title);
+
+        for(let ingredient of recipe.recipe){
+            if(this.inventory.getItemOfUser(user.id, ingredient[0]) < ingredient[1]){
+                return;
+            }
+        }
+
+
         this.inventory.addItemToUser(user.id, recipe.result);
 
         for(let ingredient of recipe.recipe){
