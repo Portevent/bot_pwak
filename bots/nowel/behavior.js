@@ -492,7 +492,7 @@ module.exports = {
         let loot = Loot.getLoot(bonus, bonus);
 
         for(let user of users.values()){
-            this.inventory.addItemToUser(user.id, loot.item.id, loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1));
+            this.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
         }
 
         this.editWebhook(reaction.message.channel, {
