@@ -115,7 +115,7 @@ module.exports = {
             if (drop === undefined) return;
 
             reaction.users.fetch().then(users => {
-                console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
+                //console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
                 if (users.size >= drop.min) {
                     if (this.onGoingLoot.has(reaction.message.id)) {
                         return;
@@ -204,7 +204,7 @@ module.exports = {
 
         // Drop flocon
         else if (reaction.emoji.id === this.emojiFlocon) {
-            console.log('Click on flocon');
+            //console.log('Click on flocon');
             if (user.id === reaction.message.author.id) {
                 await reaction.remove();
                 this.inventory.addItemToUser(user.id, 'flocon');
@@ -474,7 +474,7 @@ module.exports = {
 
         let messages = await reaction.message.channel.messages.fetch({ limit: 10 })
         let users = await reaction.users.fetch();
-        console.log("Looting gift : " + users.map(user => user.username + ' '));
+        //console.log("Looting gift : " + users.map(user => user.username + ' '));
         users.delete(this.user.id);
 
         let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
