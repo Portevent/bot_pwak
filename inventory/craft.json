@@ -202,6 +202,70 @@
       "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
     }
   },
+  "bonus_drop": {
+    "require": "has_dropped_fairy",
+    "forbide": "bonus_drop_crafted",
+    "result": "bonus_drop",
+    "recipe": [
+      ["fairy", 1],
+      ["boule_multi", 1],
+      ["flocon_magique", 3],
+      ["boule_violette", 13],
+      ["boule_bleue", 13],
+      ["boule_jaune", 13]
+    ],
+    "craftTooltip": {
+      "fr": "Augmente le butin de tous les cadeaux",
+      "en": "Increase all gifts loots"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 2,
+    "craftAddFlag": "bonus_drop_crafted",
+    "craftSucces": {
+      "fr": "Chaque joueur augmente de 25% la quantité et la qualité des drops des cadeaux. Avec cette relique, votre bonus passe de 25% à 50%. Cumulable avec les autres reliques des autres joueurs.",
+      "en": "Each player increase by 25% the quantity and the quality of gifts loots. With this Relic, your bonus increase from 25% to 50%. Cumulable with other relics."
+    }
+  },
+  "bonus_big_drop": {
+    "require": "bonus_drop",
+    "result": "bonus_big_drop",
+    "recipe": [
+      ["fairy", 1],
+      ["bonus_drop", 1],
+      ["boule_multi", 3],
+      ["flocon_magique", 5]
+    ],
+    "craftTooltip": {
+      "fr": "Augmente encore plus le butin de tous les cadeaux",
+      "en": "Increase even more all gifts loots"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 4,
+    "craftSucces": {
+      "fr": "Chaque joueur augmente de 25% la quantité et la qualité des drops des cadeaux. Avec cette relique, votre bonus passe de 25% à 100%. Cumulable avec les autres reliques des autres joueurs.",
+      "en": "Each player increase by 25% the quantity and the quality of gifts loots. With this Relic, your bonus increase from 25% to 100%. Cumulable with other relics."
+    }
+  },
+  "bonus_double_drop": {
+    "require": "bonus_big_drop",
+    "result": "bonus_double_drop",
+    "recipe": [
+      ["fairy", 2],
+      ["bonus_big_drop", 1],
+      ["boule_multi", 5],
+      ["flocon_magique", 7]
+    ],
+    "craftTooltip": {
+      "fr": "Ajoute une deuxième ligne sur le butin des cadeaux",
+      "en": "Add another line to gifts loots"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 6,
+    "craftSucces": {
+      "fr": "Une deuxième ligne sera maintenant présente sur les cadeaux que vous aidez à ouvrir. Le bonus de quantité de la deuxième ligne est de 50% de celui de la première ligne. Si deux personnes possède cette relique, le bonus sera le même pour la deuxième ligne. Si trois personnes possède cette relique, ce bonus sera de 1,5 fois celui de la première ligne etc...",
+      "en": "The gift you will help openning will now have another loot. The quantity bonus of the second loot is half the bonus of the first loot. Each player with this relic increase the quantity bonus of the second line."
+    }
+  },
   "boule_rouge": {
     "require": "test_exploit",
     "result": "boule_rouge",

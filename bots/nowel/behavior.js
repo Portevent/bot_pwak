@@ -30,6 +30,7 @@ module.exports = {
         this.emojiFlocon = "780851275930533921";
         this.emojiFloconMagique = "780851276043780096";
         this.emojiFloconAlma = "780851275691589724";
+        this.emojiFairy = "786540028628172820";
     },
 
     async onceReady(){
@@ -234,6 +235,16 @@ module.exports = {
                 reaction.users.remove(user);
             }
         }
+        // Drop flocon nowalmanax
+        else if (reaction.emoji.id === this.emojiFairy) {
+            if (user.id === reaction.message.author.id) {
+                await reaction.remove();
+                this.dropFairyTo(user);
+            } else if(!user.bot){
+                // noinspection ES6MissingAwait
+                reaction.users.remove(user);
+            }
+        }
 
         else {
             if (this.inventory.userExists(user.id)) {
@@ -249,8 +260,10 @@ module.exports = {
             if(this.inventory.userHasItem(message.author.id, "drhellers_net"))
                 this.nowalmanax.attemptNowalmanaxDrop(message);
 
-            if(this.inventory.userHasItem(message.author.id, "quete1") && Math.random() < 0.005)
-                this.dropFairy(message);
+            if(this.inventory.userHasItem(message.author.id, "quete1") && (Math.random() < 0.005 || this.inventory.userHasItem(message.author.id, "fairy_cheat")))
+                message.react(this.emojiFairy).then(() => {
+                    this.debbuger.send('Fairy dropped by ' + (message.member.nickname || message.author.username) + ' in <#' + message.channel + '>');
+                }).catch(e => this.logError(e));
 
             if(this.inventory.userHasItem(message.author.id, "drop_flocon_1") && Math.random() < 0.10)
                 message.react(this.emojiFlocon).catch(e => this.logError(e));
@@ -378,11 +391,28 @@ module.exports = {
         });
     },
 
-    dropFairy(message){
+    dropFairyTo(user){
+        const language = this.getLanguage(user);
+        let fairies = [];
+        let canDrop = false;
+        for(let i = 0; i < 7; i++){
+            if(!this.inventory.userHasItem(user.id, 'fairy_' + i)){
+                fairies.push('fairy_' + i);
+                canDrop = true;
+            }
+        }
 
-    },
-
-    checkFairyDrop(reaction, user){
+        if(canDrop){
+            let fairy = fairies[Math.floor(Math.random() * fairies.length)];
+            this.inventory.addItemToUser(user.id, fairy, 1);
+            this.inventory.addItemToUser(user.id, "fairy", 1);
+            this.inventory.addItemToUser(user.id, "has_dropped_fairy", 1);
+            const fairy_item = Item.get(fairy)
+            user.send('**' + fairy_item.name[language] + '** : "' + fairy_item.text[language] + '"',
+                {
+                    files: ["https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png"]
+                })
+        }
     },
 
     autoSave(){
@@ -458,13 +488,13 @@ module.exports = {
                 this.greet(user, language);
             }
 
-            if(this.inventory.userHasItem(user.id, 'booster1')){
-                badges.set(user.id, '<:etoile:780851276094767104>');
+            if(this.inventory.userHasItem(user.id, 'bonus_drop')){
+                badges.set(user.id, '<:Bonus_25:786575034587676715>');
                 bonus += 0.25;
             }
 
-            if(this.inventory.userHasItem(user.id, 'booster2')){
-                badges.set(user.id, '<:etoile:780851276094767104>');
+            if(this.inventory.userHasItem(user.id, 'bonus_big_drop')){
+                badges.set(user.id, '<:Bonus_75:786581855763562566>');
                 bonus += 0.75;
             }
 
@@ -524,7 +554,11 @@ module.exports = {
                     'en':
                         "Let's check what we can craft `" + this.prefix + "craft` \n*🇨🇵 `" + this.prefix + "francais`*"
                 }[language]);
-        }).catch(e => this.logError(e));
+        }).catch(e => {
+            this.logError(e);
+            this.logError(user);
+            this.logError(user.username);
+        });
 
         this.inventory.addItemToUser(user.id, 'quest0_available');
         this.inventory.addItemToUser(user.id, 'boule_verte', 2);

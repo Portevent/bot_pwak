@@ -292,6 +292,132 @@
       }
     ]
   },
+  "fairy": {
+    "name": {
+      "fr": "Fées",
+      "en": "Fairies"
+    },
+    "items": [
+      {
+        "id": "fairy_0",
+        "name": {
+          "fr": "Fée coopérative",
+          "en": "Co-op Fairy"
+        },
+        "text": {
+          "fr": "Qui pour me pl dj 1-50 all succès",
+          "en": "Someone pl me dg 1-50 full achievments"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_1",
+        "name": {
+          "fr": "Fée sage",
+          "en": "Wise Fairy"
+        },
+        "text": {
+          "fr": "Cra sasa ch pl contre drop",
+          "en": "Full wisdom cra lk pl vs drop"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_2",
+        "name": {
+          "fr": "Fée généreuse",
+          "en": "Generous Fairy"
+        },
+        "text": {
+          "fr": "Achete OeO 10% prix estime hdv",
+          "en": "Buy stuff 10% price"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_3",
+        "name": {
+          "fr": "Fée prudent",
+          "en": "Cautious Fairy"
+        },
+        "text": {
+          "fr": "Achete code audio test avant",
+          "en": "Buy audio code test before"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_4",
+        "name": {
+          "fr": "Fée avertie",
+          "en": "Aware Fairy"
+        },
+        "text": {
+          "fr": "No noob no arnark",
+          "en": "No noob no arnak"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_5",
+        "name": {
+          "fr": "Fée maline",
+          "en": "Clever Fairy"
+        },
+        "text": {
+          "fr": "*Offre anormalement bonne* kamas + Lumino",
+          "en": "*Unusual good offer* kamas + Shaker"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_6",
+        "name": {
+          "fr": "Fée vétéran",
+          "en": "Veteran Fairy"
+        },
+        "text": {
+          "fr": "Best Cra Korri interserveur 1 place pas cher full chall gogogo",
+          "en": "Best Korri Cra 1 slot super fast gogogo"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "bonus_drop",
+        "name": {
+          "fr": "Relique des Fées",
+          "en": "Relic of the Fairies"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786574937187680346/74039.png",
+        "emoji": "<:Bonus_25:786575034587676715>"
+      },
+      {
+        "id": "bonus_big_drop",
+        "name": {
+          "fr": "Féerique relique des Fées",
+          "en": "Fairy Relic of the Fairies"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786581796065640468/164115.png",
+        "emoji": "<:Bonus_75:786581855763562566> "
+      },
+      {
+        "id": "bonus_double_drop",
+        "name": {
+          "fr": "Féeriquement Féerique relique des Féerique Fées",
+          "en": "Fairyly Fairy Relic of the Fairy Fairies"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786575660860047370/164634.png",
+        "emoji": "<:Bonus_Double_Drop:786575751938834502>"
+      }
+    ]
+  },
   "flag":{
     "name": {
       "fr": "Flags",
@@ -299,6 +425,38 @@
     },
     "hideInInventory": true,
     "items": [
+      {
+        "id": "fairy",
+        "name": {
+          "fr" : "Fée",
+          "en" : "Fairy"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "has_dropped_fairy",
+        "name": {
+          "fr" : "Fée attrapée",
+          "en" : "Dropped fairy"
+        },
+        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
+        "emoji": "<:Fairy:786540028628172820>"
+      },
+      {
+        "id": "fairy_cheat",
+        "name": {
+          "fr" : "100 % drop fée",
+          "en" : "100 % fairy drop"
+        }
+      },
+      {
+        "id": "bonus_drop_crafted",
+        "name": {
+          "fr" : "bonus_drop_crafted",
+          "en" : "bonus_drop_crafted"
+        }
+      },
       {
         "id": "language",
         "name": {
