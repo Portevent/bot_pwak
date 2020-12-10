@@ -70,7 +70,7 @@ module.exports = {
                     "icon_url": msg.author.avatarURL()
                 },
                 "footer": {
-                    "text": "Sent in <#" + msg.channel.id + "> " + (msg.channel.type === "dm"?"(DM " + msg.channel.recipient.username + "":''),
+                    "text": "Sent in <#" + msg.channel.id + "> " + (msg.channel.type === "dm"?"(DM " + msg.channel.recipient.username + ")":''),
                     "icon_url": (msg.channel.type === "dm"?msg.channel.recipient.avatarURL():''),
                 }
             }
