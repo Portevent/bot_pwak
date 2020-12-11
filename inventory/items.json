@@ -293,6 +293,7 @@
     ]
   },
   "fairy": {
+    "displayFullNameInInventory": true,
     "name": {
       "fr": "Fées",
       "en": "Fairies"
