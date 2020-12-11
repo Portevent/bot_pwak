@@ -35,11 +35,14 @@ class Loot {
         const loots = Object.keys(meta_loot.loots);
         const loot = loots[Math.floor(Math.random() * loots.length)]
         let quantity = meta_loot.loots[loot]
+        let original = quantity;
+        let random_quantity_variation = 1 + Math.random()/2;
 
         if(quantity !== -1){
-            quantity *= 1 + Math.random()/2;
+            quantity *= random_quantity_variation;
             quantity *= quantity_bonus;
             quantity = Math.ceil(quantity);
+            console.log(original + ' * ' + random_quantity_variation + ' * ' + quantity_bonus + ' = ' + quantity)
         }
 
         else{
