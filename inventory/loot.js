@@ -42,7 +42,7 @@ class Loot {
             quantity *= random_quantity_variation;
             quantity *= quantity_bonus;
             quantity = Math.ceil(quantity);
-            console.log(original + ' * ' + random_quantity_variation + ' * ' + quantity_bonus + ' = ' + quantity)
+            //console.log(original + ' * ' + random_quantity_variation + ' * ' + quantity_bonus + ' = ' + quantity)
         }
 
         else{

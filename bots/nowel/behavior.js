@@ -535,7 +535,7 @@ module.exports = {
 
         this.editWebhook(reaction.message.channel, {
             "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**"
-                + (seccond_bonus > 0?" **" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")+
+                + (seccond_bonus > 0?"\n**" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")
                 + "! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
         }, reaction.message.id);
 
