@@ -416,6 +416,15 @@
         },
         "img": "https://media.discordapp.net/attachments/781503539142459452/786575660860047370/164634.png",
         "emoji": "<:Bonus_Double_Drop:786575751938834502>"
+      },
+      {
+        "id": "bonus_double_drop_plus",
+        "name": {
+          "fr": "La Plus Féeriquement Féerique des Féeriquement Féerique relique des Féerique Fées",
+          "en": "The Fairlest Fairy of the Fairyly Fairy Relic of the Fairy Fairies"
+        },
+        "img": "https://media.discordapp.net/attachments/787442887800782891/787445781921529886/aa.png",
+        "emoji": "<:Double_Drop:787445684923400223>"
       }
     ]
   },

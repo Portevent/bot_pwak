@@ -266,6 +266,26 @@
       "en": "The gift you will help openning will now have another loot. The quantity bonus of the second loot is half the bonus of the first loot. Each player with this relic increase the quantity bonus of the second line."
     }
   },
+  "bonus_double_drop_plus": {
+    "require": "bonus_double_drop",
+    "result": "bonus_double_drop_plus",
+    "recipe": [
+      ["fairy", 3],
+      ["bonus_double_drop", 1],
+      ["boule_multi", 50],
+      ["flocon_magique", 200]
+    ],
+    "craftTooltip": {
+      "fr": "Augmente la deuxième ligne sur le butin des cadeaux",
+      "en": "Increase the other line to gifts loots"
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 10,
+    "craftSucces": {
+      "fr": "Une deuxième ligne sera maintenant présente sur les cadeaux que vous aidez à ouvrir. Le bonus de quantité de la deuxième ligne est de **100**% de celui de la première ligne. Si deux personnes possède cette relique, le bonus sera doublé pour la deuxième ligne. Etc...",
+      "en": "The gift you will help openning will now have another loot. Each player with this relic increase the quantity bonus of the second line (100% per player)."
+    }
+  },
   "boule_rouge": {
     "require": "test_exploit",
     "result": "boule_rouge",

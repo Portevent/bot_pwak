@@ -478,6 +478,7 @@ module.exports = {
         users.delete(this.user.id);
 
         let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
+        let seccond_bonus = 0;
 
         let badges = new Map();
         let ownBonus = new Map();
@@ -498,9 +499,14 @@ module.exports = {
                 bonus += 0.75;
             }
 
-            if(this.inventory.userHasItem(user.id, 'booster3')){
-                badges.set(user.id, '<:etoile:780851276094767104>');
-                bonus += 1.75;
+            if(this.inventory.userHasItem(user.id, 'bonus_double_drop')){
+                badges.set(user.id, '<:Bonus_Double_Drop:786575751938834502>');
+                seccond_bonus += 0.5;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'bonus_double_drop_plus')){
+                badges.set(user.id, '<:Double_Drop:787445684923400223>');
+                seccond_bonus += 1.0;
             }
 
             let bad_karmas = 1;
@@ -520,13 +526,17 @@ module.exports = {
         }
 
         let loot = Loot.getLoot(bonus, bonus);
+        let loot2 = Loot.getLootFromMetaLoot(loot.meta_loot.id, bonus*seccond_bonus);
 
         for(let user of users.values()){
             this.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
+            this.inventory.addItemToUser(user.id, loot2.item.id, Math.floor(loot2.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
         }
 
         this.editWebhook(reaction.message.channel, {
-            "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
+            "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**"
+                + (seccond_bonus > 0?" **" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")+
+                + "! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
         }, reaction.message.id);
 
         // noinspection ES6MissingAwait
