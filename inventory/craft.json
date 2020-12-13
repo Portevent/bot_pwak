@@ -107,7 +107,29 @@
     "craftAddFlag": "drop_flocon_1_crafted",
     "craftSucces": {
       "fr": "Cool ! On ne pourra plus vous appeler Emile. Cependant il faudrat toujours eviter de parler trop près des gens, pour éviter de ne pas les transformer en glaçon <:flocon:780851275930533921>",
-      "en": "Cool ! A bit too, but cool tho. Don't talk to close to people, you may turn them into snowmen. <:flocon:780851275930533921>"
+      "en": "Cool ! A bit too, but cool tho. Don't talk too close to people, you may turn them into snowmen. <:flocon:780851275930533921>"
+    }
+  },
+  "drop_flocon_2": {
+    "require": "quest2_crafted",
+    "forbide": "drop_flocon_2_crafted",
+    "result": "drop_flocon_2",
+    "recipe": [
+      ["drop_flocon_1", 37],
+      ["flocon_magique", 100],
+      ["boule_bleue", 198],
+      ["boule_violette", 215]
+    ],
+    "craftTooltip": {
+      "fr": "Donne le regard froid, le sang froid, un look défrisé et une haleine extra fraiche. Même un peu trop froide... <:flon_magique:780851276043780096>",
+      "en": "Do you ever wanted to be cool blood and have a (very) fresh breath. Even a bit too cold ... <:flon_magique:780851276043780096>"
+    },
+    "craftBonus": "kamas_or",
+    "craftAddFlag": "drop_flocon_2_crafted",
+    "craftBonusQuantity": 3,
+    "craftSucces": {
+      "fr": "Cool ! Méduse transforme les gens en pierre d'un simple regard, et vous vous transformez les gens en glace d'un simple souffle. <:flon_magique:780851276043780096>",
+      "en": "Coold ! A bit too, but cold tho. Don't talk too close to people, you may turn them into snowmen. <:flon_magique:780851276043780096>"
     }
   },
   "recycleur1": {
@@ -130,6 +152,29 @@
     "craftSucces": {
       "fr": "Super ! On peut maintenant l'utiliser avec `>recycler`. 10 kamas chocolaté de bronze feront 1 kamas chocolaté kamas d'argent.",
       "en": "Nice ! We can use it with `>recycle`. 10 bronze chocolate kamas make 1 sylver chocolat kamas."
+    }
+  },
+  "recycleur2": {
+    "require": "quest2_crafted",
+    "forbide": "can_recycle_2",
+    "result": "recycleur2",
+    "recipe": [
+      ["recycleur1", 1],
+      ["flocon_magique", 10],
+      ["boule_jaune", 68],
+      ["boule_verte", 50],
+      ["boule_violette", 54]
+    ],
+    "craftTooltip": {
+      "fr": "Fait fondre les gens en larmes et les kamas chocolatés en d'autres kamas chocolatés. Ideal pour recycler ses kamas d'argent.",
+      "en": "Melts hearts and chocolate kamas. Ideal for recycling silver kamas."
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 3,
+    "craftAddFlag": "can_recycle_2",
+    "craftSucces": {
+      "fr": "Super ! On peut maintenant l'utiliser avec `>recycler`. 10 kamas chocolaté d'argent feront 1 kamas chocolaté kamas d'or.",
+      "en": "Nice ! We can use it with `>recycle`. 10 sylver chocolate kamas make 1 goldden chocolat kamas."
     }
   },
   "invspy": {
@@ -195,11 +240,35 @@
       "en": "Main Quest"
     },
     "craftBonus": "kamas_or",
-    "craftBonusQuantity": 3,
+    "craftBonusQuantity": 10,
     "craftAddFlag": "quest2_crafted",
     "craftSucces": {
-      "fr": "Miam ! Collectionnons les kamas chocolatés en or pour devenir le plus gourmands des plus gourmands.\n`>classement`",
-      "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
+      "fr": "Super ! Cette pierre contient de quoi former un coeur de Craqueleur de Glace.",
+      "en": "Nice ! This stone contains enough fragments to create an Ice Crackler Heart"
+    }
+  },
+  "quete3": {
+    "require": "quest2_crafted",
+    "forbide": "quest3_crafted",
+    "result": "quete3",
+    "recipe": [
+      ["quete2", 1],
+      ["nowalmanax_star", 20],
+      ["boule_jaune", 38],
+      ["boule_violette", 42],
+      ["boule_bleue", 30],
+      ["boule_rouge", 70]
+    ],
+    "craftTooltip": {
+      "fr": "**Quête principale** : Nous appronchons du but ! Avec ce coeur, nous allons pouvoir eveiller un craqueleur des glaces, et faire partie de l'armée du Pere Nowel !",
+      "en": "**Main Quest** : Our goal is close ! With this heart, we will awaken an Ice Crackler for Father Kwismas Army ! "
+    },
+    "craftBonus": "kamas_or",
+    "craftBonusQuantity": 20,
+    "craftAddFlag": "quest3_crafted",
+    "craftSucces": {
+      "fr": "Nous pouvons maintenant fabriquer un coeur éveillé et achever notre quête.",
+      "en": "We can now craft an awaken heart and achieve our quest."
     }
   },
   "bonus_drop": {
@@ -293,11 +362,30 @@
       ["test_exploit", 1]
     ]
   },
-  "boule_orange": {
-    "require": "test_exploit",
-    "result": "boule_rouge",
+  "boule_multi": {
+    "require": "quest2_craft",
+    "result": "boule_multi",
     "recipe": [
-      ["test_exploit", 1]
+      ["boule_rouge", 100],
+      ["boule_orange", 100],
+      ["boule_jaune", 100],
+      ["boule_verte", 100],
+      ["boule_bleue", 100],
+      ["boule_violette", 100]
     ]
+  },
+  "flocon_magique": {
+    "require": "quest2_craft",
+    "result": "flocon_magique",
+    "recipe": [
+      ["flocon", 100]
+    ],
+    "craftTooltip": {
+      "fr": "10 Flocons magiques",
+      "en": "10 Magic Snowflake"
+    },
+    "craftRemoveFlag": "flocon_magique",
+    "craftBonus": "flocon_magique",
+    "craftBonusQuantity": 10
   }
 }
