@@ -625,24 +625,50 @@ module.exports = {
 
         for(let category of Object.keys(inventory)){
             let text = "";
+            let textIfNotEmpty = "";
+            let empty = true;
 
             if(!flags && inventory[category].hideInInventory) continue;
 
             for(let item of inventory[category].items){
                 if(item.quantity !== 0) {
-                    if (list || inventory[category].displayFullNameInInventory) {
-                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity !== 1 ? ' (' + item.quantity + ')' : '') + "\n";
+                    if(!item.inline){
+                        text += "\n";
+                    }
+
+                    empty = false;
+                    if (list || inventory[category].displayFullNameInInventory || item.displayFullNameInInventory) {
+                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity !== 1 ? ' (' + item.quantity + ')' : '');
+                    } else if(item.emojiOnlyInInventory){
+                        text += item.emoji + " ";
                     } else {
-                        text += item.emoji + " : " + item.quantity + "\n";
+                        text += item.emoji + " : " + item.quantity;
+                    }
+                }else if(item.emojiIfEmpty){
+                    if(empty){
+                        if(!item.inline){
+                            textIfNotEmpty += "\n";
+                        }
+
+                        textIfNotEmpty += item.emojiIfEmpty;
+                    }
+
+                    else{
+                        if(!item.inline){
+                            text += "\n";
+                        }
+
+                        text += item.emojiIfEmpty;
+
                     }
                 }
             }
 
-            if(text !== ""){
+            if(!empty){
                 webhook.embeds[0].fields.push({
                     "name": inventory[category].name[language],
                     "inline": true,
-                    "value": text
+                    "value": textIfNotEmpty + text
                 })
             }
         }
