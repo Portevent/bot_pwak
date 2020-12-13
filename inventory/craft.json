@@ -363,7 +363,7 @@
     ]
   },
   "boule_multi": {
-    "require": "quest2_craft",
+    "require": "quest2_crafted",
     "result": "boule_multi",
     "recipe": [
       ["boule_rouge", 100],
@@ -375,7 +375,7 @@
     ]
   },
   "flocon_magique": {
-    "require": "quest2_craft",
+    "require": "quest2_crafted",
     "result": "flocon_magique",
     "recipe": [
       ["flocon", 100]
