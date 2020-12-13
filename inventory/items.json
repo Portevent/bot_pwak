@@ -209,6 +209,10 @@
           "fr": "Etoile de Nowel pleine de magie (de magie de Nowel)",
           "en": "Kwismas Star"
         },
+        "short_name": {
+          "fr": "Etoile de Nowel",
+          "en": "Kwismas Star"
+        },
         "img": "https://cdn.discordapp.com/attachments/781503539142459452/782256473480757309/2.png",
         "emoji": "<:Etoile_pleine_de_magie:782256624739024896>"
       },
