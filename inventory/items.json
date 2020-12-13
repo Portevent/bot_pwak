@@ -219,6 +219,10 @@
           "fr": "Pierre de fragment de coeur de Craqueleur de glace de Nowel ",
           "en": "Nowel Ice Crackler Heart Fragment Stone"
         },
+        "short_name": {
+          "fr": "Fragment de Craqueleur de glace",
+          "en": "Ice Crackler Fragment"
+        },
         "img": "https://media.discordapp.net/attachments/781503539142459452/785395564635357184/pierre_craqueleur.png",
         "emoji": "<:Pierre_Des_Neiges:785395788804915200>"
       },
@@ -465,6 +469,10 @@
         "name": {
           "fr": "La Plus Féeriquement Féerique des Féeriquement Féerique relique des Féerique Fées",
           "en": "The Fairlest Fairy of the Fairyly Fairy Relic of the Fairy Fairies"
+        },
+        "short_name": {
+          "fr": "La Plus Féeriquement Féerique...",
+          "en": "The Fairlest Fairy..."
         },
         "img": "https://media.discordapp.net/attachments/787442887800782891/787445781921529886/aa.png",
         "emoji": "<:Double_Drop:787445684923400223>"

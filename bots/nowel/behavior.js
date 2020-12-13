@@ -638,7 +638,7 @@ module.exports = {
 
                     empty = false;
                     if (list || inventory[category].displayFullNameInInventory || item.displayFullNameInInventory) {
-                        text += (item.emoji?item.emoji:'') + item.name[language] + (item.quantity !== 1 ? ' (' + item.quantity + ')' : '');
+                        text += (item.emoji?item.emoji:'') + (item.short_name?item.short_name[language]:item.name[language]) + (item.quantity !== 1 ? ' (' + item.quantity + ')' : '');
                     } else if(item.emojiOnlyInInventory){
                         text += item.emoji + " ";
                     } else {
