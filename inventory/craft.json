@@ -365,6 +365,10 @@
   "boule_multi": {
     "require": "quest2_crafted",
     "result": "boule_multi",
+    "craftSucces": {
+      "fr": "Fabriqué !",
+      "en": "Crafted !"
+    },
     "recipe": [
       ["boule_rouge", 100],
       ["boule_orange", 100],
@@ -383,6 +387,10 @@
     "craftTooltip": {
       "fr": "10 Flocons magiques",
       "en": "10 Magic Snowflake"
+    },
+    "craftSucces": {
+      "fr": "Fabriqués !",
+      "en": "Crafted !"
     },
     "craftRemoveFlag": "flocon_magique",
     "craftBonus": "flocon_magique",
