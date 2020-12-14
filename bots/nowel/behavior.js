@@ -451,11 +451,18 @@ module.exports = {
 
         const bonusItem = Item.get(recipe.craftBonus);
 
-        message.embeds[0].description = {
-            "fr": "Bonus de fabrication ",
-            "en": "Craft bonus"
-        }[language] + ": + " + recipe.craftBonusQuantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name[language] + "\n" + recipe.craftSucces[language];
+        if(bonusItem){
+            message.embeds[0].description = {
+                "fr": "Bonus de fabrication ",
+                "en": "Craft bonus"
+            }[language] + ": + " + recipe.craftBonusQuantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name[language] + "\n" + recipe.craftSucces[language];
+        }else{
 
+            message.embeds[0].description = {
+                "fr": "Fabriqué !",
+                "en": "Crafted !"
+            }[language];
+        }
         // noinspection ES6MissingAwait
         message.edit("", {
             embed: message.embeds[0],
