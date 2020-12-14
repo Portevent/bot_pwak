@@ -115,7 +115,7 @@
     "forbide": "drop_flocon_2_crafted",
     "result": "drop_flocon_2",
     "recipe": [
-      ["drop_flocon_1", 37],
+      ["drop_flocon_1", 1],
       ["flocon_magique", 100],
       ["boule_bleue", 198],
       ["boule_violette", 215]
