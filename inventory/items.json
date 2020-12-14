@@ -220,7 +220,7 @@
         "id": "quete2",
         "displayFullNameInInventory": true,
         "name": {
-          "fr": "Pierre de fragment de coeur de Craqueleur de glace de Nowel ",
+          "fr": "Pierre de fragment de coeur de Craqueleur de glace de Nowel",
           "en": "Nowel Ice Crackler Heart Fragment Stone"
         },
         "short_name": {
@@ -234,7 +234,7 @@
         "id": "quete3",
         "displayFullNameInInventory": true,
         "name": {
-          "fr": "Fragments de coeur de Craqueleur de glace de Nowel ",
+          "fr": "Fragments de coeur de Craqueleur de glace de Nowel",
           "en": "Nowel Ice Crackler Heart Fragments"
         },
         "short_name": {
