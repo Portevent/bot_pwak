@@ -12,6 +12,7 @@ module.exports = {
         this.inventory = new Inventory(this);
         this.items = require('../../inventory/items.json');
         this.onGoingLoot = new Map();
+        this.onGoingTempLoot = new Map();
         this.dropOn = false;
 
         this.messageSinceLastDrop = 0;
@@ -36,10 +37,14 @@ module.exports = {
     async onceReady(){
         this.nowalmanax = new Nowalmanax(this);
         this.debbuger = await this.users.fetch("214090561055883267");
-        this.offTopics = {
+        this.offTopics = { // Discord Dofus
             fr: await this.channels.fetch('372100313890553856'),
             en: await this.channels.fetch('297780920268750858')
-        }
+        };
+        /*this.offTopics = {// Test
+           fr: await this.channels.fetch('774531283426213898'),
+           en: await this.channels.fetch('774531283426213898')
+        };*/
         //this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
         this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
         const client = this;
@@ -110,31 +115,67 @@ module.exports = {
 
     async onReaction(reaction, user) {
         // Attempting to open gift
-        if (reaction.message.webhookID && reaction.emoji.name === '🎁') {
-            const drop = Drop.getByName(reaction.message.author.username);
-            if (drop === undefined) return;
+        if (reaction.message.webhookID){
+            if(reaction.emoji.name === '🎁') {
+                const drop = Drop.getByName(reaction.message.author.username);
+                if (drop === undefined) return;
 
-            reaction.users.fetch().then(users => {
-                //console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
-                if (users.size >= drop.min) {
-                    if (this.onGoingLoot.has(reaction.message.id)) {
-                        return;
+                reaction.users.fetch().then(users => {
+                    //console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
+                    if (users.size >= drop.min) {
+                        if (this.onGoingLoot.has(reaction.message.id)) {
+                            return;
+                        }
+                        // noinspection JSIgnoredPromiseFromCall
+                        reaction.message.react('🥁').catch(e => this.logError(e));
+                        let timer = setTimeout(() => {
+                            this.loot(reaction);
+                        }, 5 * 1000);
+                        this.onGoingLoot.set(reaction.message.id, timer);
                     }
-                    // noinspection JSIgnoredPromiseFromCall
-                    reaction.message.react('🥁').catch(e => this.logError(e));
-                    let timer = setTimeout(() => {
+
+                    if (users.size >= drop.max) {
+                        if (this.onGoingLoot.has(reaction.message.id)) {
+                            clearTimeout(this.onGoingLoot.get(reaction.message.id));
+                        }
                         this.loot(reaction);
-                    }, 5 * 1000);
-                    this.onGoingLoot.set(reaction.message.id, timer);
-                }
-
-                if (users.size >= drop.max) {
-                    if (this.onGoingLoot.has(reaction.message.id)) {
-                        clearTimeout(this.onGoingLoot.get(reaction.message.id));
                     }
-                    this.loot(reaction);
-                }
-            })
+                })
+            }
+            else if(reaction.emoji.name === '❄') {
+                if(reaction.message.author.username != "Invocation de Craqueleur de Glace"
+                && reaction.message.author.username != "Summoning of  Ice Crackler") return;
+
+                reaction.users.fetch().then(users => {
+                    //console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
+                    if (users.size >= 10) {
+                        if (this.onGoingLoot.has(reaction.message.id)) {
+                            return;
+                        }
+                        // noinspection JSIgnoredPromiseFromCall
+                        reaction.message.react('🥁').catch(e => this.logError(e));
+                        let timer = setTimeout(() => {
+                            this.achieveFinalQuest(reaction);
+                            this.grantRole(reaction.message.mentions.members.first());
+                        }, 5 * 1000);
+                        this.onGoingLoot.set(reaction.message.id, timer);
+                        clearTimeout(this.onGoingTempLoot.get(reaction.message.id));
+                    }
+                    else{
+                        if (this.onGoingTempLoot.has(reaction.message.id)) {
+                            return;
+                        }
+                        if (this.onGoingLoot.has(reaction.message.id)) {
+                            return;
+                        }
+                        let timer = setTimeout(() => {
+                            this.failQuestTo(reaction.message.mentions.members.first());
+                            reaction.message.delete();
+                        }, 1 * 30 * 1000);
+                        this.onGoingTempLoot.set(reaction.message.id, timer);
+                    }
+                })
+            }
         }
 
         // Opening Nowalmanax gift
@@ -279,6 +320,11 @@ module.exports = {
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁').catch(e => this.logError(e));
         }
+        if(message.author.username == "Invocation de Craqueleur de Glace"
+            || message.author.username == "Summoning of  Ice Crackler") {
+            // noinspection JSIgnoredPromiseFromCall
+            message.react('❄').catch(e => this.logError(e));
+        }
     },
 
 
@@ -388,6 +434,23 @@ module.exports = {
             "content": drop.description[language],
             "username": drop.title[language],
             "avatar_url": drop.image || Drop.getGift()
+        });
+    },
+
+    dropQuest(channel, member){
+        const language = this.getLanguage(channel);
+
+        // noinspection JSIgnoredPromiseFromCall
+        this.sendWebhook(channel, {
+            "content": {
+                "fr": "<:pikpik:780875171623338015> L'invocation du Craqueleur de " + member + " est en cours ! Il faut être au moins **10** pour réussir !",
+                "en": "<:pikpik:780875171623338015> The summoning of " + member + "'s Crackler started ! We need to be **10** to achieve it !"
+            }[language],
+            "username": {
+                "fr": "Invocation de Craqueleur de Glace",
+                "en": "Summoning of  Ice Crackler"
+            }[language],
+            "avatar_url": "https://cdn.discordapp.com/attachments/787442887800782891/789902117715443742/Coeur_eveille.png"
         });
     },
 
@@ -544,6 +607,95 @@ module.exports = {
             "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**"
                 + (seccond_bonus > 0?"\n**" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")
                 + "! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
+        }, reaction.message.id);
+
+        // noinspection ES6MissingAwait
+        reaction.message.reactions.removeAll();
+
+    },
+
+    async failQuestTo(member) {
+        const language = this.getLanguage(member.user);
+        this.inventory.addItemToUser(member.user.id, 'quete3');
+        member.user.send({
+            "fr": "Le coeur a fondu malheureusement. Ne t'inquiète pas, tu peux le refaire sans trop de soucis. Si tu as du mal à réunir des personnes, n'hésite pas à demander à ceux qui l'on déjà fait.",
+            "en": "Sadly, the heart melted. Don't worry, it is not expensive to recraft. If you struggle to find peoples, don't hesitate to ask those who already achieve it."
+        }[language])
+    },
+
+    async grantRole(member) {
+        const language = this.getLanguage(member.user);
+        this.inventory.addItemToUser(member.user.id, 'title');
+        let title = this.referenceGuild.roles.cache.find(role => role.id == {
+            "en":"789893385733275688",
+            "fr":"789892273403985940"
+        }[language]);
+        member.roles.add(title);
+    },
+
+    async achieveFinalQuest(reaction){
+        const language = this.getLanguage(reaction.message.channel);
+
+        let messages = await reaction.message.channel.messages.fetch({ limit: 10 })
+        let users = await reaction.users.fetch();
+        //console.log("Looting gift : " + users.map(user => user.username + ' '));
+        users.delete(this.user.id);
+
+        let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
+        let seccond_bonus = 0;
+
+        let badges = new Map();
+        let ownBonus = new Map();
+
+        for(let user of users.values()){
+
+            if(!user.bot && !this.inventory.userExists(user.id)){
+                this.greet(user, language);
+            }
+
+            if(this.inventory.userHasItem(user.id, 'bonus_drop')){
+                badges.set(user.id, '<:Bonus_25:786575034587676715>');
+                bonus += 0.25;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'bonus_big_drop')){
+                badges.set(user.id, '<:Bonus_75:786581855763562566>');
+                bonus += 0.75;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'bonus_double_drop')){
+                badges.set(user.id, '<:Bonus_Double_Drop:786575751938834502>');
+                seccond_bonus += 0.5;
+            }
+
+            if(this.inventory.userHasItem(user.id, 'bonus_double_drop_plus')){
+                badges.set(user.id, '<:Double_Drop:787445684923400223>');
+                seccond_bonus += 1.0;
+            }
+        }
+
+        let loot = Loot.getLoot(bonus, bonus);
+        let loot1 = Loot.getLoot(bonus, bonus);
+        let loot2 = Loot.getLootFromMetaLoot(loot.meta_loot.id, bonus*seccond_bonus);
+        let loot3 = Loot.getLootFromMetaLoot(loot1.meta_loot.id, bonus*seccond_bonus);
+
+        for(let user of users.values()){
+            this.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
+            this.inventory.addItemToUser(user.id, loot1.item.id, Math.floor(loot1.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
+            this.inventory.addItemToUser(user.id, loot2.item.id, Math.floor(loot2.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
+            this.inventory.addItemToUser(user.id, loot3.item.id, Math.floor(loot3.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
+        }
+
+        this.editWebhook(reaction.message.channel, {
+            "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**"
+                + "\n**" + (loot1.quantity>1?loot1.quantity + 'x':'') + loot1.item.emoji + loot1.item.name[language] + "**"
+                + (seccond_bonus > 0?"\n**" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")
+                + (seccond_bonus > 0?"\n**" + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name[language] + "**" :"")
+                + "! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
+                + {
+                    "fr": "\n\n**Et félications à " + reaction.message.mentions.members.first().toString() + ", qui rejoind les Nowelistes Enthousiastes !**",
+                    "en": "\n\n**And congratulations " + reaction.message.mentions.members.first().toString() + ", who joins the Enthusiastics Kwismasters !**"
+                }[language]
         }, reaction.message.id);
 
         // noinspection ES6MissingAwait

@@ -271,6 +271,27 @@
       "en": "We can now craft an awaken heart and achieve our quest."
     }
   },
+  "quete3on": {
+    "require": "quete3",
+    "result": "quete3on",
+    "recipe": [
+      ["quete3", 1],
+      ["boule_verte", 25],
+      ["boule_rouge", 12],
+      ["boule_jaune", 20],
+      ["boule_bleue", 20]
+    ],
+    "craftTooltip": {
+      "fr": "**Quête principale** : Contrairement à ce que vous avez l'habitude d'acheter, les instructions pour utiliser cet objet ne seront pas en chinois",
+      "en": "**Main Quest** : Contrary to what you usually buy, the instructions for using this object will not be in Chinese "
+    },
+    "craftBonus": "boule_orange",
+    "craftBonusQuantity": 10,
+    "craftSucces": {
+      "fr": "Pour rejoindre devenir un Noweliste Enthousiaste, il faut avoir son propre Craqueleur des Glaces. Nous allons bientôt en pouvoir en invoquer un ! Avec ce coeur, il faut utiliser `>summon` pour démarrer l'invocation. Et on ferait mieux de demander de l'aide à nos amis, car il faudra être 10 pour réussir. Toi et moi ca fait 2, il faut donc 8 autres personnes. **Atention, le coeur fond au bout de 5 minutes**, du coup il est conseillé de prévoir le coup à l'avance pour être sûr d'avoir assez de monde ! ",
+      "en": "To become an Enthusiastic Kwismaster , you must have your own Ice Cracker. We will soon be able to invoke one! With this heart, you must use `>summon` to start the summon. And we’d better ask our friends for help, 'cause we have to be 10 to make it. We are already 2, so we need 8 more people. **Watchout, the heart melts after 5 minutes**, so you better plan ahead to make sure you have enough people!"
+    }
+  },
   "bonus_drop": {
     "require": "has_dropped_fairy",
     "forbide": "bonus_drop_crafted",

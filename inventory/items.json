@@ -234,15 +234,29 @@
         "id": "quete3",
         "displayFullNameInInventory": true,
         "name": {
-          "fr": "Fragments de coeur de Craqueleur de glace de Nowel",
-          "en": "Nowel Ice Crackler Heart Fragments"
+          "fr": "Coeur de Craqueleur de glace de Nowel",
+          "en": "Nowel Ice Crackler Heart"
         },
         "short_name": {
-          "fr": "Fragments de Craqueleur de glace",
-          "en": "Ice Crackler Heart Fragments"
+          "fr": "Coeur de Craqueleur",
+          "en": "Crackler's Heart"
         },
         "img": "https://media.discordapp.net/attachments/787442887800782891/787799209679781920/Coeur_brise.png",
         "emoji": "<:Coeur_bris:787799340806438913>"
+      },
+      {
+        "id": "quete3on",
+        "displayFullNameInInventory": true,
+        "name": {
+          "fr": "Coeur de Craqueleur de glace de Nowel Eveillé",
+          "en": "Awaken Nowel Ice Crackler Heart"
+        },
+        "short_name": {
+          "fr": "Coeur de Craqueleur Eveillé",
+          "en": "Awaken Crackler's Heart"
+        },
+        "img": "https://cdn.discordapp.com/attachments/787442887800782891/789902117715443742/Coeur_eveille.png",
+        "emoji": "<:Coeur_eveille:789902350655553568>"
       },
       {
         "id": "drhellers_net",

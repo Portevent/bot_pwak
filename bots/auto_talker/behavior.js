@@ -17,6 +17,11 @@ module.exports = {
             // noinspection JSIgnoredPromiseFromCall
             message.react('🎁');
         }
+        if(message.author.username == "Invocation de Craqueleur de Glace"
+            || message.author.username == "Summoning of  Ice Crackler") {
+            // noinspection JSIgnoredPromiseFromCall
+            message.react('❄').catch(e => this.logError(e));
+        }
     },
 
     prefix: "all",
