@@ -30,16 +30,18 @@ module.exports = {
             if(inventory.userHasItem(userId, 'ladder')){
                 let member = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
                 let user;
+                let name;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!member) {
-                    member = null;
                     user = await message.client.users.fetch(userId).catch(e => message.client.logError(e));
+                    name = user.username;
                 }else{
                     user = member.user
+                    name = member.nickname
                 }
                 let current = {
                     id: user.id,
-                    name: (member?member.nickname:user.username),
+                    name: name,
                     or: inventory.getItemOfUser(user.id, 'kamas_or'),
                     argent: inventory.getItemOfUser(user.id, 'kamas_argent'),
                 }
