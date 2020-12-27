@@ -30,7 +30,7 @@ module.exports = {
             if(inventory.userHasItem(userId, 'ladder')){
                 let member = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
                 let user;
-                let name;
+                let name = userId;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!member) {
                     user = await message.client.users.fetch(userId).catch(e => message.client.logError(e));
