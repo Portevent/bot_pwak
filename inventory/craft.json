@@ -362,7 +362,7 @@
     "recipe": [
       ["fairy", 3],
       ["bonus_double_drop", 1],
-      ["boule_multi", 50],
+      ["boule_multi", 20],
       ["flocon_magique", 200]
     ],
     "craftTooltip": {

@@ -28,14 +28,20 @@ module.exports = {
             j++;
             //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(inventory.userHasItem(userId, 'ladder')){
-                let user = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
+                let member = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
+                let user;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
-                if(!user) continue;
+                if(!member) {
+                    member = null;
+                    user = await message.client.users.fetch(userId).catch(e => message.client.logError(e));
+                }else{
+                    user = member.user
+                }
                 let current = {
-                    id: user.user.id,
-                    name: user.nickname || user.user.username,
-                    or: inventory.getItemOfUser(user.user.id, 'kamas_or'),
-                    argent: inventory.getItemOfUser(user.user.id, 'kamas_argent'),
+                    id: user.id,
+                    name: member.nickname || user.username,
+                    or: inventory.getItemOfUser(user.id, 'kamas_or'),
+                    argent: inventory.getItemOfUser(user.id, 'kamas_argent'),
                 }
                 //console.log(userId + ' : 2 ' + j + '/' + inventory.inventory.size);
                 //console.log(current.id + ' : ' + current.name + ' (' + current.or + ' / ' + current.argent + ')');

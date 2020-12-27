@@ -171,7 +171,7 @@ module.exports = {
                         let timer = setTimeout(() => {
                             this.failQuestTo(reaction.message.mentions.members.first());
                             reaction.message.delete();
-                        }, 1 * 30 * 1000);
+                        }, 5 * 60 * 1000);
                         this.onGoingTempLoot.set(reaction.message.id, timer);
                     }
                 })
