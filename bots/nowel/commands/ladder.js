@@ -39,6 +39,9 @@ module.exports = {
                     user = member.user
                     name = member.nickname
                 }
+
+                console.log("Name : " + name + " ( <@" + userId + ">) ");
+
                 let current = {
                     id: user.id,
                     name: name,
