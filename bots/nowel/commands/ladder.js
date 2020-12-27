@@ -39,7 +39,7 @@ module.exports = {
                 }
                 let current = {
                     id: user.id,
-                    name: member.nickname || user.username,
+                    name: (member?member.nickname:user.username),
                     or: inventory.getItemOfUser(user.id, 'kamas_or'),
                     argent: inventory.getItemOfUser(user.id, 'kamas_argent'),
                 }
