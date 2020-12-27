@@ -33,14 +33,15 @@ module.exports = {
                 let name = userId;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!member) {
+                    console.log("Found user Name : " + name + " ( <@" + userId + ">) ");
                     user = await message.client.users.fetch(userId).catch(e => message.client.logError(e));
                     name = user.username;
                 }else{
+                    console.log("Found member Name : " + name + " ( <@" + userId + ">) ");
                     user = member.user
                     name = member.nickname
                 }
 
-                console.log("Name : " + name + " ( <@" + userId + ">) ");
 
                 let current = {
                     id: user.id,
