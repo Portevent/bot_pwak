@@ -35,11 +35,9 @@ module.exports = {
                 if(!member) {
                     user = await message.client.users.fetch(userId).catch(e => message.client.logError(e));
                     name = user.username;
-                    console.log("Found user Name : " + name + " ( <@" + userId + ">) ");
                 }else{
                     user = member.user;
-                    name = member.nickname;
-                    console.log("Found member Name : " + name + " ( <@" + userId + ">) ");
+                    name = member.nickname || user.username;
                 }
 
 
