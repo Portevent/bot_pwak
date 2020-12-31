@@ -27,7 +27,7 @@ module.exports = {
         for(let userId of inventory.inventory.keys()){
             j++;
             //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
-            if(inventory.userHasItem(userId, 'ladder')){
+            if(inventory.userHasItem(userId, 'ladder') && !inventory.userHasItem(userId, "banned")){
                 let member = await message.client.referenceGuild.members.fetch(userId).catch(e => message.client.logError(e));
                 let user;
                 let name = userId;

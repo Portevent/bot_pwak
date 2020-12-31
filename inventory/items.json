@@ -370,6 +370,13 @@
         "emoji": "<:Fairy:786540028628172820>"
       },
       {
+	"id": "banned",
+	"name": {
+	  "fr": "banned",
+	  "en": "banned"
+	}
+      },
+      {
         "id": "fairy_1",
         "name": {
           "fr": "Fée sage",
