@@ -45,20 +45,37 @@ module.exports = {
            fr: await this.channels.fetch('774531283426213898'),
            en: await this.channels.fetch('774531283426213898')
         };*/
+        this.announces = {// Discord Dofus
+           fr: await this.channels.fetch('356039693332381696'),
+           en: await this.channels.fetch('297780078245576704')
+        };
+        /*this.announces = {// Test
+           fr: await this.channels.fetch('780171576381276231'),
+           en: await this.channels.fetch('780756123522301962')
+        };*/
         //this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
         this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
         const client = this;
+
+        // noinspection ES6ShorthandObjectProperty
+        cron.schedule('0 23 * * *', async function() {
+            //End of the event
+            this.end(announces["fr"], announces["en"]);
+        });
+        /*
         // noinspection ES6ShorthandObjectProperty
         cron.schedule('0 0 * * *', async function() {
             //Nowalmanax every midnight
             client.nowalmanax.advance();
         });
+        */
 
         // noinspection ES6ShorthandObjectProperty
         cron.schedule('*/30 * * * *', async function() {
             //Auto save every 30 minutes
             client.autoSave();
         });
+
         this.debbuger.send('Ready !').catch(e => console.log(e));
     },
 
@@ -833,5 +850,251 @@ module.exports = {
         }
         return webhook;
     },
+
+    async end(channelFr, channelEn){
+        this.inventory.export("save");
+
+        this.debbuger.send("Last save", {
+            files: [
+                "./inventory/saves/save.json"
+            ]
+        });
+        let leaderboard = [];
+        let i = 0;
+        let j = 0;
+        const inventory = this.inventory;
+
+        this.dropOn = false;
+
+        let items = {
+            boule_rouge: 0,
+            boule_orange: 0,
+            boule_jaune: 0,
+            boule_verte: 0,
+            boule_bleue: 0,
+            boule_violette: 0,
+            boule_multi: 0,
+            newline: 0,
+            kamas_or: 0,
+            kamas_argent: 0,
+            kamas_bronze: 0,
+            nowalmanax_star: 0,
+        }
+        
+        let decraft = {
+            nowalmanax_star: {
+                nowalmanax_star: 1,
+            },
+            kamas_bronze: {
+                kamas_bronze: 1,
+            },
+            kamas_argent: {
+                kamas_argent: 1,
+            },
+            kamas_or: {
+                kamas_or: 1,
+            },
+            boule_rouge: {
+                boule_rouge : 1,
+            },
+            boule_orange: {
+                boule_orange : 1,
+            },
+            boule_jaune: {
+                boule_jaune : 1,
+            },
+            boule_verte: {
+                boule_verte : 1,
+            },
+            boule_bleue: {
+                boule_bleue : 1,
+            },
+            boule_violette: {
+                boule_violette : 1,
+            },
+            boule_multi: {
+                boule_multi : 1,
+            },
+            drhellers_net: {
+                boule_verte : 2,
+            },
+            process: {
+                boule_rouge : 1,
+                boule_violette : 1,
+            },
+            machine: {
+                boule_rouge : 3,
+                boule_jaune : 1,
+                boule_verte : 4,
+                boule_bleue : 1,
+                boule_violette : 1,
+            },
+            soufle: {
+                boule_rouge : 3,
+                boule_orange : 10,
+                boule_jaune : 8,
+                boule_verte : 9,
+                boule_bleue : 10,
+                boule_violette : 6,
+            },
+            quete1: {
+                nowalmanax_star : 10,
+            },
+            drop_flocon_1: {
+                boule_rouge: 37,
+                boule_bleue: 28,
+                boule_violette: 19,
+            },
+            drop_flocon_2: {
+                boule_rouge: 37,
+                boule_bleue: 136,
+                boule_violette: 234,
+            },
+            recycleur1: {
+                boule_orange : 87,
+                boule_verte : 48,
+                boule_violette : 68
+            },
+            recycleur2: {
+                boule_orange : 87,
+                boule_jaune : 68,
+                boule_verte : 98,
+                boule_violette : 110
+            },
+            invspy: {
+                boule_bleue : 42,
+                boule_orange : 27,
+                boule_verte : 38,
+                boule_violette : 29,
+                boule_jaune : 33
+            },
+            ladder: {
+                boule_violette : 49,
+                boule_jaune :61,
+                boule_bleue :5,
+                boule_rouge : 68,
+                boule_orange : 76
+            },
+            quete2: {
+                nowalmanax_star :12,
+                boule_bleue :41,
+                boule_rouge :38,
+                boule_violette :54,
+                boule_orange :56,
+                boule_jaune :61
+            },
+            quete3: {
+                nowalmanax_star :32,
+                boule_bleue :71,
+                boule_rouge :108,
+                boule_violette :98,
+                boule_orange :56,
+                boule_jaune :99
+            },
+            bonus_drop: {
+                boule_multi : 1,
+                boule_violette : 13,
+                boule_bleue : 13,
+                boule_jaune : 13
+            },
+            bonus_big_drop: {
+                boule_multi : 4,
+                boule_violette : 13,
+                boule_bleue : 13,
+                boule_jaune : 13
+            },
+            bonus_double_drop: {
+                boule_multi : 9,
+                boule_violette : 13,
+                boule_bleue : 13,
+                boule_jaune : 13
+            },
+            bonus_double_drop_plus: {
+                boule_multi : 29,
+                boule_violette : 13,
+                boule_bleue : 13,
+                boule_jaune : 13
+            }
+        }
+
+        //console.log(inventory.inventory.keys());
+        for(let userId of this.inventory.inventory.keys()){
+            j++;
+            //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
+            if(!this.inventory.userHasItem(userId, 'banned')){
+                let member = await this.referenceGuild.members.fetch(userId).catch(e => this.logError(e));
+                let user;
+                let name = userId;
+                //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
+                if(!member) {
+                    user = await this.users.fetch(userId).catch(e => this.logError(e));
+                    name = user.username;
+                }else{
+                    user = member.user;
+                    name = member.nickname || user.username;
+                }
+
+
+                let current = {
+                    id: user.id,
+                    name: name,
+                    or: this.inventory.getItemOfUser(user.id, 'kamas_or'),
+                    argent: this.inventory.getItemOfUser(user.id, 'kamas_argent'),
+                }
+                
+                // Position dans le ladder
+                if(leaderboard.length === 0){
+                    leaderboard = [current];
+                }else{
+                    for(i = 0; i < leaderboard.length; i++){
+                        //console.log(' (' + leaderboard[i].or + ' / ' + leaderboard[i].argent + ') VS (' + current.or + ' / ' + current.argent + ')')
+                        if(leaderboard[i].or < current.or || (leaderboard[i].or === current.or && leaderboard[i].argent < current.argent)){
+                            //console.log('Breaking ' + current.id + " on " + i + "/" + leaderboard.length);
+                            break;
+                        }
+                    }
+                    leaderboard.splice(i, 0, current);
+                }
+
+                let count;
+                for (let craft in decraft){
+                    count = this.inventory.getItemOfUser(user.id, craft);
+                    if(count > 0){
+                        for (let item in decraft[craft]){
+                            items[item] += decraft[craft][item] * count;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Creation texte items
+        let items_text = "";
+        for (let item in items){
+            if(item == "newline")
+                items_text += "\n";
+            else
+                items_text += items[item] + Item.get(item).emoji;
+        }
+
+        // Creation texte ladder
+        let ladder = "";
+        for (i = 0; i < leaderboard.length; i++) {
+            ladder += (i===0?'🥇':(i===1?'🥈':(i===2?'🥉':i+1))) + " : " + leaderboard[i].name + " **" + leaderboard[i].or + "**<:Kamas_Or:780851275948228628> " + leaderboard[i].argent + "<:Kamas_Argent:780851275956617236>\n";
+        }
+
+        channelFr.send("Félicitations à tous les participants ! Grace à vous, nous avons pu récolter : \n" + items_text,
+            {
+            embed: {
+                "description" : ladder
+                }
+            });
+        channelEn.send("Congrats everyone ! We manage to gather : \n" + items_text,
+            {
+                embed: {
+                    "description" : ladder
+                }
+            });
+    }
 
 };
