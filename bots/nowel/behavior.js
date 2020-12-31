@@ -1022,12 +1022,12 @@ module.exports = {
             j++;
             //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(!this.inventory.userHasItem(userId, 'banned')){
-                let member = await this.referenceGuild.members.fetch(userId).catch(e => ());
+                let member = await this.referenceGuild.members.fetch(userId).catch(e => {});
                 let user;
                 let name = userId;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!member) {
-                    user = await this.users.fetch(userId).catch(e => ());
+                    user = await this.users.fetch(userId).catch(e => {});
                     name = user.username;
                 }else{
                     user = member.user;
