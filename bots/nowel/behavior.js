@@ -1022,12 +1022,12 @@ module.exports = {
             j++;
             //console.log(userId + ' : 1 ' + j + '/' + inventory.inventory.size);
             if(!this.inventory.userHasItem(userId, 'banned')){
-                let member = await this.referenceGuild.members.fetch(userId).catch(e => this.logError(e));
+                let member = await this.referenceGuild.members.fetch(userId).catch(e => ());
                 let user;
                 let name = userId;
                 //console.log(userId + ' : 1.5 ' + j + '/' + inventory.inventory.size);
                 if(!member) {
-                    user = await this.users.fetch(userId).catch(e => this.logError(e));
+                    user = await this.users.fetch(userId).catch(e => ());
                     name = user.username;
                 }else{
                     user = member.user;
@@ -1079,17 +1079,17 @@ module.exports = {
 
         // Creation texte ladder
         let ladder = "";
-        for (i = 0; i < leaderboard.length; i++) {
+        for (i = 0; i < 20; i++) {
             ladder += (i===0?'🥇':(i===1?'🥈':(i===2?'🥉':i+1))) + " : " + leaderboard[i].name + " **" + leaderboard[i].or + "**<:Kamas_Or:780851275948228628> " + leaderboard[i].argent + "<:Kamas_Argent:780851275956617236>\n";
         }
 
-        channelFr.send("Félicitations à tous les participants ! Grace à vous, nous avons pu récolter : \n" + items_text,
+        channelFr.send("Félicitations aux **" + this.inventory.inventory.size + "** participants ! Grace à vous, nous avons pu récolter : \n" + items_text,
             {
             embed: {
                 "description" : ladder
                 }
             });
-        channelEn.send("Congrats everyone ! We manage to gather : \n" + items_text,
+        channelEn.send("Congrats everyone ! **" + this.inventory.inventory.size + "** participants ! Just a quick review of what we dropped : \n" + items_text,
             {
                 embed: {
                     "description" : ladder
