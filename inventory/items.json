@@ -1,168 +1,45 @@
 {
-  "flocons": {
+  "carre_chocolat": {
     "name": {
-      "fr": "Flocons de Neige",
-      "en": "Snowflakes"
+      "fr": "Carrés de Chocolat",
+      "en": "Pieces of Chocolate"
     },
     "items": [
       {
-        "id" : "flocon",
+        "id" : "choco",
         "name" : {
-          "fr": "Flocon de Neige",
-          "en": "Snowflake"
+          "fr": "Carré de Chocolat",
+          "en": "Piece of Chocolate"
         },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/780517570611904562/flocon.png",
-        "emoji": "<:flocon:780851275930533921>"
+        "img" : "https://cdn.discordapp.com/attachments/787442887800782891/827071022225162260/Carre_de_Chocolat_Noir.png",
+        "emoji": "<:carre_chocolat:827071149024346122>"
       },
       {
-        "id" : "flocon_magique",
+        "id" : "choco_noir",
         "name" : {
-          "fr": "Flocon de Neige Magique",
-          "en": "Magic Snowflake"
+          "fr": "Carré de Chocolat noir",
+          "en": "Piece of black Chocolate"
         },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943391263490048/153007.png",
-        "emoji": "<:flon_magique:780851276043780096>"
+        "img" : "https://cdn.discordapp.com/attachments/787442887800782891/827071019093196870/Carre_de_Chocolat_Noir_a_99_.png",
+        "emoji": "<:carre_chocolat_noir:827071148453003294>"
       },
       {
-        "id" : "nowalmanax_star",
+        "id" : "choco_blanc",
         "name" : {
-          "fr": "Magie de Nowel",
-          "en": "Chwismas spirit"
+          "fr": "Carré de Chocolat blanc",
+          "en": "Piece of white Chocolate"
         },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774943394278801418/153015.png",
-        "emoji": "<:magie_de_nowel:780851275691589724>"
-      }
-    ]
-  },
-  "kamas": {
-    "name": {
-      "fr": "Kamas en Cholocat",
-      "en": "Chocolate kamas"
-    },
-    "items": [
-      {
-        "id" : "kamas_bronze",
-        "name" : {
-          "fr": "Kamas Chocolaté de Bronze",
-          "en": "Bronze Chocolate Kamas"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774284078809098/148002.png",
-        "emoji": "<:kamas_bronze:780851275955830814>"
+        "img" : "https://cdn.discordapp.com/attachments/787442887800782891/827071029221523486/Carre_de_Chocolat_Blanc.png",
+        "emoji": "<:carre_chocolat_blanc:827071148374229023>"
       },
       {
-        "id" : "kamas_argent",
+        "id" : "choco_lait",
         "name" : {
-          "fr": "Kamas Chocolaté d'Argent",
-          "en": "Silver Chocolate Kamas"
+          "fr": "Carré de Chocolat au lait",
+          "en": "Piece of milk Chocolate"
         },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774286486732810/148003.png",
-        "emoji": "<:kamas_argent:780851275956617236>"
-      },
-      {
-        "id" : "kamas_or",
-        "name" : {
-          "fr": "Kamas Chocolaté en Or",
-          "en": "Golden Chocolate Kamas"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/770774288714170428/148004.png",
-        "emoji": "<:kamas_or:780851275948228628>"
-      }
-    ]
-  },
-  "boules": {
-    "name": {
-      "fr": "Boules de Nowel",
-      "en": "Kwismas baubles"
-    },
-    "items": [
-      {
-        "id" : "boule_rouge",
-        "name" : {
-          "fr": "Boule de Nowel rouge",
-          "en": "Red Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946200712773642/boule_rouge.png",
-        "emoji" : "<:boule_de_nowel_rouge:780851276165808158>"
-      },
-      {
-        "id" : "boule_orange",
-        "name" : {
-          "fr": "Boule de Nowel orange",
-          "en": "Orange Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/779767760158195712/boule_orange.png",
-        "emoji" : "<:boule_de_nowel_orange:780851276199100436>"
-      },
-      {
-        "id" : "boule_jaune",
-        "name" : {
-          "fr": "Boule de Nowel jaune",
-          "en": "Yellow Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946196862402580/boule_jaune.png",
-        "emoji" : "<:boule_de_nowel_jaune:780851275649908837>"
-      },
-      {
-        "id" : "boule_verte",
-        "name" : {
-          "fr": "Boule de Nowel verte",
-          "en": "Green Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946204265349140/boule_verte.png",
-        "emoji" : "<:boule_de_nowel_verte:780851275981651969>"
-      },
-      {
-        "id" : "boule_bleue",
-        "name" : {
-          "fr": "Boule de Nowel bleue",
-          "en": "Blue Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946194724093953/boule_bleue.png",
-        "emoji" : "<:boule_de_nowel_bleue:780851276157943808>"
-      },
-      {
-        "id" : "boule_violette",
-        "name" : {
-          "fr": "Boule de Nowel violette",
-          "en": "Purple Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946193075470336/boule_violette.png",
-        "emoji" : "<:boule_de_nowel_violette:780851276161875988>"
-      },
-      {
-        "id" : "boule_multi",
-        "name" : {
-          "fr": "Boule de Nowel Scintillante",
-          "en": "Sparkling Kwismas bauble"
-        },
-        "img" : "https://cdn.discordapp.com/attachments/770768439773888532/774946198456500224/boule_multi.png",
-        "emoji": "<:boule_multi:780851276158205952>"
-      }
-    ]
-  },
-  "equipement": {
-    "name": {
-      "fr": "Équipements",
-      "en": "Equipements"
-    },
-    "items": [
-      {
-        "id": "glutin_chapeau",
-        "name": {
-          "fr": "Chapeau de glutin",
-          "en": "Glutin's hat"
-        },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773836303695912/16346.png",
-        "emoji": "<:coiffe:780851275754766338>"
-      },
-      {
-        "id": "glutin_epee",
-        "name": {
-          "fr": "Épée de glutin",
-          "en": "Glutin's sword"
-        },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/770773825649508383/6069.png",
-        "emoji": "<:epee:780851276052693002>"
+        "img" : "https://cdn.discordapp.com/attachments/787442887800782891/827071025669079061/Carre_de_Chocolat_au_Lait.png",
+        "emoji": "<:carre_chocolat_lait:827071149057376267>"
       }
     ]
   },
@@ -173,356 +50,43 @@
     },
     "items": [
       {
-        "id": "process",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Noyaux Nowelectronique",
-          "en": "Kwismas Power Core"
+        "id" : "nowalmanax_star",
+        "name" : {
+          "fr": "Oeuf de Pwak",
+          "en": "Fleaster Egg"
         },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780522730792943666/15920.png",
-        "emoji": "<:nowelectronique:780851275968544811>"
-      },
-      {
-        "id": "machine",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Machine Magique",
-          "en": "Magic thingy"
-        },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780526598033899580/164096.png",
-        "emoji": "<:noyaux:780851276073271396>"
-      },
-      {
-        "id": "soufle",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Insuflateur de magie",
-          "en": "Magic Blower"
-        },
-        "img": "https://cdn.discordapp.com/attachments/770768439773888532/780525836989759538/164116.png",
-        "emoji": "<:insuflateur:780851275721605151>"
-      },
-      {
-        "id": "quete1",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Etoile de Nowel pleine de magie (de magie de Nowel)",
-          "en": "Kwismas Star"
-        },
-        "short_name": {
-          "fr": "Etoile de Nowel",
-          "en": "Kwismas Star"
-        },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/782256473480757309/2.png",
-        "emoji": "<:Etoile_pleine_de_magie:782256624739024896>"
-      },
-      {
-        "id": "quete2",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Pierre de fragment de coeur de Craqueleur de glace de Nowel",
-          "en": "Nowel Ice Crackler Heart Fragment Stone"
-        },
-        "short_name": {
-          "fr": "Pierre de Craqueleur de glace",
-          "en": "Ice Crackler Rock"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/785395564635357184/pierre_craqueleur.png",
-        "emoji": "<:Pierre_Des_Neiges:785395788804915200>"
-      },
-      {
-        "id": "quete3",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Coeur de Craqueleur de glace de Nowel",
-          "en": "Nowel Ice Crackler Heart"
-        },
-        "short_name": {
-          "fr": "Coeur de Craqueleur",
-          "en": "Crackler's Heart"
-        },
-        "img": "https://media.discordapp.net/attachments/787442887800782891/787799209679781920/Coeur_brise.png",
-        "emoji": "<:Coeur_bris:787799340806438913>"
-      },
-      {
-        "id": "quete3on",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Coeur de Craqueleur de glace de Nowel Eveillé",
-          "en": "Awaken Nowel Ice Crackler Heart"
-        },
-        "short_name": {
-          "fr": "Coeur de Craqueleur Eveillé",
-          "en": "Awaken Crackler's Heart"
-        },
-        "img": "https://cdn.discordapp.com/attachments/787442887800782891/789902117715443742/Coeur_eveille.png",
-        "emoji": "<:Coeur_eveille:789902350655553568>"
+        "img" : "https://cdn.discordapp.com/attachments/787442887800782891/827076190736089128/uf_de_Pwak_commun.png",
+        "emoji": "<:Oeuf_Pwak:827076407384866826>"
       },
       {
         "id": "drhellers_net",
         "emojiOnlyInInventory": true,
         "name": {
-          "fr": "Filet de Phorreur",
-          "en": "Drhellers Net"
+          "fr": "Filet de Wabbit",
+          "en": "Wabbit Net"
         },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/781945667580461076/99001.png",
-        "emoji": "<:filet_a_phorreur:781945839928213554>"
+        "img": "https://cdn.discordapp.com/attachments/787442887800782891/827121769449390120/Filet_a_Wabbit.png",
+        "emoji": "<:Filet_Wabbit:827129543957151765> "
       },
       {
-        "id": "ladder",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Toque de chef gourmand",
-          "en": "Gourmet chef’s hat"
-        },
-        "img": "https://media.discordapp.net/attachments/787442887800782891/787936295493566514/16074.png",
-        "emoji": "<:Toque:785398889598943243>"
-      },
-      {
-        "id": "drop_flocon_1",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Bonbon Fraicheur",
-          "en": "Freshness candy"
-        },
-        "img": "https://media.discordapp.net/attachments/787442887800782891/787936352326647839/42160.png",
-        "emoji": "<:Bonbon_Saveur_Fraicheur:785094341051547699>"
-      },
-      {
-        "id": "drop_flocon_2",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Bonbon Froideur",
-          "en": "Coldness candy"
-        },
-        "img": "https://cdn.discordapp.com/attachments/787442887800782891/787800603170308096/bonbonfroid.png",
-        "emoji": "<:Bonbon_Saveur_Froideur:785145194365845514>"
-      },
-      {
-        "id": "drop_flocon_3",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Bonbon Nowel",
-          "en": "Kwismas candy"
-        },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785146055737212948/bonbonmagique.png",
-        "emoji": "<:Bonbon_Saveur_Nowel:785146198355869706>"
-      },
-      {
-        "id": "recycleur1",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Recycleur de Chocolat",
-          "en": "Chocolate Recycler"
-        },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785093914285047829/Petit_Recycleur_de_Chokolat.png",
-        "emoji": "<:Petit_Recycleur_de_Chokolat:785093987961929729>"
-      },
-      {
-        "id": "recycleur2",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Super Recycleur de Chocolat 3000",
-          "en": "Super Chocolate Recycler 3000"
-        },
-        "img": "https://cdn.discordapp.com/attachments/787442887800782891/787800359460274186/Recycleur_de_Chokolat.png",
-        "emoji": "<:Recycleur_de_Chokolat:785094025689563157>"
-      },
-      {
-        "id": "invspy",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "name": {
-          "fr": "Télescopieur",
-          "en": "Telescopycat"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/785395295298125834/15843.png",
-        "emoji": "<:Telescopieur:785395728221995018>"
-      }
-    ]
-  },
-  "fairy": {
-    "name": {
-      "fr": "Fées",
-      "en": "Fairies"
-    },
-    "items": [
-      {
-        "id": "fairy_0",
-        "name": {
-          "fr": "Fée coopérative",
-          "en": "Co-op Fairy"
-        },
-        "text": {
-          "fr": "Qui pour me pl dj 1-50 all succès",
-          "en": "Someone pl me dg 1-50 full achievments"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-	"id": "banned",
-	"name": {
-	  "fr": "banned",
-	  "en": "banned"
-	}
-      },
-      {
-        "id": "fairy_1",
-        "name": {
-          "fr": "Fée sage",
-          "en": "Wise Fairy"
-        },
-        "text": {
-          "fr": "Cra sasa ch pl contre drop",
-          "en": "Full wisdom cra lk pl vs drop"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_2",
-        "name": {
-          "fr": "Fée généreuse",
-          "en": "Generous Fairy"
-        },
-        "text": {
-          "fr": "Achete OeO 10% prix estime hdv",
-          "en": "Buy stuff 10% price"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_3",
-        "name": {
-          "fr": "Fée prudent",
-          "en": "Cautious Fairy"
-        },
-        "text": {
-          "fr": "Achete code audio test avant",
-          "en": "Buy audio code test before"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_4",
-        "name": {
-          "fr": "Fée avertie",
-          "en": "Aware Fairy"
-        },
-        "text": {
-          "fr": "No noob no arnark",
-          "en": "No noob no arnak"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_5",
-        "name": {
-          "fr": "Fée maline",
-          "en": "Clever Fairy"
-        },
-        "text": {
-          "fr": "*Offre anormalement bonne* kamas + Lumino",
-          "en": "*Unusual good offer* kamas + Shaker"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_6",
-        "name": {
-          "fr": "Fée vétéran",
-          "en": "Veteran Fairy"
-        },
-        "text": {
-          "fr": "Best Cra Korri interserveur 1 place pas cher full chall gogogo",
-          "en": "Best Korri Cra 1 slot super fast gogogo"
-        },
-        "emojiIfEmpty": "⬛",
-        "inline": true,
-        "emojiOnlyInInventory": true,
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "bonus_drop",
+        "id": "pwak_stars",
         "displayFullNameInInventory": true,
         "name": {
-          "fr": "Relique des Fées",
-          "en": "Relic of the Fairies"
+          "fr": "Etoile de Pwak",
+          "en": "Fleaster Star"
         },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786574937187680346/74039.png",
-        "emoji": "<:Bonus_25:786575034587676715>"
+        "img": "https://cdn.discordapp.com/attachments/787442887800782891/827090768752541736/Insigne_de_garde_de_Pwak.png",
+        "emoji": "<:Etoile_de_Pwak:827090839443865620> "
       },
       {
-        "id": "bonus_big_drop",
+        "id": "pwak_title",
         "displayFullNameInInventory": true,
         "name": {
-          "fr": "Féerique relique des Fées",
-          "en": "Fairy Relic of the Fairies"
+          "fr": "Chasseur de Pwak",
+          "en": "Fleaster Hunter"
         },
-        "short_name": {
-          "fr": "Relique des Fées",
-          "en": "Relic of the Fairies"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786581796065640468/164115.png",
-        "emoji": "<:Bonus_75:786581855763562566> "
-      },
-      {
-        "id": "bonus_double_drop",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "Féeriquement Féerique relique des Féerique Fées",
-          "en": "Fairyly Fairy Relic of the Fairy Fairies"
-        },
-        "short_name": {
-          "fr": "Relique des Fées",
-          "en": "Relic of the Fairies"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786575660860047370/164634.png",
-        "emoji": "<:Bonus_Double_Drop:786575751938834502>"
-      },
-      {
-        "id": "bonus_double_drop_plus",
-        "displayFullNameInInventory": true,
-        "name": {
-          "fr": "La Plus Féeriquement Féerique des Féeriquement Féerique relique des Féerique Fées",
-          "en": "The Fairlest Fairy of the Fairyly Fairy Relic of the Fairy Fairies"
-        },
-        "short_name": {
-          "fr": "Relique des Fées",
-          "en": "Relic of the Fairies"
-        },
-        "img": "https://media.discordapp.net/attachments/787442887800782891/787445781921529886/aa.png",
-        "emoji": "<:Double_Drop:787445684923400223>"
+        "img": "https://cdn.discordapp.com/attachments/787442887800782891/827090970687307836/Coup_fatal_Pwak.png",
+        "emoji": "<:Chasseur_de_Pwak:827091003751923753> "
       }
     ]
   },
@@ -533,38 +97,6 @@
     },
     "hideInInventory": true,
     "items": [
-      {
-        "id": "fairy",
-        "name": {
-          "fr" : "Fée",
-          "en" : "Fairy"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "has_dropped_fairy",
-        "name": {
-          "fr" : "Fée attrapée",
-          "en" : "Dropped fairy"
-        },
-        "img": "https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png",
-        "emoji": "<:Fairy:786540028628172820>"
-      },
-      {
-        "id": "fairy_cheat",
-        "name": {
-          "fr" : "100 % drop fée",
-          "en" : "100 % fairy drop"
-        }
-      },
-      {
-        "id": "bonus_drop_crafted",
-        "name": {
-          "fr" : "bonus_drop_crafted",
-          "en" : "bonus_drop_crafted"
-        }
-      },
       {
         "id": "language",
         "name": {
@@ -608,13 +140,6 @@
         }
       },
       {
-        "id" : "quest3_crafted",
-        "name": {
-          "fr" : "quest3_crafted",
-          "en" : "quest3_crafted"
-        }
-      },
-      {
         "id" : "bad_karma",
         "name": {
           "fr" : "bad_karma",
@@ -627,66 +152,6 @@
           "fr" : "nowalmanax_help",
           "en" : "nowalmanax_help"
         }
-      },
-      {
-        "id" : "drop_flocon_1_crafted",
-        "name": {
-          "fr" : "drop_flocon_1_crafted",
-          "en" : "drop_flocon_1_crafted"
-        }
-      },
-      {
-        "id" : "drop_flocon_2_crafted",
-        "name": {
-          "fr" : "drop_flocon_2_crafted",
-          "en" : "drop_flocon_2_crafted"
-        }
-      },
-      {
-        "id" : "ladder_crafted",
-        "name": {
-          "fr" : "ladder_crafted",
-          "en" : "ladder_crafted"
-        }
-      },
-      {
-        "id" : "invspy_crafted",
-        "name": {
-          "fr" : "invspy_crafted",
-          "en" : "invspy_crafted"
-        }
-      },
-      {
-        "id" : "test_exploit",
-        "name": {
-          "fr" : "test_exploit",
-          "en" : "test_exploit"
-        }
-      },
-      {
-        "id" : "test_exploit2",
-        "name": {
-          "fr" : "test_exploit2",
-          "en" : "test_exploit2"
-        }
-      },
-      {
-        "id" : "can_recycle",
-        "name": {
-          "fr" : "can_recycle",
-          "en" : "can_recycle"
-        },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785093914285047829/Petit_Recycleur_de_Chokolat.png",
-        "emoji": "<:Petit_Recycleur_de_Chokolat:785093987961929729>"
-      },
-      {
-        "id" : "can_recycle_2",
-        "name": {
-          "fr" : "can_recycle_2",
-          "en" : "can_recycle_2"
-        },
-        "img": "https://cdn.discordapp.com/attachments/781503539142459452/785093914285047829/Petit_Recycleur_de_Chokolat.png",
-        "emoji": "<:Petit_Recycleur_de_Chokolat:785093987961929729>"
       }
     ]
   }

@@ -8,48 +8,25 @@
       "en": "⭐ Rare !"
     },
     "loots": {
-      "kamas_or": -1,
-      "boule_multi": -1
-    }
-  },
-  "uncommon":{
-    "id": "uncommon",
-    "prob": 0.19,
-    "color": 8645763,
-    "name": {
-      "fr": "Peu Commun !",
-      "en": "Uncommon !"
-    },
-    "loots": {
-      "flocon": 3,
-      "flocon_magique": 1,
-      "kamas_bronze": 8,
-      "kamas_argent": 1,
-      "boule_violette": 5,
-      "boule_bleue": 5,
-      "boule_jaune": 5,
-      "boule_rouge": 5,
-      "boule_verte": 5,
-      "boule_orange": 5
+      "choco_lait": 5,
+      "choco_blanc": 5,
+      "choco_noir": 5,
+      "choco": 5
     }
   },
   "common":{
     "id": "common",
-    "prob": 0.8,
+    "prob": 0.99,
     "color": 16777214,
     "name": {
       "fr": "",
       "en": ""
     },
     "loots": {
-      "flocon": 1,
-      "kamas_bronze": 3,
-      "boule_violette": 2,
-      "boule_bleue": 2,
-      "boule_jaune": 2,
-      "boule_rouge": 2,
-      "boule_verte": 2,
-      "boule_orange": 2
+      "choco_lait": 1,
+      "choco_blanc": 1,
+      "choco_noir": 1,
+      "choco": 1
     }
   }
 }

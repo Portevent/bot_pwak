@@ -19,7 +19,7 @@ module.exports = {
         }
 
         // Setting up bot commands
-        for (const command_name of fs.readdirSync('bots/nowel/commands').filter(file => file.endsWith('.js'))) {
+        for (const command_name of fs.readdirSync('bots/pwak/commands').filter(file => file.endsWith('.js'))) {
             delete require.cache[require.resolve('../commands/' + command_name )];
             const command = require('../commands/' + command_name )
             message.client.commands.set(command.name.toLowerCase(), command);

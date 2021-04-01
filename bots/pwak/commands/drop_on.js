@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'drop_on',
+        name: 'drop_on',
     description: {
         "fr": "Active les drops",
         "en": "Activate drops"

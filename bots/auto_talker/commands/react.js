@@ -4,7 +4,11 @@ module.exports = {
     description: 'Réagis à un message avec 🎁',
     guildOnly: true,
     execute(message, args) {
-        message.channel.messages.fetch(args[0])
-            .then(message => message.react('🎁'));
+        if(args[0]){
+            message.channel.messages.fetch(args[0])
+                .then(message => message.react('🍫'));
+        }else{
+            message.react('🍫');
+        }
     },
 };

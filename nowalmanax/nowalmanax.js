@@ -7,76 +7,31 @@ class Nowalmanax {
         this.client = client;
         this.day = 1;
         this.usersDroppedMention = new Map();
+        this.usersDroppedMention.set('day', this.day);
         this.questItem = 'nowalmanax_star';
 
-        this.url = require("./nowalmanax_url.json").url;
-
-        this.emojisManager = client.emojis;
-
-        this.loadCalendar();
-        this.loadDay();
-        this.postToday();
+        this.emoji = client.emojis.cache.find(emoji => emoji.id === '827077379851288576');
+        this.image = 'https://cdn.discordapp.com/attachments/787442887800782891/827077341183344660/Wabbit.png';
     }
 
     reset(day = 1){
         this.moveDay(day - this.day);
-        this.postToday();
     }
     advance(){
         this.moveDay(1);
-        this.postToday();
     }
     revert(){
         this.moveDay(-1);
-        this.postToday();
     }
 
     moveDay(day) {
         this.day += day;
-        if(this.day > this.emojis.length) this.day = 1;
-        if(this.day <= 0) this.day = this.emojis.length - 1;
         this.loadDay();
-    }
-
-    loadCalendar() {
-        delete require.cache[require.resolve('./nowalmanax.js')];
-        this.calendar = require("./nowalmanax.json");
-        this.emojis = this.calendar.emojis;
-        this.images = this.calendar.images;
     }
 
     loadDay(){
         this.usersDroppedMention = new Map();
         this.usersDroppedMention.set('day', this.day);
-        this.emojiId = this.emojis[this.day];
-        this.emoji = this.emojisManager.cache.find(emoji => emoji.id === this.emojiId);
-    }
-
-    async postToday() {
-        return;
-
-        await fetch(this.url, {
-            method: 'POST',
-            body: JSON.stringify({
-                "content": "Pour trouver la cadeau du jour, il faut capturer un :\nTo find the daily gift, you must catch a : ",
-                "username": this.day + " Décembre",
-                "avatar_url": this.images[this.day]
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        await fetch(this.url, {
-            method: 'POST',
-            body: JSON.stringify({
-                "content": this.emoji.url,
-                "username": this.day + " Décembre",
-                "avatar_url": this.images[this.day]
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
     }
 
 
@@ -90,7 +45,7 @@ class Nowalmanax {
     }
 
     reactionValidateQuest(reaction, user){
-        if(this.usersDroppedMention.has(user.id) && reaction.message.author.id === user.id && reaction.emoji.id === this.emojiId){
+        if(this.usersDroppedMention.has(user.id) && reaction.message.author.id === user.id && reaction.emoji.id === this.emoji.id){
             reaction.remove();
             this.userValidateQuest(user);
         }
@@ -106,20 +61,15 @@ class Nowalmanax {
             {
                 embed: {
                     "title": {
-                        "fr": "Cadeau du " + this.day + " Decembre",
-                        "en": this.day + (this.day===1?"st":(this.day===2?"nd":"th")) + " of December's Gift"
+                        "fr": "Cadeau du " + this.day + " Avril",
+                        "en": this.day + (this.day===1?"st":(this.day===2?"nd":"th")) + " of April's Gift"
                     }[language],
-                    "description": this.day + " - " + {"fr": "Trouver un ", "en": "Find a "}[language] + "<:" + this.emoji.name + ":" + this.emoji.id + ">\n" + (this.day == 7?{
-                        "fr": "**Deuxième semaine**",
-                        "en": "**Second week**"
-                    }[language]:''),
                     "thumbnail": {
-                        "url":  this.images[this.day],
+                        "url":  this.image,
                     }
                 },
-                //files: ['https://cdn.discordapp.com/attachments/770768439773888532/779761054866735124/89045.png']
             }).then(message => {
-            message.react('🎁');
+            message.react('🍫');
         });
     }
 
@@ -135,8 +85,6 @@ class Nowalmanax {
         try{
             this.usersDroppedMention = new Map(Object.entries(require("./saves/" + filename + ".json")));
             this.day = this.usersDroppedMention.get("day");
-            this.emojiId = this.emojis[this.day];
-            this.emoji = this.emojisManager.cache.find(emoji => emoji.id === this.emojiId);
             return 0;
         }catch(e){
             return e;

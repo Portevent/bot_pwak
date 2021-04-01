@@ -6,7 +6,7 @@ module.exports = {
 
     onceReady(client) {
         const today = new Date();
-        console.log(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ' - Bot ' + client.type + ' ready (' + client.token.substr(1,7) + ')');
+        console.log(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ' - Bot ' + client.type + ' ready (' + client.token.substr(1,7) + ') with ' + client.prefix);
     },
 
     onOwnMessage(message){
@@ -78,7 +78,8 @@ module.exports = {
         if(message.content.startsWith('>:')) return;
         if(message.content.startsWith('>PIKPIK_DELETE_ME')) return message.delete({timeout: 500});
         if(message.author.id === client.user.id) return client.onOwnMessage(message);
-        
+
+
         // Doesn't require to specify the prefix for dm
         // If we recieve a dm without a prefix, we will add one to properly detect the command
         if(client.prefixOptionalInDm && message.channel.type === 'dm' && !(message.content.startsWith('<@!' + client.user.id + '>') || message.content.startsWith('<@' + client.user.id + '>') || message.content.startsWith(client.prefix))){

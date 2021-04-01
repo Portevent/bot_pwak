@@ -15,12 +15,7 @@ module.exports = {
     onWebhook(message){
         if(Drop.getByName(message.author.username) !== undefined && !message.client.stop){
             // noinspection JSIgnoredPromiseFromCall
-            message.react('🎁');
-        }
-        if(message.author.username == "Invocation de Craqueleur de Glace"
-            || message.author.username == "Summoning of  Ice Crackler") {
-            // noinspection JSIgnoredPromiseFromCall
-            message.react('❄').catch(e => this.logError(e));
+            message.react('🍫');
         }
     },
 

@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const {bots} = require('./config_files/config.json');
 const fetch = require('node-fetch');
+
 for(const bot of bots){
     if(bot.token === "" || bot.type === "") continue;
 

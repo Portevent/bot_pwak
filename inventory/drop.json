@@ -7,13 +7,13 @@
         "en": "A big gift appear !"
       },
       "description": {
-        "fr": "<:pikpik:780875171623338015> Il est énorme ! Il faut être au moins **6** pour l'ouvrir !",
-        "en": "<:pikpik:780875171623338015> It is so big ! We need to be **6** to open it !"
+        "fr": "Il est énorme ! Il faut être au moins **7** pour l'ouvrir !",
+        "en": "It is so big ! We need to be **7** to open it !"
       },
       "prob": 0.1,
-      "min": 6,
+      "min": 7,
       "max": 100,
-      "bonus": 1
+      "bonus": 2
     },
     {
       "id": "gift",
@@ -22,11 +22,11 @@
         "en": "A gift appear !"
       },
       "description": {
-        "fr": "<:pikpik:780875171623338015> À **3** on pourra l'ouvrir !",
-        "en": "<:pikpik:780875171623338015> We need to be **3** to open it !"
+        "fr": "À **4** on pourra l'ouvrir !",
+        "en": "We need to be **4** to open it !"
       },
       "prob": 0.9,
-      "min": 3,
+      "min": 4,
       "max": 100,
       "bonus": 1
     }

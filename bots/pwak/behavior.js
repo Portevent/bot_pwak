@@ -28,40 +28,55 @@ module.exports = {
             '364086525799038976',
             '626165637252907045'
         ];
-        this.emojiFlocon = "780851275930533921";
-        this.emojiFloconMagique = "780851276043780096";
-        this.emojiFloconAlma = "780851275691589724";
-        this.emojiFairy = "786540028628172820";
+
+        this.englishChannels = [
+            '78581046714572800',
+            '364081918116888576',
+            '626165608010088449',
+            '297780920268750858'
+        ];
+
+        this.debug = true;
     },
 
     async onceReady(){
         this.nowalmanax = new Nowalmanax(this);
         this.debbuger = await this.users.fetch("214090561055883267");
-        this.offTopics = { // Discord Dofus
-            fr: await this.channels.fetch('372100313890553856'),
-            en: await this.channels.fetch('297780920268750858')
-        };
-        /*this.offTopics = {// Test
-           fr: await this.channels.fetch('774531283426213898'),
-           en: await this.channels.fetch('774531283426213898')
-        };*/
-        this.announces = {// Discord Dofus
-           fr: await this.channels.fetch('356039693332381696'),
-           en: await this.channels.fetch('297780078245576704')
-        };
-        /*this.announces = {// Test
-           fr: await this.channels.fetch('780171576381276231'),
-           en: await this.channels.fetch('780756123522301962')
-        };*/
-        //this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
-        this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
+        if(this.debug){
+            this.offTopics = {// Test
+                fr: await this.channels.fetch('774531283426213898'),
+                en: await this.channels.fetch('774531283426213898')
+            };
+        }else{
+            this.offTopics = { // Discord Dofus
+                fr: await this.channels.fetch('372100313890553856'),
+                en: await this.channels.fetch('297780920268750858')
+            };
+        }
+        if(this.debug){
+            this.announces = {// Test
+                fr: await this.channels.fetch('780171576381276231'),
+                en: await this.channels.fetch('780756123522301962')
+            };
+        }else{
+            this.announces = { // Discord Dofus
+                fr: await this.channels.fetch('356039693332381696'),
+                en: await this.channels.fetch('297780078245576704')
+            };
+        }
+        if(this.debug){
+            this.referenceGuild = await this.guilds.fetch("606832838532399125"); // Test
+        }else{
+            this.referenceGuild = await this.guilds.fetch("78581046714572800"); // Discord Dofus
+        }
+
         const client = this;
 
         // noinspection ES6ShorthandObjectProperty
-        cron.schedule('0 23 * * *', async function() {
-            //End of the event
-            this.end(announces["fr"], announces["en"]);
-        });
+        // cron.schedule('0 23 * * *', async function() {
+        //     //End of the event
+        //     this.end(announces["fr"], announces["en"]);
+        // });
         /*
         // noinspection ES6ShorthandObjectProperty
         cron.schedule('0 0 * * *', async function() {
@@ -126,14 +141,14 @@ module.exports = {
         }
         //Public channel
         else{
-            return (['78581046714572800', '364081918116888576', '626165608010088449', '297780920268750858'].includes(channel.id))?"en":"fr";
+            return (this.englishChannels.includes(channel.id))?"en":"fr";
         }
     },
 
     async onReaction(reaction, user) {
         // Attempting to open gift
-        if (reaction.message.webhookID){
-            if(reaction.emoji.name === '🎁') {
+        if (reaction.message.webhookID) {
+            if (reaction.emoji.name === '🍫') {
                 const drop = Drop.getByName(reaction.message.author.username);
                 if (drop === undefined) return;
 
@@ -159,80 +174,32 @@ module.exports = {
                     }
                 })
             }
-            else if(reaction.emoji.name === '❄') {
-                if(reaction.message.author.username != "Invocation de Craqueleur de Glace"
-                && reaction.message.author.username != "Summoning of  Ice Crackler") return;
-
-                reaction.users.fetch().then(users => {
-                    //console.log("Opening gift : " + users.size + ' VS ' + drop.min + ' (' + users.map(user => user.username + ' ') + ')');
-                    if (users.size >= 10) {
-                        if (this.onGoingLoot.has(reaction.message.id)) {
-                            return;
-                        }
-                        // noinspection JSIgnoredPromiseFromCall
-                        reaction.message.react('🥁').catch(e => this.logError(e));
-                        let timer = setTimeout(() => {
-                            this.achieveFinalQuest(reaction);
-                            this.grantRole(reaction.message.mentions.members.first());
-                        }, 5 * 1000);
-                        this.onGoingLoot.set(reaction.message.id, timer);
-                        clearTimeout(this.onGoingTempLoot.get(reaction.message.id));
-                    }
-                    else{
-                        if (this.onGoingTempLoot.has(reaction.message.id)) {
-                            return;
-                        }
-                        if (this.onGoingLoot.has(reaction.message.id)) {
-                            return;
-                        }
-                        let timer = setTimeout(() => {
-                            this.failQuestTo(reaction.message.mentions.members.first());
-                            reaction.message.delete();
-                        }, 5 * 60 * 1000);
-                        this.onGoingTempLoot.set(reaction.message.id, timer);
-                    }
-                })
-            }
         }
 
         // Opening Nowalmanax gift
-        else if (reaction.message.channel.type === 'dm' && reaction.emoji.name === '🎁') {
+        else if (reaction.message.channel.type === 'dm' && reaction.emoji.name === '🍫') {
             reaction.users.fetch().then(users => {
                 if (users.size > 1) {
                     reaction.users.remove(reaction.message.author.id).catch(err => this.logError(err));
                     const language = this.getLanguage(reaction.message.channel);
                     let embed = reaction.message.embeds[0];
 
-                    let day = this.nowalmanax.day;
-
-                    if(reaction.message.content.startsWith("Wow !")){
-                        day = Number(embed.description.split(" - ", 1)[0]);
-                    }
-
-
                     let loot = {
                         "item": Item.get(this.nowalmanax.questItem),
-                        "quantity": Math.ceil(day / 6)
+                        "quantity": 1
                     };
                     let loot1 = Loot.getLootFromMetaLoot("common", 2);
                     let loot2 = Loot.getLootFromMetaLoot("common", 2);
-                    let loot3 = Loot.getLootFromMetaLoot("common", 2);
 
 
                     this.inventory.addItemToUser(user.id, loot.item.id, loot.quantity);
                     this.inventory.addItemToUser(user.id, loot1.item.id, loot1.quantity);
                     this.inventory.addItemToUser(user.id, loot2.item.id, loot2.quantity);
-                    this.inventory.addItemToUser(user.id, loot3.item.id, loot3.quantity);
 
 
-                    embed.description = (day == 7?{
-                            "fr": "**Deuxième semaine**\n",
-                            "en": "**Second week**\n"
-                        }[language]:'')
-                        + (loot.quantity > 1 ? loot.quantity + 'x' : '') + loot.item.emoji + loot.item.name[language] + "\n"
+                    embed.description = (loot.quantity > 1 ? loot.quantity + 'x' : '') + loot.item.emoji + loot.item.name[language] + "\n"
                         + (loot1.quantity > 1 ? loot1.quantity + 'x' : '') + loot1.item.emoji + loot1.item.name[language] + "\n"
-                        + (loot2.quantity > 1 ? loot2.quantity + 'x' : '') + loot2.item.emoji + loot2.item.name[language] + "\n"
-                        + (loot3.quantity > 1 ? loot3.quantity + 'x' : '') + loot3.item.emoji + loot3.item.name[language]
+                        + (loot2.quantity > 1 ? loot2.quantity + 'x' : '') + loot2.item.emoji + loot2.item.name[language]
 
                     // noinspection ES6MissingAwait,JSUnresolvedVariable
                     reaction.message.edit("", {
@@ -242,8 +209,8 @@ module.exports = {
                     if (!this.inventory.userHasItem(user.id, 'nowalmanax_help')) {
                         this.inventory.addItemToUser(user.id, 'nowalmanax_help');
                         user.send({
-                            'fr': "Super, tu as capturé ton premier phorreur ! Chaque jour il est possible de trouver un phorreur différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + this.prefix + "phorreur`.",
-                            'en': "Nice, you caught your first drheller ! Each day you can catch a different drheller. You can check if you found it with `" + this.prefix + "drheller`.",
+                            'fr': "Super, tu as capturé ton premier Wabbit de Pwâk ! Chaque jour il est possible de trouver un Wabbit différent. Tu peux voir si tu as déjà attrapé le tiens avec `" + this.prefix + "wabbit`.",
+                                'en': "Nice, you caught your first Fleaster's Wabbit ! Each day you can catch a different Wabbit. You can check if you found it with `" + this.prefix + "wabbit`.",
                         }[language]).catch(e => this.logError(e));
                     }
                 }
@@ -260,50 +227,6 @@ module.exports = {
             });
         }
 
-        // Drop flocon
-        else if (reaction.emoji.id === this.emojiFlocon) {
-            //console.log('Click on flocon');
-            if (user.id === reaction.message.author.id) {
-                await reaction.remove();
-                this.inventory.addItemToUser(user.id, 'flocon');
-            } else if(!user.bot){
-                // noinspection ES6MissingAwait
-                reaction.users.remove(user);
-            }
-        }
-
-        // Drop flocon
-        else if (reaction.emoji.id === this.emojiFloconMagique) {
-            if (user.id === reaction.message.author.id) {
-                await reaction.remove();
-                this.inventory.addItemToUser(user.id, 'flocon_magique');
-            } else if(!user.bot){
-                // noinspection ES6MissingAwait
-                reaction.users.remove(user);
-            }
-        }
-
-        // Drop flocon nowalmanax
-        else if (reaction.emoji.id === this.emojiFloconAlma) {
-            if (user.id === reaction.message.author.id) {
-                await reaction.remove();
-                this.inventory.addItemToUser(user.id, 'nowalmanax_star');
-            } else if(!user.bot){
-                // noinspection ES6MissingAwait
-                reaction.users.remove(user);
-            }
-        }
-        // Drop flocon nowalmanax
-        else if (reaction.emoji.id === this.emojiFairy) {
-            if (user.id === reaction.message.author.id) {
-                await reaction.remove();
-                this.dropFairyTo(user);
-            } else if(!user.bot){
-                // noinspection ES6MissingAwait
-                reaction.users.remove(user);
-            }
-        }
-
         else {
             if (this.inventory.userExists(user.id)) {
                 this.nowalmanax.reactionValidateQuest(reaction, user);
@@ -317,30 +240,17 @@ module.exports = {
 
             if(this.inventory.userHasItem(message.author.id, "drhellers_net"))
                 this.nowalmanax.attemptNowalmanaxDrop(message);
-
-            if(this.inventory.userHasItem(message.author.id, "quete1") && (Math.random() < 0.005 || this.inventory.userHasItem(message.author.id, "fairy_cheat")))
-                message.react(this.emojiFairy).then(() => {
-                    this.debbuger.send('Fairy dropped by ' + (message.member.nickname || message.author.username) + ' in <#' + message.channel + '>');
-                }).catch(e => this.logError(e));
-
-            if(this.inventory.userHasItem(message.author.id, "drop_flocon_1") && Math.random() < 0.10)
-                message.react(this.emojiFlocon).catch(e => this.logError(e));
-            if(this.inventory.userHasItem(message.author.id, "drop_flocon_2") && Math.random() < 0.05)
-                message.react(this.emojiFloconMagique).catch(e => this.logError(e));
-            if(this.inventory.userHasItem(message.author.id, "drop_flocon_3") && Math.random() < 0.02)
-                message.react(this.emojiFloconAlma).catch(e => this.logError(e));
         }
+    },
+
+    onBotMessage(message){
+        this.onUserMessage(message);
     },
 
     onWebhook(message){
         if(Drop.getByName(message.author.username) !== undefined){
             // noinspection JSIgnoredPromiseFromCall
-            message.react('🎁').catch(e => this.logError(e));
-        }
-        if(message.author.username == "Invocation de Craqueleur de Glace"
-            || message.author.username == "Summoning of  Ice Crackler") {
-            // noinspection JSIgnoredPromiseFromCall
-            message.react('❄').catch(e => this.logError(e));
+            message.react('🍫').catch(e => this.logError(e));
         }
     },
 
@@ -372,8 +282,8 @@ module.exports = {
 
     onCommandError(message, args, error, command){
         message.reply({
-            "fr": 'Une tempête de neige a perturbé `' + command.name + '` qui a échoué...',
-            "en": 'A snowstorm interrupted`' + command.name + '`...'
+            "fr": 'Un wabbit sauvage perturbé `' + command.name + '` qui a échoué...',
+            "en": 'A wild wabbit interrupted`' + command.name + '`...'
         }[this.getLanguage(message.channel)])
             .then(msg => {
                 msg.delete({ timeout: 10000 })
@@ -435,10 +345,11 @@ module.exports = {
         if(!this.dropOn) return;
 
         let nb = Math.random() * Math.max(1, 1 + (2 * (5 - this.messageSinceLastDrop)));
-        if(nb < 0.05){
+        if(nb < 0.23){
             this.drop(channel);
             this.messageSinceLastDrop = 0;
         }else{
+            console.log("Failed drop : " + nb);
             this.messageSinceLastDrop++;
         }
     },
@@ -452,47 +363,6 @@ module.exports = {
             "username": drop.title[language],
             "avatar_url": drop.image || Drop.getGift()
         });
-    },
-
-    dropQuest(channel, member){
-        const language = this.getLanguage(channel);
-
-        // noinspection JSIgnoredPromiseFromCall
-        this.sendWebhook(channel, {
-            "content": {
-                "fr": "<:pikpik:780875171623338015> L'invocation du Craqueleur de " + member + " est en cours ! Il faut être au moins **10** pour réussir !",
-                "en": "<:pikpik:780875171623338015> The summoning of " + member + "'s Crackler started ! We need to be **10** to achieve it !"
-            }[language],
-            "username": {
-                "fr": "Invocation de Craqueleur de Glace",
-                "en": "Summoning of  Ice Crackler"
-            }[language],
-            "avatar_url": "https://cdn.discordapp.com/attachments/787442887800782891/789902117715443742/Coeur_eveille.png"
-        });
-    },
-
-    dropFairyTo(user){
-        const language = this.getLanguage(user);
-        let fairies = [];
-        let canDrop = false;
-        for(let i = 0; i < 7; i++){
-            if(!this.inventory.userHasItem(user.id, 'fairy_' + i)){
-                fairies.push('fairy_' + i);
-                canDrop = true;
-            }
-        }
-
-        if(canDrop){
-            let fairy = fairies[Math.floor(Math.random() * fairies.length)];
-            this.inventory.addItemToUser(user.id, fairy, 1);
-            this.inventory.addItemToUser(user.id, "fairy", 1);
-            this.inventory.addItemToUser(user.id, "has_dropped_fairy", 1);
-            const fairy_item = Item.get(fairy)
-            user.send('**' + fairy_item.name[language] + '** : "' + fairy_item.text[language] + '"',
-                {
-                    files: ["https://media.discordapp.net/attachments/781503539142459452/786539936999276544/386.png"]
-                })
-        }
     },
 
     autoSave(){
@@ -513,45 +383,16 @@ module.exports = {
             }
         }
 
-
         this.inventory.addItemToUser(user.id, recipe.result);
 
-        for(let ingredient of recipe.recipe){
-            this.inventory.addItemToUser(user.id, ingredient[0], -ingredient[1]);
-        }
+        message.embeds[0].description = recipe.craftSucces[language];
 
-        if(recipe.craftRemoveFlag){
-            this.inventory.addItemToUser(user.id, recipe.craftRemoveFlag, -1);
-        }
-        if(recipe.craftAddFlag){
-            this.inventory.addItemToUser(user.id, recipe.craftAddFlag, 1);
-        }
-
-        this.inventory.addItemToUser(user.id, recipe.craftBonus, recipe.craftBonusQuantity);
-
-        const bonusItem = Item.get(recipe.craftBonus);
-
-        if(bonusItem){
-            message.embeds[0].description = {
-                "fr": "Bonus de fabrication ",
-                "en": "Craft bonus"
-            }[language] + ": + " + recipe.craftBonusQuantity + ' ' + bonusItem.emoji + ' ' + bonusItem.name[language] + "\n" + recipe.craftSucces[language];
-        }else{
-
-            message.embeds[0].description = {
-                "fr": "Fabriqué !",
-                "en": "Crafted !"
-            }[language];
-        }
         // noinspection ES6MissingAwait
         message.edit("", {
             embed: message.embeds[0],
         });
 
-        if(recipe.craftMessageLink){
-            user.send(recipe.craftMessage[language], {files: [recipe.craftMessageLink]}).catch(e => this.logError(e));
-        }
-        else if(recipe.craftMessage){
+        if(recipe.craftMessage){
             user.send(recipe.craftMessage[language]).catch(e => this.logError(e));
         }
     },
@@ -574,26 +415,6 @@ module.exports = {
 
             if(!user.bot && !this.inventory.userExists(user.id)){
                 this.greet(user, language);
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_drop')){
-                badges.set(user.id, '<:Bonus_25:786575034587676715>');
-                bonus += 0.25;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_big_drop')){
-                badges.set(user.id, '<:Bonus_75:786581855763562566>');
-                bonus += 0.75;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_double_drop')){
-                badges.set(user.id, '<:Bonus_Double_Drop:786575751938834502>');
-                seccond_bonus += 0.5;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_double_drop_plus')){
-                badges.set(user.id, '<:Double_Drop:787445684923400223>');
-                seccond_bonus += 1.0;
             }
 
             let bad_karmas = 1;
@@ -631,108 +452,16 @@ module.exports = {
 
     },
 
-    async failQuestTo(member) {
-        const language = this.getLanguage(member.user);
-        this.inventory.addItemToUser(member.user.id, 'quete3');
-        member.user.send({
-            "fr": "Le coeur a fondu malheureusement. Ne t'inquiète pas, tu peux le refaire sans trop de soucis. Si tu as du mal à réunir des personnes, n'hésite pas à demander à ceux qui l'on déjà fait.",
-            "en": "Sadly, the heart melted. Don't worry, it is not expensive to recraft. If you struggle to find peoples, don't hesitate to ask those who already achieve it."
-        }[language])
-    },
-
-    async grantRole(member) {
-        const language = this.getLanguage(member.user);
-        this.inventory.addItemToUser(member.user.id, 'title');
-        let title = this.referenceGuild.roles.cache.find(role => role.id == {
-            "en":"789893385733275688",
-            "fr":"789892273403985940"
-        }[language]);
-        member.roles.add(title);
-    },
-
-    async achieveFinalQuest(reaction){
-        const language = this.getLanguage(reaction.message.channel);
-
-        let messages = await reaction.message.channel.messages.fetch({ limit: 10 })
-        let users = await reaction.users.fetch();
-        //console.log("Looting gift : " + users.map(user => user.username + ' '));
-        users.delete(this.user.id);
-
-        let bonus = 1 + users.size/4; // 25% de bonus par joueur participants
-        let seccond_bonus = 0;
-
-        let badges = new Map();
-        let ownBonus = new Map();
-
-        for(let user of users.values()){
-
-            if(!user.bot && !this.inventory.userExists(user.id)){
-                this.greet(user, language);
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_drop')){
-                badges.set(user.id, '<:Bonus_25:786575034587676715>');
-                bonus += 0.25;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_big_drop')){
-                badges.set(user.id, '<:Bonus_75:786581855763562566>');
-                bonus += 0.75;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_double_drop')){
-                badges.set(user.id, '<:Bonus_Double_Drop:786575751938834502>');
-                seccond_bonus += 0.5;
-            }
-
-            if(this.inventory.userHasItem(user.id, 'bonus_double_drop_plus')){
-                badges.set(user.id, '<:Double_Drop:787445684923400223>');
-                seccond_bonus += 1.0;
-            }
-        }
-
-        let loot = Loot.getLoot(bonus, bonus);
-        let loot1 = Loot.getLoot(bonus, bonus);
-        let loot2 = Loot.getLootFromMetaLoot(loot.meta_loot.id, bonus*seccond_bonus);
-        let loot3 = Loot.getLootFromMetaLoot(loot1.meta_loot.id, bonus*seccond_bonus);
-
-        for(let user of users.values()){
-            this.inventory.addItemToUser(user.id, loot.item.id, Math.floor(loot.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
-            this.inventory.addItemToUser(user.id, loot1.item.id, Math.floor(loot1.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
-            this.inventory.addItemToUser(user.id, loot2.item.id, Math.floor(loot2.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
-            this.inventory.addItemToUser(user.id, loot3.item.id, Math.floor(loot3.quantity * (ownBonus.has(user.id)?ownBonus.get(user.id):1)));
-        }
-
-        this.editWebhook(reaction.message.channel, {
-            "content": loot.meta_loot.name[language] + " **" + (loot.quantity>1?loot.quantity + 'x':'') + loot.item.emoji + loot.item.name[language] + "**"
-                + "\n**" + (loot1.quantity>1?loot1.quantity + 'x':'') + loot1.item.emoji + loot1.item.name[language] + "**"
-                + (seccond_bonus > 0?"\n**" + (loot2.quantity>1?loot2.quantity + 'x':'') + loot2.item.emoji + loot2.item.name[language] + "**" :"")
-                + (seccond_bonus > 0?"\n**" + (loot3.quantity>1?loot3.quantity + 'x':'') + loot3.item.emoji + loot3.item.name[language] + "**" :"")
-                + "! Bravo" + users.map(user => ' ' + (badges.has(user.id)?badges.get(user.id):"") + user.username)
-                + {
-                    "fr": "\n\n**Et félications à " + reaction.message.mentions.members.first().toString() + ", qui rejoind les Nowelistes Enthousiastes !**",
-                    "en": "\n\n**And congratulations " + reaction.message.mentions.members.first().toString() + ", who joins the Enthusiastics Kwismasters !**"
-                }[language]
-        }, reaction.message.id);
-
-        // noinspection ES6MissingAwait
-        reaction.message.reactions.removeAll();
-
-    },
-
     greet(user, language){
         user.send(
             {
                 'fr':
-                    'Salut ! Je suis Pikpik, le Sapik de Nowel.\n' +
-                    'Comme tu peux le voir, la fin de l\'année approche ! Il y a plein de trucs à faire, et on a besoin de toi ;)\n',
+                    'Salut ! Je suis Choco Wa, le Wabbit de Pwak.\n' +
+                    'Comme tu peux le voir, les cloches de Pwak sont passées ! Il y a plein de trucs à faire, et on a besoin de toi ;)\n',
                 'en':
-                    "Hey ! I'm Pikpik !\n" +
-                    "It is Kwismas ! There is plenty of things to do, and we need you !"
-            }[language],
-            {
-                files: ["https://cdn.discordapp.com/attachments/781503539142459452/781937867277860894/Nowel.png"]
-            }).then(msg => {
+                    "Hey ! I'm Choco Wa, the Fleaster Wabbit !\n" +
+                    "It is Fleaster ! There is plenty of things to do, and we need you !"
+            }[language]).then(msg => {
             msg.channel.send(
                 {
                     'fr':
@@ -746,8 +475,7 @@ module.exports = {
             this.logError(user.username);
         });
 
-        this.inventory.addItemToUser(user.id, 'quest0_available');
-        this.inventory.addItemToUser(user.id, 'boule_verte', 2);
+        this.inventory.addItemToUser(user.id, 'choco', 2);
         this.inventory.setItemToUser(user.id, 'language', language);
     },
 

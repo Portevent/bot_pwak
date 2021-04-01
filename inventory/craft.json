@@ -1,420 +1,48 @@
 {
   "drhellers_net": {
-    "require": "quest0_available",
+    "forbide": "drhellers_net",
     "result": "drhellers_net",
     "recipe": [
-      ["boule_verte", 2]
+      ["choco", 2]
     ],
-    "craftBonus": "kamas_argent",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "quest1_available",
-    "craftRemoveFlag": "quest0_available",
     "craftSucces": {
-      "fr": "Super ! On va pouvoir capturer des phorreurs !",
-      "en": "Nice ! With that we can catch drhellers !"
+      "fr": "Super ! On va pouvoir capturer des Wabbits !",
+      "en": "Nice ! With that we can catch Wabbits !"
     },
     "craftMessage": {
-        "fr": "Si tu croises un phorreur au détour d'un de tes messages, capture le !",
-        "en": "If you encounter a drheller on your message, catch it !"
-    },
-    "craftMessageLink": "https://cdn.discordapp.com/attachments/781503539142459452/781937835698814976/Phorreur.png"
-  },
-  "process": {
-    "require": "quest1_available",
-    "result": "process",
-    "recipe": [
-      ["flocon", 2],
-      ["boule_rouge", 1],
-      ["boule_violette", 1]
-    ],
-    "craftBonus": "kamas_argent",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "quest1_started",
-    "craftRemoveFlag": "quest1_available",
-    "craftSucces": {
-      "fr": "Incroyable, qui sait quel genre de machine peut on faire à partir de celui. Passons à la suite ! `!craft`",
-      "en": "Incredible, who knows what kind of tools we can build from it. We need to upgrade it ! `!craft`"
+        "fr": "Si tu croises un Wabbit au détour d'un de tes messages, capture le !",
+        "en": "If you encounter a Wabbit on your message, catch it !"
     }
   },
-  "machine": {
-    "require": "process",
-    "result": "machine",
+  "pwak_stars": {
+    "require": "drhellers_net",
+    "forbide": "pwak_title",
+    "result": "pwak_stars",
     "recipe": [
-      ["process", 1],
-      ["boule_verte", 4],
-      ["boule_bleue", 1],
-      ["boule_rouge", 2],
-      ["boule_jaune", 1]
+      ["nowalmanax_star", 5],
+      ["choco_noir", 5],
+      ["choco_blanc", 5],
+      ["choco_lait", 5],
+      ["choco", 5]
     ],
-    "craftBonus": "kamas_argent",
-    "craftBonusQuantity": 3,
     "craftSucces": {
-      "fr": "Ca commence à prendre forme !",
-      "en": "This looks cool !"
+      "fr": "Fabriqué",
+      "en": "Crafted"
     }
   },
-  "soufle": {
-    "require": "machine",
-    "result": "soufle",
+  "pwak_title": {
+    "require": "drhellers_net",
+    "result": "pwak_title",
     "recipe": [
-      ["machine", 1],
-      ["boule_jaune", 8],
-      ["boule_orange", 10],
-      ["boule_bleue", 9],
-      ["boule_violette", 6],
-      ["boule_verte", 5]
+      ["nowalmanax_star", 4],
+      ["choco_noir", 44],
+      ["choco_blanc", 44],
+      ["choco_lait", 44],
+      ["choco", 44]
     ],
-    "craftBonus": "kamas_argent",
-    "craftBonusQuantity": 5,
-    "craftSucces": {
-      "fr": "Super, avec ça nous allons pouvoir réchauffer les cœurs et allumer une étoile de Nowel !",
-      "en": "Nice, with that we can bring magic in the place !"
-    }
-  },
-  "quete1": {
-    "require": "quest1_started",
-    "result": "quete1",
-    "recipe": [
-      ["nowalmanax_star", 10],
-      ["soufle", 1],
-      ["flocon_magique", 1]
-    ],
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "quest1_finished",
-    "craftRemoveFlag": "quest1_started",
     "craftSucces": {
       "fr": "Magnifique ! Il est maintenant possible de voir les 7 Fées de Nowel, et de les capturer. Bonne chance (il vous en faudra) !",
       "en": "Awesome ! It is now possible to see and catch the 7 Kwismas Fairies ! Good luck (and I mean it)!"
     }
-  },
-  "drop_flocon_1": {
-    "require": "quest1_finished",
-    "forbide": "drop_flocon_1_crafted",
-    "result": "drop_flocon_1",
-    "recipe": [
-      ["flocon", 200],
-      ["boule_rouge", 37],
-      ["boule_bleue", 28],
-      ["boule_violette", 19]
-    ],
-    "craftTooltip": {
-      "fr": "Rend cool, un style à couper le souffle et donne l'haleine fraiche. Même un peu trop fraiche... <:flocon:780851275930533921>",
-      "en": "Do you ever wanted to be cool and have a fresh breath. A very fresh breath... <:flocon:780851275930533921>"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "drop_flocon_1_crafted",
-    "craftSucces": {
-      "fr": "Cool ! On ne pourra plus vous appeler Emile. Cependant il faudrat toujours eviter de parler trop près des gens, pour éviter de ne pas les transformer en glaçon <:flocon:780851275930533921>",
-      "en": "Cool ! A bit too, but cool tho. Don't talk too close to people, you may turn them into snowmen. <:flocon:780851275930533921>"
-    }
-  },
-  "drop_flocon_2": {
-    "require": "quest2_crafted",
-    "forbide": "drop_flocon_2_crafted",
-    "result": "drop_flocon_2",
-    "recipe": [
-      ["drop_flocon_1", 1],
-      ["flocon_magique", 100],
-      ["boule_bleue", 198],
-      ["boule_violette", 215]
-    ],
-    "craftTooltip": {
-      "fr": "Donne le regard froid, le sang froid, un look défrisé et une haleine extra fraiche. Même un peu trop froide... <:flon_magique:780851276043780096>",
-      "en": "Do you ever wanted to be cool blood and have a (very) fresh breath. Even a bit too cold ... <:flon_magique:780851276043780096>"
-    },
-    "craftBonus": "kamas_or",
-    "craftAddFlag": "drop_flocon_2_crafted",
-    "craftBonusQuantity": 3,
-    "craftSucces": {
-      "fr": "Cool ! Méduse transforme les gens en pierre d'un simple regard, et vous vous transformez les gens en glace d'un simple souffle. <:flon_magique:780851276043780096>",
-      "en": "Coold ! A bit too, but cold tho. Don't talk too close to people, you may turn them into snowmen. <:flon_magique:780851276043780096>"
-    }
-  },
-  "recycleur1": {
-    "require": "quest1_finished",
-    "forbide": "can_recycle",
-    "result": "recycleur1",
-    "recipe": [
-      ["flocon_magique", 10],
-      ["boule_orange", 87],
-      ["boule_verte", 48],
-      ["boule_violette", 68]
-    ],
-    "craftTooltip": {
-      "fr": "Fait fondre les coeurs et les kamas chocolatés. Ideal pour recycler ses ex ou ses kamas de bronze en quelques kamas d'argent.",
-      "en": "Melts hearts and chocolate kamas. Ideal for recycling ex’s or bronze kamas into a few silver kamas."
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "can_recycle",
-    "craftSucces": {
-      "fr": "Super ! On peut maintenant l'utiliser avec `>recycler`. 10 kamas chocolaté de bronze feront 1 kamas chocolaté kamas d'argent.",
-      "en": "Nice ! We can use it with `>recycle`. 10 bronze chocolate kamas make 1 sylver chocolat kamas."
-    }
-  },
-  "recycleur2": {
-    "require": "quest2_crafted",
-    "forbide": "can_recycle_2",
-    "result": "recycleur2",
-    "recipe": [
-      ["recycleur1", 1],
-      ["flocon_magique", 10],
-      ["boule_jaune", 68],
-      ["boule_verte", 50],
-      ["boule_violette", 54]
-    ],
-    "craftTooltip": {
-      "fr": "Fait fondre les gens en larmes et les kamas chocolatés en d'autres kamas chocolatés. Ideal pour recycler ses kamas d'argent.",
-      "en": "Melts hearts and chocolate kamas. Ideal for recycling silver kamas."
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 3,
-    "craftAddFlag": "can_recycle_2",
-    "craftSucces": {
-      "fr": "Super ! On peut maintenant l'utiliser avec `>recycler`. 10 kamas chocolaté d'argent feront 1 kamas chocolaté kamas d'or.",
-      "en": "Nice ! We can use it with `>recycle`. 10 sylver chocolate kamas make 1 goldden chocolat kamas."
-    }
-  },
-  "invspy": {
-    "require": "quest1_finished",
-    "forbide": "invspy_crafted",
-    "result": "invspy",
-    "recipe": [
-      ["boule_bleue", 42],
-      ["boule_orange", 27],
-      ["boule_verte", 38],
-      ["boule_violette", 29],
-      ["boule_jaune", 33]
-    ],
-    "craftTooltip": {
-      "fr": "Permet de voir les étoiles, la copie de son voisin ainsi que son inventaire",
-      "en": "Allows you to see the stars, the answers of your neighbour as well as his inventory"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "invspy_crafted",
-    "craftSucces": {
-      "fr": "Intéressant ! Tu peux maintenant voir l'inventaire des gens en rajoutant leur nom.\nEx : `>inventaire Portevent`",
-      "en": "Interesting ! You can now see other peoples inventory. E.g. :  `>inventory Portevent`"
-    }
-  },
-  "ladder": {
-    "require": "quest1_finished",
-    "forbide": "ladder_crafted",
-    "result": "ladder",
-    "recipe": [
-      ["boule_violette", 49],
-      ["boule_jaune", 61],
-      ["boule_bleue", 51],
-      ["boule_rouge", 68],
-      ["boule_orange", 76]
-    ],
-    "craftTooltip": {
-      "fr": "Vous fait entrer dans la cour des grands, des gourmands, et des grands gourmands",
-      "en": "Brings you into the big leagues"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 1,
-    "craftAddFlag": "ladder_crafted",
-    "craftSucces": {
-      "fr": "Miam ! Collectionnons les kamas chocolatés en or pour devenir le plus gourmands des plus gourmands.\n`>classement`",
-      "en": "Delicious ! Let’s collect golden chocolate kamas to become the gourmetiest of the gourmetiest.\n `>ladder`"
-    }
-  },
-  "quete2": {
-    "require": "quest1_finished",
-    "forbide": "quest2_crafted",
-    "result": "quete2",
-    "recipe": [
-      ["nowalmanax_star", 12],
-      ["boule_bleue", 41],
-      ["boule_rouge", 38],
-      ["boule_violette", 54],
-      ["boule_orange", 56],
-      ["boule_jaune", 61]
-    ],
-    "craftTooltip": {
-      "fr": "Quête principale",
-      "en": "Main Quest"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 10,
-    "craftAddFlag": "quest2_crafted",
-    "craftSucces": {
-      "fr": "Super ! Cette pierre contient de quoi former un coeur de Craqueleur de Glace.",
-      "en": "Nice ! This stone contains enough fragments to create an Ice Crackler Heart"
-    }
-  },
-  "quete3": {
-    "require": "quest2_crafted",
-    "forbide": "quest3_crafted",
-    "result": "quete3",
-    "recipe": [
-      ["quete2", 1],
-      ["nowalmanax_star", 20],
-      ["boule_jaune", 38],
-      ["boule_violette", 42],
-      ["boule_bleue", 30],
-      ["boule_rouge", 70]
-    ],
-    "craftTooltip": {
-      "fr": "**Quête principale** : Nous appronchons du but ! Avec ce coeur, nous allons pouvoir eveiller un craqueleur des glaces, et faire partie de l'armée du Pere Nowel !",
-      "en": "**Main Quest** : Our goal is close ! With this heart, we will awaken an Ice Crackler for Father Kwismas Army ! "
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 20,
-    "craftAddFlag": "quest3_crafted",
-    "craftSucces": {
-      "fr": "Nous pouvons maintenant fabriquer un coeur éveillé et achever notre quête.",
-      "en": "We can now craft an awaken heart and achieve our quest."
-    }
-  },
-  "quete3on": {
-    "require": "quete3",
-    "result": "quete3on",
-    "recipe": [
-      ["quete3", 1],
-      ["boule_verte", 25],
-      ["boule_rouge", 12],
-      ["boule_jaune", 20],
-      ["boule_bleue", 20]
-    ],
-    "craftTooltip": {
-      "fr": "**Quête principale** : Contrairement à ce que vous avez l'habitude d'acheter, les instructions pour utiliser cet objet ne seront pas en chinois",
-      "en": "**Main Quest** : Contrary to what you usually buy, the instructions for using this object will not be in Chinese "
-    },
-    "craftBonus": "boule_orange",
-    "craftBonusQuantity": 10,
-    "craftSucces": {
-      "fr": "Pour rejoindre devenir un Noweliste Enthousiaste, il faut avoir son propre Craqueleur des Glaces. Nous allons bientôt en pouvoir en invoquer un ! Avec ce coeur, il faut utiliser `>summon` pour démarrer l'invocation. Et on ferait mieux de demander de l'aide à nos amis, car il faudra être 10 pour réussir. Toi et moi ca fait 2, il faut donc 8 autres personnes. **Atention, le coeur fond au bout de 5 minutes**, du coup il est conseillé de prévoir le coup à l'avance pour être sûr d'avoir assez de monde ! ",
-      "en": "To become an Enthusiastic Kwismaster , you must have your own Ice Cracker. We will soon be able to invoke one! With this heart, you must use `>summon` to start the summon. And we’d better ask our friends for help, 'cause we have to be 10 to make it. We are already 2, so we need 8 more people. **Watchout, the heart melts after 5 minutes**, so you better plan ahead to make sure you have enough people!"
-    }
-  },
-  "bonus_drop": {
-    "require": "has_dropped_fairy",
-    "forbide": "bonus_drop_crafted",
-    "result": "bonus_drop",
-    "recipe": [
-      ["fairy", 1],
-      ["boule_multi", 1],
-      ["flocon_magique", 3],
-      ["boule_violette", 13],
-      ["boule_bleue", 13],
-      ["boule_jaune", 13]
-    ],
-    "craftTooltip": {
-      "fr": "Augmente le butin de tous les cadeaux",
-      "en": "Increase all gifts loots"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 2,
-    "craftAddFlag": "bonus_drop_crafted",
-    "craftSucces": {
-      "fr": "Chaque joueur augmente de 25% la quantité et la qualité des drops des cadeaux. Avec cette relique, votre bonus passe de 25% à 50%. Cumulable avec les autres reliques des autres joueurs.",
-      "en": "Each player increase by 25% the quantity and the quality of gifts loots. With this Relic, your bonus increase from 25% to 50%. Cumulable with other relics."
-    }
-  },
-  "bonus_big_drop": {
-    "require": "bonus_drop",
-    "result": "bonus_big_drop",
-    "recipe": [
-      ["fairy", 1],
-      ["bonus_drop", 1],
-      ["boule_multi", 3],
-      ["flocon_magique", 5]
-    ],
-    "craftTooltip": {
-      "fr": "Augmente encore plus le butin de tous les cadeaux",
-      "en": "Increase even more all gifts loots"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 4,
-    "craftSucces": {
-      "fr": "Chaque joueur augmente de 25% la quantité et la qualité des drops des cadeaux. Avec cette relique, votre bonus passe de 25% à 100%. Cumulable avec les autres reliques des autres joueurs.",
-      "en": "Each player increase by 25% the quantity and the quality of gifts loots. With this Relic, your bonus increase from 25% to 100%. Cumulable with other relics."
-    }
-  },
-  "bonus_double_drop": {
-    "require": "bonus_big_drop",
-    "result": "bonus_double_drop",
-    "recipe": [
-      ["fairy", 2],
-      ["bonus_big_drop", 1],
-      ["boule_multi", 5],
-      ["flocon_magique", 7]
-    ],
-    "craftTooltip": {
-      "fr": "Ajoute une deuxième ligne sur le butin des cadeaux",
-      "en": "Add another line to gifts loots"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 6,
-    "craftSucces": {
-      "fr": "Une deuxième ligne sera maintenant présente sur les cadeaux que vous aidez à ouvrir. Le bonus de quantité de la deuxième ligne est de 50% de celui de la première ligne. Si deux personnes possède cette relique, le bonus sera le même pour la deuxième ligne. Si trois personnes possède cette relique, ce bonus sera de 1,5 fois celui de la première ligne etc...",
-      "en": "The gift you will help openning will now have another loot. The quantity bonus of the second loot is half the bonus of the first loot. Each player with this relic increase the quantity bonus of the second line."
-    }
-  },
-  "bonus_double_drop_plus": {
-    "require": "bonus_double_drop",
-    "result": "bonus_double_drop_plus",
-    "recipe": [
-      ["fairy", 3],
-      ["bonus_double_drop", 1],
-      ["boule_multi", 20],
-      ["flocon_magique", 200]
-    ],
-    "craftTooltip": {
-      "fr": "Augmente la deuxième ligne sur le butin des cadeaux",
-      "en": "Increase the other line to gifts loots"
-    },
-    "craftBonus": "kamas_or",
-    "craftBonusQuantity": 10,
-    "craftSucces": {
-      "fr": "Une deuxième ligne sera maintenant présente sur les cadeaux que vous aidez à ouvrir. Le bonus de quantité de la deuxième ligne est de **100**% de celui de la première ligne. Si deux personnes possède cette relique, le bonus sera doublé pour la deuxième ligne. Etc...",
-      "en": "The gift you will help openning will now have another loot. Each player with this relic increase the quantity bonus of the second line (100% per player)."
-    }
-  },
-  "boule_rouge": {
-    "require": "test_exploit",
-    "result": "boule_rouge",
-    "recipe": [
-      ["test_exploit", 1]
-    ]
-  },
-  "boule_multi": {
-    "require": "quest2_crafted",
-    "result": "boule_multi",
-    "craftSucces": {
-      "fr": "Fabriqué !",
-      "en": "Crafted !"
-    },
-    "recipe": [
-      ["boule_rouge", 100],
-      ["boule_orange", 100],
-      ["boule_jaune", 100],
-      ["boule_verte", 100],
-      ["boule_bleue", 100],
-      ["boule_violette", 100]
-    ]
-  },
-  "flocon_magique": {
-    "require": "quest2_crafted",
-    "result": "flocon_magique",
-    "recipe": [
-      ["flocon", 100]
-    ],
-    "craftTooltip": {
-      "fr": "10 Flocons magiques",
-      "en": "10 Magic Snowflake"
-    },
-    "craftSucces": {
-      "fr": "Fabriqués !",
-      "en": "Crafted !"
-    },
-    "craftRemoveFlag": "flocon_magique",
-    "craftBonus": "flocon_magique",
-    "craftBonusQuantity": 10
   }
 }

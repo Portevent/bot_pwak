@@ -1,6 +1,6 @@
 module.exports = {
     name: 'test',
-    description: 'test',
+        description: 'test',
     execute(message, args) {
         const emote = message.client.emojis.cache.find(emoji => emoji.name === args[0]);
         message.channel.send(`${emote}`);
